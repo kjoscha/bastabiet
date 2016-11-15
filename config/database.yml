@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: bastabiet_development
+
+test:
+  <<: *default
+  database: bastabiet_test
+
+production:
+  <<: *default
+  database: bastabiet_production
+  username: <%= ENV['POSTGRES_USERNAME'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>

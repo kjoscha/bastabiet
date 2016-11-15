@@ -1,0 +1,27 @@
+# Wildcards
+*~
+*.swp
+.pyc
+*.orig
+
+# Can also ignore all directories and files in a directory.
+visualization/
+.env
+/backup/ftp.config
+
+# Ignore bundler config.
+/.bundle
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/public/assets
+.sass-cache
+tmp/**/*
+
+# Ignore Byebug command history file.
+.byebug_history
+
+/config/application.yml
+
+# unicorn files like logs failures sockets 
+/shared/*
