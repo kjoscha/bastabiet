@@ -3,7 +3,7 @@ class GroupsController < ApplicationController
     @station = Station.find(params[:station_id])
     @group = @station.groups.build(group_params)
     flash[:danger] = @group.errors.full_messages.to_sentence unless @group.save
-    redirect_to station_path(@station)
+    redirect_to stations_path
   end
 
   def show
