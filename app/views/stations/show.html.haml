@@ -1,15 +1,13 @@
 .row
   .col-xs-12
-    =link_to 'Neue Abholstation', new_station_path
+    %h1= @station.name
   .col-xs-12
-    %h1 Stations
-  .col-xs-12
-    - @stations.each do |station|
-      = link_to station.name, station_path(station)
+    - @groups.each do |group|
+      = link_to group.name, group_path(group)
       %br
 
 .row
-  = form_for(@station) do |f|
+  = form_for([@station, @station.groups.build]) do |f|
     .col-xs-8
       = f.text_field :name, placeholder: 'Name', class: 'form-control'
     .col-xs-4

@@ -1,0 +1,20 @@
+.row
+  .col-xs-12
+    %h1= @group.name
+  .col-xs-12
+    - @shares.each do |share|
+      = link_to share.name, share_path(share)
+      %br
+
+= form_for([@group, @group.shares.build]) do |f|
+  .row
+    .col-xs-6
+      .col-xs-12
+        = f.text_field :name, placeholder: 'Name', class: 'form-control'
+    .col-xs-6
+      - 3.times do
+        .col-xs-12
+          = f.text_field :members, multiple: true, placeholder: 'Mitglieder', class: 'form-control'
+    .col-xs-12
+      .col-xs-12
+        = button_tag('Speichern', type: 'submit', class: 'btn btn-success')
