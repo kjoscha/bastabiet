@@ -1,16 +1,28 @@
 .row
   .col-xs-12
-    %h1= @share.name
-  .col-xs-12
-    - @share.members
+    %h1= @share.name + ' (bezahlt ' + @share.offers.last.amount.to_s + '€)'
 
 .row
-  = form_for(@share) do |f|
-    .col-xs-12
-      = f.text_field :name, placeholder: 'Name', class: 'form-control'
-    .col-xs-12
-      = f.text_field :members, placeholder: 'Mitglieder', class: 'form-control'
-    .col-xs-12
+  .col-xs-12
+    %h2 Neues Gebot
+= form_for([@share, @share.offers.build]) do |f|
+  .row
+    .col-md-6
+      = f.text_field :amount, placeholder: 'Betrag', class: 'form-control'
+  .row
+    .col-md-6
       = button_tag('Speichern', type: 'submit', class: 'btn btn-success')
-    .col-xs-12
-      %hr
+
+.row
+  .col-xs-12
+    %h2 Infos
+= form_for(@share) do |f|
+  .row
+    .col-md-6
+      = f.text_field :name, placeholder: 'Name', class: 'form-control'
+  .row
+    .col-md-6
+      = f.text_field :members, placeholder: 'Mitglieder', class: 'form-control'
+  .row
+    .col-md-6
+      = button_tag('Speichern', type: 'submit', class: 'btn btn-success')
