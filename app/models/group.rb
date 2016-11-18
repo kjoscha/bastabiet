@@ -3,18 +3,10 @@ class Group < ActiveRecord::Base
   has_many :shares, dependent: :destroy
 
   def amount
-    sum = 0
-    shares.each do |share|
-      sum += share.amount
-    end
-    sum
+    shares.map(&:amount).sum
   end
 
   def shares_count
-    sum = 0
-    shares.each do |share|
-      sum += share.size
-    end
-    sum
+    shares.map(&:size).sum
   end
 end

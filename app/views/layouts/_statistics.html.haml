@@ -11,12 +11,20 @@
           .col-xs-12
             = Statistic.new.offers.join('€, ') + '€'
           .col-xs-12
-            %h3 Durchschnittsgebot
+            %h3 Summe
+          .col-xs-6
+            %b Real:
+            = Statistic.new.sum.to_s + '€'
+          .col-xs-6
+            %b Benötigt:
+            = Statistic.new.needed_sum.to_s + '€'
           .col-xs-12
+            %h3 Durchschnitt
+          .col-xs-6
+            %b Real:
             = Statistic.new.average.to_s + '€'
-          .col-xs-12
-            %h3 Benötigter Durchschnitt
-          .col-xs-12
+          .col-xs-6
+            %b Benötigt:
             = Statistic.new.needed_average.to_s + '€'
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Schließen
