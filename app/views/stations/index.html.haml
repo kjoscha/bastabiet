@@ -6,11 +6,11 @@
   .row
     .col-xs-12
       %h2
-        = station.name
+        = station.name + ' (' + station.amount.to_s + '€)'
         = link_to 'x', station_path(station), method: 'delete', data: { confirm: 'Wirklich gesamte Station löschen?' }
     - station.groups.each do |group|
       .col-xs-12
-        = link_to group.name, group_path(group)
+        = link_to group.name  + ' (' + group.amount.to_s + '€)', group_path(group)
   .row
     = form_for([station, station.groups.build]) do |f|
       .col-md-6
