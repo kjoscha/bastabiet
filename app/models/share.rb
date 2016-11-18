@@ -5,4 +5,8 @@ class Share < ActiveRecord::Base
   def amount
     offers.last ? offers.last.the_amount : 0
   end
+
+  def normalized_amount
+    amount / size
+  end
 end

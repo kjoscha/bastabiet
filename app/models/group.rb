@@ -9,4 +9,12 @@ class Group < ActiveRecord::Base
     end
     sum
   end
+
+  def shares_count
+    sum = 0
+    shares.each do |share|
+      sum += share.size
+    end
+    sum
+  end
 end

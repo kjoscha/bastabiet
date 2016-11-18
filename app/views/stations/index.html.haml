@@ -10,7 +10,7 @@
         = link_to 'x', station_path(station), method: 'delete', data: { confirm: 'Wirklich gesamte Station löschen?' }
     - station.groups.each do |group|
       .col-xs-12
-        = link_to group.name  + ' (' + group.amount.to_s + '€)', group_path(group)
+        = link_to group.name  + ' (' + group.shares_count.to_s + ' Ernteanteile für insgesamt ' + group.amount.to_s + '€)', group_path(group)
   .row
     = form_for([station, station.groups.build]) do |f|
       .col-md-6
@@ -23,7 +23,7 @@
 
 .row
   .col-xs-12
-    %h2 Neue Abholstation
+    %h3 Neue Abholstation
   = form_for(@station) do |f|
     .col-md-6
       = f.text_field :name, placeholder: 'Name', class: 'form-control'
