@@ -18,9 +18,11 @@
           %a.navbar-brand{:href => root_path} CSA BASTA
         #navbar.navbar-collapse.collapse
           %ul.nav.navbar-nav.navbar-right
+            %li
+              %a.statistic-button Statistik
     .container
       - flash.each do |type, msg|
         .alert{class: "alert-#{type} flash-message", role: 'alert'}
           = msg
       = yield
-      #form-modal.modal.fade{:role => "dialog"}
+      = render 'layouts/statistics'

@@ -1,3 +1,7 @@
 class Offer < ActiveRecord::Base
-  belongs_to :offers
+  belongs_to :share
+
+  def the_amount
+    amount ? amount : 0
+  end
 end

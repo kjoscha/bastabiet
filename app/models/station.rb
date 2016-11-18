@@ -4,9 +4,7 @@ class Station < ActiveRecord::Base
   def amount
     sum = 0
     groups.each do |group|
-      group.shares.each do |share|
-        sum += share.amount
-      end
+      sum += group.amount
     end
     sum
   end

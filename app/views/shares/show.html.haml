@@ -2,7 +2,6 @@
   .col-xs-12
     %h1= @share.name + ' (bezahlt ' + @share.amount.to_s + '€)'
 
-.row
   .col-xs-12
     %h2 Neues Gebot
 = form_for([@share, @share.offers.build]) do |f|

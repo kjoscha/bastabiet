@@ -1,0 +1,23 @@
+#statistic-modal.modal.fade{:role => "dialog"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"} ×
+        %h4.modal-title Statistik
+      .modal-body
+        .row
+          .col-xs-12
+            %h3 Abgegebene Gebote
+          .col-xs-12
+            = Statistic.new.offers.join(', ')
+          .col-xs-12
+            %h3 Durchschnittsgebot
+          .col-xs-12
+            = Statistic.new.average
+          .col-xs-12
+            %h3 Benötigter Durchschnitt
+          .col-xs-12
+            = Statistic.new.needed_average
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Schließen
+

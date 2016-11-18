@@ -16,3 +16,10 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+
+jQuery(function() {
+  jQuery('.statistic-button').click(function() {
+    jQuery('#statistic-modal').modal('show');
+  });
+});
