@@ -1,14 +1,15 @@
 .row
   .col-xs-12
     %h1 Stations
-  .col-xs-12
-    - @stations.each do |station|
+
+  - @stations.each do |station|
+    .col-xs-12
       %h2
         = station.name
         = link_to 'x', station_path(station), method: 'delete', data: { confirm: 'Wirklich gesamte Station löschen?' }
-
       - station.groups.each do |group|
         = link_to group.name + ' | ', group_path(group)
+
   .col-xs-12
     %hr
 
@@ -16,7 +17,7 @@
   .col-xs-12
     %h2 Neue Abholstation
   = form_for(@station) do |f|
-    .col-xs-12
+    .col-md-6
       = f.text_field :name, placeholder: 'Name', class: 'form-control'
-    .col-xs-12
-      = button_tag('Speichern', type: 'submit', class: 'btn btn-success')
+    .col-md-4
+      = button_tag('Hinzufügen', type: 'submit', class: 'btn btn-success')

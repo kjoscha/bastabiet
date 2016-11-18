@@ -1,1 +1,6 @@
-= @share.name
+.row
+  .col-xs-12
+    %h1= @share.name
+  .col-xs-12
+    - @share.members.each do |member|
+      = member + ' | '
