@@ -5,7 +5,7 @@ class Group < ActiveRecord::Base
   def amount
     sum = 0
     shares.each do |share|
-      sum += share.offers.last.amount if share.offers.last
+      sum += share.amount
     end
     sum
   end

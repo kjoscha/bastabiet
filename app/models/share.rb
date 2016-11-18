@@ -3,6 +3,6 @@ class Share < ActiveRecord::Base
   has_many :offers, dependent: :destroy
 
   def amount
-    offers.last.amount if offers.last
+    offers.last ? offers.last.amount : 0
   end
 end

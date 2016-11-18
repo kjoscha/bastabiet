@@ -5,7 +5,7 @@ class Station < ActiveRecord::Base
     sum = 0
     groups.each do |group|
       group.shares.each do |share|
-        sum += share.offers.last.amount if share.offers.last
+        sum += share.amount
       end
     end
     sum
