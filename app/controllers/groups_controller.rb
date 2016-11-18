@@ -11,6 +11,12 @@ class GroupsController < ApplicationController
     @shares = @group.shares
   end
 
+  def destroy
+    @group = Group.find(params[:id])
+    @group.destroy
+    redirect_to stations_path
+  end
+
   private
 
   def group_params
