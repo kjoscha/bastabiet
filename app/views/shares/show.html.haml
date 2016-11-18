@@ -2,5 +2,15 @@
   .col-xs-12
     %h1= @share.name
   .col-xs-12
-    - @share.members.each do |member|
-      = member + ' | '
+    - @share.members
+
+.row
+  = form_for(@share) do |f|
+    .col-xs-12
+      = f.text_field :name, placeholder: 'Name', class: 'form-control'
+    .col-xs-12
+      = f.text_field :members, placeholder: 'Mitglieder', class: 'form-control'
+    .col-xs-12
+      = button_tag('Speichern', type: 'submit', class: 'btn btn-success')
+    .col-xs-12
+      %hr

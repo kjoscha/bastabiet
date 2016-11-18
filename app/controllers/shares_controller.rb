@@ -10,9 +10,15 @@ class SharesController < ApplicationController
     @share = Share.find(params[:id])
   end
 
+  def update
+    @share = Share.find(params[:id])
+    flash[:danger] = @share.errors.full_messages.to_sentence unless @share.update_attributes(share_params)
+    redirect_to :back
+  end
+
   private
 
   def share_params
-    params.require(:share).permit(:name, members: [])
+    params.require(:share).permit(:name, :members)
   end
 end
