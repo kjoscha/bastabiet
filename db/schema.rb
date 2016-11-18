@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20161119161339) do
 
   create_table "offers", force: :cascade do |t|
     t.integer  "share_id"
-    t.integer  "amount",      null: false
+    t.integer  "amount",     null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -37,9 +37,10 @@ ActiveRecord::Schema.define(version: 20161119161339) do
   create_table "shares", force: :cascade do |t|
     t.integer  "group_id"
     t.string   "name",       null: false
+    t.string   "members"
+    t.float    "size"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "members"
   end
 
   add_index "shares", ["group_id"], name: "index_shares_on_group_id", using: :btree

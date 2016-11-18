@@ -9,15 +9,15 @@
           .col-xs-12
             %h3 Abgegebene Gebote
           .col-xs-12
-            = Statistic.new.offers.join(', ')
+            = Statistic.new.offers.join('€, ') + '€'
           .col-xs-12
             %h3 Durchschnittsgebot
           .col-xs-12
-            = Statistic.new.average
+            = Statistic.new.average.to_s + '€'
           .col-xs-12
             %h3 Benötigter Durchschnitt
           .col-xs-12
-            = Statistic.new.needed_average
+            = Statistic.new.needed_average.to_s + '€'
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Schließen
 

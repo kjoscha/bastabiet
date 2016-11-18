@@ -8,6 +8,10 @@ class Statistic
   end
 
   def needed_average
-    20_000 / Share.count
+    if Share.count > 0
+      20_000 / Share.count
+    else
+      0
+    end
   end
 end

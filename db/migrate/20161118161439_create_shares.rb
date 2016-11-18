@@ -3,7 +3,8 @@ class CreateShares < ActiveRecord::Migration
     create_table :shares do |t|
       t.references :group, index: true, foreign_key: true
       t.string :name, null: false
-      t.string :members, array: true, default: []
+      t.string :members
+      t.float :size, null: false
 
       t.timestamps null: false
     end

@@ -19,6 +19,6 @@ class SharesController < ApplicationController
   private
 
   def share_params
-    params.require(:share).permit(:name, :members)
+    params.require(:share).permit(:name, :members, :size)
   end
 end

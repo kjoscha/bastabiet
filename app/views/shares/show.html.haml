@@ -1,6 +1,6 @@
 .row
   .col-xs-12
-    %h1= @share.name + ' (bezahlt ' + @share.amount.to_s + '€)'
+    %h1= @share.name  + ' (' + @share.size.to_s + ' Ernteanteile für insgesamt ' + @share.amount.to_s + '€)'
 
   .col-xs-12
     %h2 Neues Gebot
@@ -19,6 +19,9 @@
   .row
     .col-md-6
       = f.text_field :name, placeholder: 'Name', class: 'form-control'
+  .row
+    .col-md-6
+      = f.text_field :size, placeholder: 'Size', class: 'form-control'
   .row
     .col-md-6
       = f.text_field :members, placeholder: 'Mitglieder', class: 'form-control'
