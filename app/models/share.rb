@@ -14,7 +14,7 @@ class Share < ActiveRecord::Base
   end
 
   def full_or_half
-    if size % 0.5 != 0
+    if !size || size % 0.5 != 0
       errors[:size] << 'muss durch 0.5 teilbar sein!'
     end
   end

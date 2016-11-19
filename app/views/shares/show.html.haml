@@ -1,9 +1,13 @@
 .row
   .col-xs-12
-    - if @share.amount
-      %h1= @share.name + ' (Gebot abgegeben)'
-    - else
-      %h1= @share.name + ' (NOCH NICHT GEBOTEN!)'
+    %h1
+      = @share.name
+      - if @share.amount
+        %span.label.label-default
+          = @share.size.to_s + ' Ernteanteile für insgesamt ' + @share.amount.to_s + '€'
+      - else
+        %span.label.label-danger
+          Noch nicht geboten
 
   .col-sm-6
     %h3 Neues Gebot
@@ -13,7 +17,7 @@
           = f.text_field :amount, placeholder: 'Betrag', class: 'form-control'
       .row
         .col-xs-12
-          = button_tag('Speichern', type: 'submit', class: 'btn btn-success')
+          = button_tag('Bieten!', type: 'submit', class: 'btn btn-success')
 
 
   .col-sm-6
