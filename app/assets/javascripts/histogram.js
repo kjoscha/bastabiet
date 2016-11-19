@@ -16,7 +16,7 @@ jQuery(function() {
 
   var bins = d3.histogram()
       .domain(x.domain())
-      .thresholds(x.ticks(10))
+      .thresholds(x.ticks(7))
       (data);
 
   var y = d3.scaleLinear()

@@ -1,6 +1,6 @@
 class Statistic
   def offers
-    Share.all.map { |s| s.normalized_amount }
+    Share.all.map { |s| s.normalized_amount }.compact
   end
 
   def average
@@ -20,6 +20,6 @@ class Statistic
   end
 
   def sum
-    Share.all.map(&:amount).sum
+    Share.all.map(&:amount).compact.sum
   end
 end

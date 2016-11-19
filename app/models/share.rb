@@ -3,10 +3,10 @@ class Share < ActiveRecord::Base
   has_many :offers, dependent: :destroy
 
   def amount
-    offers.last ? offers.last.the_amount : 0
+    offers.last.amount if offers.last
   end
 
   def normalized_amount
-    amount / size
+    amount / size if amount
   end
 end
