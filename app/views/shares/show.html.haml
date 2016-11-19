@@ -5,29 +5,29 @@
     - else
       %h1= @share.name + ' (NOCH NICHT GEBOTEN!)'
 
-  .col-xs-12
+  .col-sm-6
     %h3 Neues Gebot
-= form_for([@share, @share.offers.build]) do |f|
-  .row
-    .col-md-6
-      = f.text_field :amount, placeholder: 'Betrag', class: 'form-control'
-  .row
-    .col-md-6
-      = button_tag('Speichern', type: 'submit', class: 'btn btn-success')
+    = form_for([@share, @share.offers.build]) do |f|
+      .row
+        .col-xs-12
+          = f.text_field :amount, placeholder: 'Betrag', class: 'form-control'
+      .row
+        .col-xs-12
+          = button_tag('Speichern', type: 'submit', class: 'btn btn-success')
 
-.row
-  .col-xs-12
+
+  .col-sm-6
     %h3 Infos
-= form_for(@share) do |f|
-  .row
-    .col-md-6
-      = f.text_field :name, placeholder: 'Name', class: 'form-control'
-  .row
-    .col-md-6
-      = f.text_field :size, placeholder: 'Size', class: 'form-control'
-  .row
-    .col-md-6
-      = f.text_field :members, placeholder: 'Mitglieder', class: 'form-control'
-  .row
-    .col-md-6
-      = button_tag('Speichern', type: 'submit', class: 'btn btn-success')
+    = form_for(@share) do |f|
+      .row
+        .col-xs-12
+          = f.text_field :name, placeholder: 'Name', class: 'form-control'
+      .row
+        .col-xs-12
+          = f.text_field :size, placeholder: 'Size', class: 'form-control'
+      .row
+        .col-xs-12
+          = f.text_field :members, placeholder: 'Mitglieder', class: 'form-control'
+      .row
+        .col-xs-12
+          = button_tag('Speichern', type: 'submit', class: 'btn btn-success')
