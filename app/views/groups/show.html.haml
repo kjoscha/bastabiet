@@ -5,7 +5,10 @@
       = link_to 'x', group_path(@group), method: 'delete', data: { confirm: 'Wirklich gesamte Bezugsgruppe löschen?' }
   - @group.shares.each do |share|
     .col-xs-12
-      = link_to share.name  + ' (' + share.size.to_s + ' Ernteanteile für insgesamt ' + (share.amount || 0).to_s + '€)', share_path(share)
+      - if share.amount
+        = link_to share.name  + ' (' + share.size.to_s + ' Ernteanteile für insgesamt ' + share.amount.to_s + '€)', share_path(share)
+      - else
+        = link_to share.name  + ' (NOCH NICHT GEBOTEN!)', share_path(share)
 
 .row
   .col-xs-12
