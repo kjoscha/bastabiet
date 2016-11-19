@@ -1,23 +1,23 @@
 .row
-  .col-xs-12
+  .col-xs-12.margin-below
     %h1
       = @share.name
-      - if @share.amount
-        %span.label.label-default
-          = @share.size.to_s + ' Ernteanteile für insgesamt ' + @share.amount.to_s + '€'
-      - else
-        %span.label.label-danger
-          Noch nicht geboten
+    - if @share.amount
+      %span.label.label-default
+        = @share.size.to_s + ' Ernteanteile für insgesamt ' + @share.amount.to_s + '€'
+    - else
+      %span.label.label-danger
+        Noch nicht geboten
 
   .col-sm-6
     %h3 Neues Gebot
     = form_for([@share, @share.offers.build]) do |f|
       .row
         .col-xs-12
-          = f.text_field :amount, placeholder: 'Betrag', class: 'form-control'
+          = f.text_field :amount, placeholder: 'Betrag', class: 'form-control amount-field'
       .row
         .col-xs-12
-          = button_tag('Bieten!', type: 'submit', class: 'btn btn-success')
+          = button_tag('Bieten!', type: 'submit', class: 'btn btn-primary')
 
 
   .col-sm-6

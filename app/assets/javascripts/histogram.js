@@ -39,7 +39,7 @@ jQuery(function() {
       .attr("y", 6)
       .attr("x", (x(bins[0].x1) - x(bins[0].x0)) / 2)
       .attr("text-anchor", "middle")
-      .text(function(d) { return formatCount(d.length); });
+      .text(function(d) { return (d.length > 0 ? formatCount(d.length) : null); });
 
   g.append("g")
       .attr("class", "axis axis--x")

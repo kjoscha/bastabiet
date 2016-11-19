@@ -4,7 +4,7 @@
       = @group.name + ' (' + @group.amount.to_s + '€)'
       = link_to 'x', group_path(@group), method: 'delete', data: { confirm: 'Wirklich gesamte Bezugsgruppe löschen?' }
   - @group.shares.each do |share|
-    .col-xs-12
+    .col-xs-12.margin-below
       = link_to share.name, share_path(share)
       - if share.amount
         %span.label.label-default

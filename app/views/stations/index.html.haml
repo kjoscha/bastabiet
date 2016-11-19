@@ -9,7 +9,7 @@
         = station.name + ' (' + station.amount.to_s + '€)'
         = link_to 'x', station_path(station), method: 'delete', data: { confirm: 'Wirklich gesamte Station löschen?' }
     - station.groups.each do |group|
-      .col-xs-12
+      .col-xs-12.margin-below
         = link_to group.name, group_path(group)
         %span.label.label-default
           = ' (' + group.shares_count.to_s + ' / 10 Ernteanteile für insgesamt ' + group.amount.to_s + '€)'
