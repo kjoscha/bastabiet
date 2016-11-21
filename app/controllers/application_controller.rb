@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   before_filter :save_offers_array
 
+  include SessionsHelper
+
   def save_offers_array
     @offers = Statistic.new.offers
   end

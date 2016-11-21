@@ -22,4 +22,6 @@ jQuery(function() {
   jQuery('.statistic-button').click(function() {
     jQuery('#statistic-modal').modal('show');
   });
+
+  jQuery('.dropdown-toggle').dropdown()  
 });

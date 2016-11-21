@@ -1,0 +1,10 @@
+%h1 Willkommen bei Basta
+%h3 Einloggen oder #{link_to "hierhin", register_path} zum registrieren
+.row
+  = form_for(:session, url: login_path) do |f|
+    .col-xs-6.no-padding-right
+      = f.email_field :email, placeholder: 'Email', class: 'form-control'
+    .col-xs-6.no-padding-left
+      = f.password_field :password, placeholder: 'Passwort', class: 'form-control'
+    .col-xs-12
+      = f.submit "Ab geht's", class: "btn btn-primary"

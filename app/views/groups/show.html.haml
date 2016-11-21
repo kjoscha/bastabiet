@@ -12,18 +12,3 @@
       - else
         %span.label.label-danger
           Noch nicht geboten
-
-.row
-  .col-xs-12
-    %hr
-
-= form_for([@group, @group.shares.build]) do |f|
-  .row
-    .col-xs-12
-      %h3 Neuer Ernteanteil
-    .col-md-4
-      = f.text_field :name, placeholder: 'Name', class: 'form-control'
-    .col-md-2
-      = f.text_field :size, placeholder: 'Anzahl', class: 'form-control'
-    .col-md-4
-      = button_tag('Hinzufügen', type: 'submit', class: 'btn btn-success')
