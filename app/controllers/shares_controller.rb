@@ -29,13 +29,25 @@ class SharesController < ApplicationController
 
   def update
     @share = Share.find(params[:id])
-    flash[:danger] = @share.errors.full_messages.to_sentence unless @share.update_attributes(share_params)
-    redirect_to :back
+    if @share.update_attributes(share_params) && fill_offers(@share)
+      redirect_to :back
+    else
+      flash[:danger] = @share.errors.full_messages.to_sentence
+    end
   end
 
   private
 
+  def fill_offers(share)
+    all_offers = share.all_offers
+    @share.update_attributes!(
+      offer_minimum: all_offers[0] || all_offers[1] || all_offers[2],
+      offer_medium: all_offers[1] || all_offers[0] || all_offers[2],
+      offer_maximum: all_offers[2] || all_offers[1] || all_offers[0],
+    )
+  end
+
   def share_params
-    params.require(:share).permit(:name, :members, :size, :group_id, :email, :password, :password_confirmation)
+    params.require(:share).permit(:name, :members, :size, :group_id, :email, :offer_minimum, :offer_medium, :offer_maximum, :password, :password_confirmation)
   end
 end

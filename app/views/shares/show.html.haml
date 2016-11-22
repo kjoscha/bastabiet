@@ -1,28 +1,19 @@
 .row
-  .col-xs-12.margin-below
+  .col-xs-12
     %h1
       = @share.name
-    - if @share.amount
-      %span.label.label-default
-        = @share.size.to_s + ' Ernteanteile für insgesamt ' + @share.amount.to_s + '€'
-    - else
-      %span.label.label-danger
-        Noch nicht geboten
 
-  .col-sm-6
-    %h3 Neues Gebot
-    = form_for([@share, @share.offers.build]) do |f|
-      .row
-        .col-xs-12
-          = f.text_field :amount, placeholder: 'Betrag', class: 'form-control amount-field'
-      .row
-        .col-xs-12
-          = button_tag('Bieten!', type: 'submit', class: 'btn btn-primary')
-
-
-  .col-sm-6
-    %h3 Infos
+  .col-sm-12
+    %h3 Gebote
     = form_for(@share) do |f|
+      .row.margin-below
+        .col-xs-4.no-padding-right
+          = f.text_field :offer_minimum, placeholder: 'Minimal', class: 'form-control offer-field green-bg'
+        .col-xs-4.no-padding-right.no-padding-left
+          = f.text_field :offer_medium, placeholder: 'Medium', class: 'form-control offer-field yellow-bg'
+        .col-xs-4.no-padding-left
+          = f.text_field :offer_maximum, placeholder: 'Maximal', class: 'form-control offer-field red-bg'
+      %h3 Infos
       .row
         .col-xs-12
           = f.text_field :name, placeholder: 'Name', class: 'form-control'
@@ -34,4 +25,4 @@
           = f.text_field :members, placeholder: 'Mitglieder', class: 'form-control'
       .row
         .col-xs-12
-          = button_tag('Speichern', type: 'submit', class: 'btn btn-success')
+          = button_tag 'Speichern', type: 'submit', class: 'btn btn-primary'

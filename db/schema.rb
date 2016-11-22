@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161121173650) do
+ActiveRecord::Schema.define(version: 20161122215001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,15 +25,6 @@ ActiveRecord::Schema.define(version: 20161121173650) do
 
   add_index "groups", ["station_id"], name: "index_groups_on_station_id", using: :btree
 
-  create_table "offers", force: :cascade do |t|
-    t.integer  "share_id"
-    t.integer  "amount",     null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "offers", ["share_id"], name: "index_offers_on_share_id", using: :btree
-
   create_table "shares", force: :cascade do |t|
     t.integer  "group_id"
     t.string   "name",            null: false
@@ -43,6 +34,9 @@ ActiveRecord::Schema.define(version: 20161121173650) do
     t.datetime "updated_at",      null: false
     t.string   "email"
     t.string   "password_digest"
+    t.float    "offer_minimum"
+    t.float    "offer_medium"
+    t.float    "offer_maximum"
   end
 
   add_index "shares", ["group_id"], name: "index_shares_on_group_id", using: :btree
@@ -54,6 +48,5 @@ ActiveRecord::Schema.define(version: 20161121173650) do
   end
 
   add_foreign_key "groups", "stations"
-  add_foreign_key "offers", "shares"
   add_foreign_key "shares", "groups"
 end

@@ -1,6 +1,12 @@
 class Statistic
+  def initialize(offer)
+    @offer = offer
+  end
+
+  attr_accessor :offer
+
   def offers
-    Share.all.map { |s| s.normalized_amount }.compact
+    Share.all.map{ |share| share.send(offer) }.compact
   end
 
   def average

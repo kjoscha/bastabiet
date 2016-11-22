@@ -5,30 +5,22 @@
         %button.close{"data-dismiss" => "modal", :type => "button"} ×
         %h4.modal-title Statistik
       .modal-body
-        .row
-          .col-xs-12
-            %h3 Summe
-          .col-xs-6
-            %b Real:
-            = Statistic.new.sum.to_s + '€'
-          .col-xs-6
-            %b Benötigt:
-            = Statistic.new.needed_sum.to_s + '€'
-          .col-xs-12
-            %h3 Durchschnitt
-          .col-xs-6
-            %b Real:
-            = Statistic.new.average.to_s + '€'
-          .col-xs-6
-            %b Benötigt:
-            = Statistic.new.needed_average.to_s + '€'
-          .col-xs-12
-            %hr
-          .col-xs-12.text-center
-            %svg.histogram
+        - [@offers_minimum, @offers_medium, @offers_maximum].each do |offers|
+          .row
+            .col-xs-12
+              %h3 Summe
+            .col-xs-6
+              %b Real:
+            .col-xs-6
+              %b Real:
+              = offers.average.to_s + '€'
+            .col-xs-12
+              %hr
+            .col-xs-12.text-center
+              %svg.histogram
 
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Schließen
 
 :javascript
-  window.offers = #{@offers};
+  window.offers_minimum = #{@offers_minimum.offers};

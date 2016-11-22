@@ -1,6 +1,6 @@
 jQuery(function() {
 
-  var data = window.offers;
+  var data = window.offers_minimum;
   var formatCount = d3.format("d");
   var div = ".histogram";
   
