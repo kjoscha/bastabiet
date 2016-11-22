@@ -1,22 +1,48 @@
 .row
-  .col-xs-12
-    %h1 Stations
+  .col-sm-offset-8.col-sm-4
+    .btn.btn-xs.btn-default.toggle-table-visibility
+      hide tables
 
 - @stations.each do |station|
   .row
     .col-xs-12
       %h2
         = station.name + ' (' + station.amount.to_s + '€)'
-        = link_to 'x', station_path(station), method: 'delete', data: { confirm: 'Wirklich gesamte Station löschen?' }
     - station.groups.each do |group|
       .col-xs-12.margin-below
-        = link_to group.name, group_path(group)
-        %span.label.label-default
-          = group.shares_count.to_s + ' / 10 Ernteanteile für insgesamt ' + group.amount.to_s + '€'
+        .panel.panel-info
+          .panel-heading
+            = group.name
+            = ' (' + group.shares_count.to_s + ' / 10 Ernteanteile für insgesamt ' + group.amount.to_s + '€)'
+          .panel-body
+            = link_to 'Löschen', group_path(group), method: 'delete', data: { confirm: 'Wirklich gesamte Station löschen?' }
+          %table.table.col-xs-12.shares-table
+            %thead
+              %tr
+                %th.col-xs-2 Name
+                %th.col-xs-3 Mitglieder
+                %th.col-xs-3 Email
+                %th.col-xs-1 Ernteanteile
+                %th.col-xs-3 Gebot
+            %tbody
+              - group.shares.each do |share|
+                %tr
+                  %td.col-xs-2= link_to share.name, share_path(share)
+                  %td.col-xs-3=share.members
+                  %td.col-xs-3=share.email
+                  %td.col-xs-1=share.size
+                  %td.col-xs-3
+                    - if share.amount
+                      %span.label.label-success
+                        = share.size.to_s + ' Ernteanteile für insgesamt ' + share.amount.to_s + '€'
+                    - else
+                      %span.label.label-danger
+                        Noch nicht geboten
+
   .row
     = form_for([station, station.groups.build]) do |f|
-      .col-md-6
-        = f.text_field :name, placeholder: 'Name', class: 'form-control'
+      .col-md-8
+        = f.text_field :name, placeholder: 'Neue Bezugsgruppe', class: 'form-control'
       .col-md-4
         = button_tag('Hinzufügen', type: 'submit', class: 'btn btn-success')
   .row
@@ -25,9 +51,8 @@
 
 .row
   .col-xs-12
-    %h3 Neue Abholstation
   = form_for(@station) do |f|
-    .col-md-6
-      = f.text_field :name, placeholder: 'Name', class: 'form-control'
+    .col-md-8
+      = f.text_field :name, placeholder: 'Neue Abholstation', class: 'form-control'
     .col-md-4
       = button_tag('Hinzufügen', type: 'submit', class: 'btn btn-success')

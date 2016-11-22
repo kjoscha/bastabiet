@@ -23,5 +23,14 @@ jQuery(function() {
     jQuery('#statistic-modal').modal('show');
   });
 
-  jQuery('.dropdown-toggle').dropdown()  
+  jQuery('.dropdown-toggle').dropdown();
+
+  jQuery('.toggle-table-visibility').click(function() {
+    jQuery(this).toggleClass('active');
+    if (jQuery(this).hasClass('active')) {
+      jQuery('.shares-table').fadeOut();
+    } else {
+      jQuery('.shares-table').fadeIn();
+    };
+  });
 });

@@ -6,11 +6,6 @@ class GroupsController < ApplicationController
     redirect_to stations_path
   end
 
-  def show
-    @group = Group.find(params[:id])
-    @shares = @group.shares
-  end
-
   def destroy
     @group = Group.find(params[:id])
     @group.destroy

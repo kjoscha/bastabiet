@@ -20,7 +20,9 @@
           %ul.nav.navbar-nav.navbar-right
             %li
               %a.statistic-button Statistik
-    .container
+            %li
+              = link_to 'Admin', stations_path
+    .container.margin-below
       - flash.each do |type, msg|
         .alert{class: "alert-#{type} flash-message", role: 'alert'}
           = msg

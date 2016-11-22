@@ -45,3 +45,12 @@
 .no-padding-left {
   padding-left: 0;
 }
+
+%th {
+  color: grey !important;
+}
+
+.panel-body {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}

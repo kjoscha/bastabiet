@@ -7,14 +7,13 @@ class SharesController < ApplicationController
 
   def create
     @groups = Group.all
-
     if share_params[:group_id] == ''
       flash[:danger] = 'Gruppe wählen!'
       redirect_to :register
     else
       @group = Group.find(share_params[:group_id])
+      @group_selection = @groups.map{ |g| [g.name, g.id] }
       @share = @group.shares.build(share_params)
-
       if @share.save
         redirect_to @share
       else
