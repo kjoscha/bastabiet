@@ -49,9 +49,9 @@ class SharesController < ApplicationController
   def fill_offers(share)
     all_offers = share.all_offers
     @share.update_attributes!(
-      offer_minimum: all_offers[0] || all_offers[1] || all_offers[2],
-      offer_medium: all_offers[1] || all_offers[0] || all_offers[2],
-      offer_maximum: all_offers[2] || all_offers[1] || all_offers[0],
+      offer_minimum:  all_offers[0] || all_offers[1] || all_offers[2],
+      offer_medium:   all_offers[1] || all_offers[0] || all_offers[2],
+      offer_maximum:  all_offers[2] || all_offers[1] || all_offers[0],
     )
   end
 
