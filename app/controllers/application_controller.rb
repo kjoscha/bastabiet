@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   def save_offers_array
-    @offers = Statistic.new.offers
+    @offers_minimum = Statistic.new('offer_minimum')
+    @offers_medium = Statistic.new('offer_medium')
+    @offers_maximum = Statistic.new('offer_maximum')
   end
 end

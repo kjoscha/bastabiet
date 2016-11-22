@@ -4,11 +4,19 @@ class Group < ActiveRecord::Base
 
   validates_length_of :name, minimum: 3, allow_blank: false
 
-  def amount
-    shares.map(&:amount).compact.sum
-  end
-
   def shares_count
     shares.map(&:size).sum
+  end
+
+  def total_offer_minimum
+    shares.map(&:total_offer_minimum).sum
+  end
+
+  def total_offer_medium
+    shares.map(&:total_offer_medium).sum
+  end
+
+  def total_offer_maximum
+    shares.map(&:total_offer_maximum).sum
   end
 end

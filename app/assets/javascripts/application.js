@@ -29,8 +29,10 @@ jQuery(function() {
     jQuery(this).toggleClass('active');
     if (jQuery(this).hasClass('active')) {
       jQuery('.shares-table').fadeOut();
+      jQuery('.group-info-header').fadeOut();
     } else {
       jQuery('.shares-table').fadeIn();
+      jQuery('.group-info-header').fadeIn();
     };
   });
 });
