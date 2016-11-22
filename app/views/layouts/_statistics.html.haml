@@ -17,10 +17,12 @@
             .col-xs-12
               %hr
             .col-xs-12.text-center
-              %svg.histogram
+              %svg.histogram{class: offers.offer.to_s}
 
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Schließen
 
 :javascript
   window.offers_minimum = #{@offers_minimum.offers};
+  window.offers_medium = #{@offers_medium.offers};
+  window.offers_maximum = #{@offers_maximum.offers};

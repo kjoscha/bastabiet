@@ -73,3 +73,31 @@ $red: #d9534f;
   min-width: 15%;
   white-space: nowrap;
 }
+
+.offer_minimum {
+  .bar rect {
+    fill: $green;
+  }
+}
+
+.offer_medium {
+  .bar rect {
+    fill: $yellow;
+  }
+}
+
+.offer_maximum {
+  .bar rect {
+    fill: $red;
+  }
+}
+
+.bar text {
+  fill: #fff;
+  font: 10px sans-serif;
+}
+
+.histogram {
+  height: 300px;
+  width: 350px;
+}
