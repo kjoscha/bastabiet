@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root 'stations#index'
+  root 'sessions#new'
+
   resources :stations, shallow: true do
     resources :groups do
       resources :shares do
@@ -12,4 +13,9 @@ Rails.application.routes.draw do
   resources :groups
   resources :shares
   resources :offers
+
+  get '/register' => 'shares#new', as: :register
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
 end

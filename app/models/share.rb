@@ -2,8 +2,11 @@ class Share < ActiveRecord::Base
   belongs_to :groups
   has_many :offers, dependent: :destroy
 
-  validates_length_of :name, minimum: 3, allow_blank: false
+  validates :name, presence: true, length: { minimum: 3 }
+  validates :email, presence: true, length: { minimum: 3 }, uniqueness: true
   validate :full_or_half
+
+  has_secure_password
 
   def amount
     offers.last.amount if offers.last

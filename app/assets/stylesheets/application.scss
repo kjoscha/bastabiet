@@ -37,3 +37,20 @@
 .navbar-brand {
   color: #5bc0de !important;
 }
+
+.no-padding-right {
+  padding-right: 0;
+}
+
+.no-padding-left {
+  padding-left: 0;
+}
+
+%th {
+  color: grey !important;
+}
+
+.panel-body {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
