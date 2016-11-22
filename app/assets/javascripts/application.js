@@ -19,6 +19,8 @@
 
 
 jQuery(function() {
+  jQuery('.flash-message').fadeOut(6000);
+
   jQuery('.statistic-button').click(function() {
     jQuery('#statistic-modal').modal('show');
   });

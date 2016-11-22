@@ -1,7 +1,7 @@
 .row
   .col-sm-offset-8.col-sm-4
     .btn.btn-xs.btn-default.toggle-table-visibility
-      hide tables
+      Nur Bezugsgruppen
 
 - @stations.each do |station|
   .row
@@ -12,8 +12,13 @@
       .col-xs-12
         .panel.panel-info
           .panel-heading
-            = group.name
-            = ' (' + to_euro(group.total_offer_minimum) + ')'
+            .row
+              .col-xs-4
+                = group.name
+                = ' (' + to_euro(group.total_offer_minimum) + ')'
+              .col-xs-8
+                .completion-bar{style: "width: #{group.completion}%"}
+                  = group.completion.to_s + '% registriert'
           .panel-body.group-info-header
             = link_to 'Löschen', group_path(group), method: 'delete', data: { confirm: 'Wirklich gesamte Station löschen?' }
           %table.table.col-xs-12.shares-table.margin-below

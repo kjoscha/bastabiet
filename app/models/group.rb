@@ -8,6 +8,10 @@ class Group < ActiveRecord::Base
     shares.map(&:size).sum
   end
 
+  def completion
+    shares_count / 10 * 100
+  end
+
   def total_offer_minimum
     shares.map(&:total_offer_minimum).sum
   end

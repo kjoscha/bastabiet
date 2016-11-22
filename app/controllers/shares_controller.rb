@@ -30,9 +30,11 @@ class SharesController < ApplicationController
   def update
     @share = Share.find(params[:id])
     if @share.update_attributes(share_params) && fill_offers(@share)
+      flash[:success] = 'Erfolgreich aktualisiert'
       redirect_to :back
     else
       flash[:danger] = @share.errors.full_messages.to_sentence
+      redirect_to :back
     end
   end
 

@@ -64,6 +64,12 @@ $red: #d9534f;
   color: white !important;
 }
 
-a {
-  text-decoration: none !important;
+.completion-bar {
+  background-color: $green;
+  height: 20px;
+  color: green;
+  font-size: 11px;
+  padding: 3px;
+  min-width: 15%;
+  white-space: nowrap;
 }
