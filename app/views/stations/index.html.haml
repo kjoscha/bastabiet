@@ -33,6 +33,7 @@
               - group.shares.each do |share|
                 %tr
                   %td.col-xs-2
+                    = link_to 'x', share_path(share), method: 'delete', data: { confirm: 'Wirklich gesamte Station löschen?' }
                     = link_to share.name, share_path(share)
                     - if share.all_offers.empty?
                       %span.label.label-danger !

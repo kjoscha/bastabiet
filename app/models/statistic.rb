@@ -13,12 +13,12 @@ class Statistic
     (offers.inject{ |sum, el| sum + el }.to_f / offers.size).round(2)
   end
 
+  def shares
+    Share.all.map(&:size).sum
+  end
+
   def needed_average
-    if Share.count > 0
-      (20_000 / Share.count).round
-    else
-      0
-    end
+    needed_sum / Group.count * 10
   end
 
   def needed_sum
@@ -26,6 +26,6 @@ class Statistic
   end
 
   def sum
-    Share.all.map(&:amount).compact.sum
+    offers.sum
   end
 end

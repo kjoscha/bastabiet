@@ -4,8 +4,15 @@ class Share < ActiveRecord::Base
   validates :name, presence: true, length: { minimum: 3 }
   validates :email, presence: true, length: { minimum: 3 }, uniqueness: true
   validate :full_or_half
+  validate :group_not_full
 
   has_secure_password
+
+  def group_not_full
+    if Group.find(group_id).shares.map(&:size).sum + size > 10
+      errors[:size] << 'Bezugsgruppe ist voll!'
+    end
+  end
 
   def full_or_half
     if !size || size % 0.5 != 0

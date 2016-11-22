@@ -8,12 +8,21 @@
         - [@offers_minimum, @offers_medium, @offers_maximum].each do |offers|
           .row
             .col-xs-12
-              %h3 Summe
+              %h4 Summe
             .col-xs-6
-              %b Real:
+              %b Ist:
+              = offers.sum.to_s + '€'
             .col-xs-6
-              %b Real:
+              %b Soll:
+              = offers.needed_sum.to_s + '€'
+            .col-xs-12
+              %h4 Durchschnitt
+            .col-xs-6
+              %b Ist:
               = offers.average.to_s + '€'
+            .col-xs-6
+              %b Soll:
+              = offers.needed_average.to_s + '€'
             .col-xs-12
               %hr
             .col-xs-12.text-center

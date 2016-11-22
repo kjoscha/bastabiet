@@ -38,6 +38,12 @@ class SharesController < ApplicationController
     end
   end
 
+  def destroy
+    @share = Share.find(params[:id])
+    @share.destroy
+    redirect_to :back
+  end
+
   private
 
   def fill_offers(share)
