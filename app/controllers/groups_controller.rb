@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  http_basic_authenticate_with name: 'admin', password: 'secret'
+
   def create
     @station = Station.find(params[:station_id])
     @group = @station.groups.build(group_params)

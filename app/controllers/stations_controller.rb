@@ -1,7 +1,10 @@
 class StationsController < ApplicationController
+  http_basic_authenticate_with name: 'admin', password: 'secret'
+
   def index
     @stations = Station.all
     @station = Station.new
+    session[:authorized] = true
   end
 
   def create

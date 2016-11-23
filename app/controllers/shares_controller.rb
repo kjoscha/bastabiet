@@ -1,4 +1,15 @@
 class SharesController < ApplicationController
+  http_basic_authenticate_with name: 'admin', password: 'secret', except: [:show, :update]
+
+  before_action :admin_or_current_share
+
+  def admin_or_current_share
+    if !((current_share && current_share.id == params[:id].to_i) || session[:authorized])
+      flash[:danger] = 'Nicht erlaubt!'
+      redirect_to :root
+    end
+  end
+
   def new
     @groups = Group.all
     @group_selection = @groups.map{ |g| [g.name, g.id] }
