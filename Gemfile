@@ -53,3 +53,14 @@ group :development do
   gem 'spring'
 end
 
+group :test do
+  gem 'database_cleaner'
+  gem 'minitest-reporters'
+  gem 'minitest-rails-capybara'
+  gem 'guard'
+  gem 'guard-minitest'
+  gem 'factory_girl_rails'
+  gem 'poltergeist' # headless javascript testing
+  gem 'selenium-webdriver' # non-headless javascript testing
+  gem 'capybara-screenshot'
+end
