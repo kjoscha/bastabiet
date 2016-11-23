@@ -26,7 +26,7 @@ module Bastabiet
     config.action_mailer.perform_deliveries = true
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-      host: ENV['']
+      host: ENV[''],
       address: ENV['relay_address'],
       port: ENV['relay_port'],
       user_name: ENV['relay_login'],
