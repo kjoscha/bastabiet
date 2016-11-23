@@ -6,7 +6,9 @@ class Share < ActiveRecord::Base
   before_create :create_activation_digest
 
   validates :name, presence: true, length: { minimum: 3 }
-  validates :email, presence: true, length: { minimum: 3 }, uniqueness: true
+  validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+
+  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, if: 'email.present?'
   validate :full_or_half
   validate :group_not_full
   validate :agreed?
