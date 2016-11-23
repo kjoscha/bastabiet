@@ -1,7 +1,5 @@
 class SharesController < ApplicationController
-  http_basic_authenticate_with name: 'admin', password: 'secret', except: [:show, :update]
-
-  before_action :admin_or_current_share
+  before_action :admin_or_current_share, except: [:new, :create]
 
   def admin_or_current_share
     if !((current_share && current_share.id == params[:id].to_i) || session[:authorized])
