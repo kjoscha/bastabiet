@@ -3,6 +3,11 @@ module SessionsHelper
     session[:share_id] = share.id
   end
 
+  def log_out
+    session.delete(:share_id)
+    @current_share = nil
+  end
+
   def admin?
     session[:admin]
   end
@@ -16,7 +21,6 @@ module SessionsHelper
   end
 
   def admin_or_current_share
-    debugger
     if !((current_share && current_share.id == params[:id].to_i) || admin?)
       flash[:danger] = 'Nicht erlaubt!'
       redirect_to :root

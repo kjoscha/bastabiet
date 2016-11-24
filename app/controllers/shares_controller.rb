@@ -17,6 +17,7 @@ class SharesController < ApplicationController
       @group_selection = @groups.map{ |g| [g.name, g.id] }
       @share = @group.shares.build(share_params)
       if @share.save
+        log_in @share
         redirect_to @share
       else
         flash[:danger] = @share.errors.full_messages.to_sentence
