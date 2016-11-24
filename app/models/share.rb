@@ -19,7 +19,11 @@ class Share < ActiveRecord::Base
   end 
 
   def other_group_shares
-    Share.where.not(id: id)
+    group.shares.where.not(id: id)
+  end
+
+  def group
+    Group.find(group_id)
   end
 
   def full_or_half
