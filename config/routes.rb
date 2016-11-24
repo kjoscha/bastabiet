@@ -19,5 +19,5 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-  get '/activate/:token', to: 'activations#edit', as: :activate
+  get '/activate_share/:id/:token', to: 'activations#activate_share', as: :activate_share
 end

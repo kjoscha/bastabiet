@@ -1,12 +1,10 @@
 class ActivationsController < ApplicationController
-  def edit
+  def activate_share
+    share = Share.find_by(params[:share_id])
     token = params[:token]
-    token_digest = BCrypt::Password.new(token)
+    authenticated = BCrypt::Password.new(share.activation_digest).is_password?(token)
     
-    share = Share.find_by(activation_token: token)
-    stored_digest = share.activation_digest
-
-    if stored_digest == token_digest 
+    if share && authenticated
       share.update_attributes(activated: true)
       flash.now[:success] = "Der Anteil wurde erfolgreich aktiviert!"
       redirect_to root_url
@@ -14,5 +12,11 @@ class ActivationsController < ApplicationController
       flash.now[:danger] = "Aktivierungs-Link ungültig!"
       redirect_to root_url
     end
+  end
+
+  private
+
+  def activation_params
+    params.require(:activation).permit(:share_id, :activation_token)
   end
 end
