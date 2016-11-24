@@ -9,7 +9,7 @@ class Group < ActiveRecord::Base
   end
 
   def completion
-    shares_count / 10 * 100
+    shares_count / 4 * 100
   end
 
   def total_offer_minimum
