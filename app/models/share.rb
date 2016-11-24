@@ -9,9 +9,13 @@ class Share < ActiveRecord::Base
   has_secure_password
 
   def group_not_full
-    if Group.find(group_id).shares.map(&:size).sum + size > 10
+    if size_of_all + size > 4
       errors[:size] << 'Bezugsgruppe ist voll!'
     end
+  end
+
+  def size_of_all
+    Group.find(group_id).shares_count
   end
 
   def full_or_half
