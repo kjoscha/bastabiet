@@ -1,13 +1,6 @@
 class SharesController < ApplicationController
   before_action :admin_or_current_share, except: [:new, :create]
 
-  def admin_or_current_share
-    if !((current_share && current_share.id == params[:id].to_i) || session[:authorized])
-      flash[:danger] = 'Nicht erlaubt!'
-      redirect_to :root
-    end
-  end
-
   def new
     @groups = Group.all
     @group_selection = @groups.map{ |g| [g.name, g.id] }
