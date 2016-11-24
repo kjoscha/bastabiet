@@ -9,7 +9,7 @@ class Share < ActiveRecord::Base
   has_secure_password
 
   def group_not_full
-    if size_of_all + size > 4
+    if size_of_all > 4
       errors[:size] << 'Bezugsgruppe ist voll!'
     end
   end
