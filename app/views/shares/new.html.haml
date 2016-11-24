@@ -10,11 +10,13 @@
         = f.text_field :name, placeholder: 'Name', class: 'form-control'
       .col-xs-12
         = f.text_field :size, placeholder: 'Ernteanteile', class: 'form-control'
-      .col-xs-12
+      .col-xs-12.margin-below
         = f.email_field :email, placeholder: 'Email', class: 'form-control'
       .col-xs-12
         = f.password_field :password, placeholder: 'Passwort', class: 'form-control'
-      .col-xs-12
-        = f.password_field :password_confirmation, placeholder: 'Passwort', class: 'form-control'
+      .col-xs-12.margin-below
+        = f.password_field :password_confirmation, placeholder: 'Passwort wiederholen', class: 'form-control'
+      .col-xs-12.margin-below
+        = link_to 'Vereinbarung lesen', 'basta_vereinbarung_2016.pdf', target: '_blank'
       .col-xs-12
         = f.submit "Ab geht's", class: "btn btn-primary"
