@@ -5,6 +5,7 @@ class Share < ActiveRecord::Base
   validates :email, presence: true, length: { minimum: 3 }, uniqueness: true
   validate :full_or_half
   validate :group_not_full
+  validate :agreed?
 
   has_secure_password
 
@@ -24,6 +25,10 @@ class Share < ActiveRecord::Base
 
   def group
     Group.find(group_id)
+  end
+
+  def agreed?
+    errors[:agreed] << 'Bitte lies bestätige die Vereinbarung!' if !agreed
   end
 
   def full_or_half

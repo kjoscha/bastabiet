@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161122215001) do
+ActiveRecord::Schema.define(version: 20161124172117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,16 +27,23 @@ ActiveRecord::Schema.define(version: 20161122215001) do
 
   create_table "shares", force: :cascade do |t|
     t.integer  "group_id"
-    t.string   "name",            null: false
+    t.string   "name",              null: false
     t.string   "members"
-    t.float    "size"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.float    "size",              null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.string   "email"
     t.string   "password_digest"
     t.float    "offer_minimum"
     t.float    "offer_medium"
     t.float    "offer_maximum"
+    t.boolean  "agreed"
+    t.integer  "payment",           null: false
+    t.integer  "land_help_days"
+    t.integer  "station_help_days"
+    t.string   "workgroup"
+    t.string   "skills"
+    t.boolean  "no_help",           null: false
   end
 
   add_index "shares", ["group_id"], name: "index_shares_on_group_id", using: :btree
