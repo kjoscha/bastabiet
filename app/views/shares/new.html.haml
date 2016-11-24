@@ -1,17 +1,20 @@
-%h1 Ernteanteil registrieren
-.row
-  = form_for(@share) do |f|
-    .col-xs-12
-      = f.select :group_id, @group_selection, {prompt: "Bitte eure Bezugsgruppe wählen"}, {class: "form-control"}
-    .col-xs-8.no-padding-right
-      = f.text_field :name, placeholder: 'Name', class: 'form-control'
-    .col-xs-4.no-padding-left
-      = f.text_field :size, placeholder: 'Ernteanteile', class: 'form-control'
-    .col-xs-12
-      = f.email_field :email, placeholder: 'Email', class: 'form-control'
-    .col-xs-6.no-padding-right
-      = f.password_field :password, placeholder: 'Passwort', class: 'form-control'
-    .col-xs-6.no-padding-left
-      = f.password_field :password_confirmation, placeholder: 'Passwort', class: 'form-control'
-    .col-xs-12
-      = f.submit "Ab geht's", class: "btn btn-primary"
+.hidden-xs.col-sm-3
+.col-sm-6
+  .row
+    .col-xs-12.text-center
+      %h1 Ernteanteil registrieren
+    = form_for(@share) do |f|
+      .col-xs-12
+        = f.select :group_id, @group_selection, {prompt: "Bitte eure Bezugsgruppe wählen"}, {class: "form-control"}
+      .col-xs-12
+        = f.text_field :name, placeholder: 'Name', class: 'form-control'
+      .col-xs-12
+        = f.text_field :size, placeholder: 'Ernteanteile', class: 'form-control'
+      .col-xs-12
+        = f.email_field :email, placeholder: 'Email', class: 'form-control'
+      .col-xs-12
+        = f.password_field :password, placeholder: 'Passwort', class: 'form-control'
+      .col-xs-12
+        = f.password_field :password_confirmation, placeholder: 'Passwort', class: 'form-control'
+      .col-xs-12
+        = f.submit "Ab geht's", class: "btn btn-primary"

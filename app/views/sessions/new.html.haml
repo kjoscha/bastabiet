@@ -1,10 +1,17 @@
-%h1 Willkommen bei Basta
-%h3 Einloggen oder #{link_to "hierhin", register_path} zum registrieren
-.row
-  = form_for(:session, url: login_path) do |f|
-    .col-xs-6.no-padding-right
-      = f.email_field :email, placeholder: 'Email', class: 'form-control'
-    .col-xs-6.no-padding-left
-      = f.password_field :password, placeholder: 'Passwort', class: 'form-control'
-    .col-xs-12
-      = f.submit "Ab geht's", class: "btn btn-primary"
+.row.margin-below
+  .col-xs-12.text-center
+    = image_tag 'vegetables.png', style: 'width: 100%;'
+= form_for(:session, url: login_path) do |f|
+  
+  .hidden-xs.col-sm-3
+  .col-sm-6
+    .row
+      .col-xs-12
+        = f.email_field :email, placeholder: 'Email', class: 'form-control'
+      .col-xs-12
+        = f.password_field :password, placeholder: 'Passwort', class: 'form-control'
+      .col-xs-12
+        = f.submit "Ab geht's", class: "btn btn-primary"
+      .col-xs-12.text-center
+        %h1 Willkommen bei Basta
+        %h3 Einloggen oder #{link_to "hierhin", register_path} zum registrieren
