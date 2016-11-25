@@ -1,6 +1,8 @@
-require 'test_helper'
+require "test_helper"
 
-class ActivationsControllerTest < ActionController::TestCase
+class MessageMailerTest < ActionMailer::TestCase
+  delegate :url_helpers, to: 'Rails.application.routes'
+
   def setup
     @station = Station.create(name: "test_station")
     @group = Group.create(station_id: @station.id, name: "test_group")
@@ -20,17 +22,13 @@ class ActivationsControllerTest < ActionController::TestCase
                           agreed: true)
   end
 
-  test "Share becomes activated if token is valid" do
-    get :activate_share, token: @share.activation_token, id: @share.id
-    assert @share.reload.activated
-    assert_equal "Der Anteil wurde erfolgreich aktiviert!", flash[:success]
-    assert_redirected_to root_url
-  end
+  test "Activation email" do
+    mail = MessageMailer.activation_link(@share)
 
-  test "Raise error if token is invalid" do
-    get :activate_share, token: "some_wrong_token", id: @share.id
-    assert_not @share.reload.activated
-    assert_equal "Aktivierungs-Link ungültig!", flash[:danger]
-    assert_redirected_to root_url
+    assert_equal ['noreply@lpkb.menkent.uberspace.de'], mail.from
+    assert_equal ['foo@bar.org'], mail.to
+    assert_equal 'Bastabiet-Account aktivieren', mail.subject
+    assert_match url_helpers.activate_share_url(id: @share.id, token: @share.activation_token), mail.body.encoded
+    assert_match "Hallo", mail.body.encoded
   end
 end

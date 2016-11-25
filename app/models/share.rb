@@ -56,6 +56,7 @@ class Share < ActiveRecord::Base
 
   def all_offers
     [offer_minimum, offer_medium, offer_maximum].compact
+  end
 
   def self.digest(token:)
     cost = Rails.env == "production" ? BCrypt::Engine::MAX_SALT_LENGTH : 10
