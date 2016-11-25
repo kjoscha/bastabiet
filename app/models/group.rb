@@ -23,4 +23,53 @@ class Group < ActiveRecord::Base
   def total_offer_maximum
     shares.map(&:total_offer_maximum).sum
   end
+
+  def self.add_existent
+    ida = Station.create(name: 'Ida Nowhere')
+    %w[
+      bouffe
+      kladaradatsch
+      banana_split
+      gurken
+      juni_2
+      loveboat
+      luftplankton
+      mai_2
+      newyork_cheesecake
+      buklearhokkaido
+    ].each do |group|
+      ida.groups.build(name: group.humanize.upcase).save
+    end
+
+    brauni = Station.create(name: 'Brauni')
+    %w[
+      beetbox
+      fuenf_minuten
+      jitomate
+      kaesehunde
+      knoeterich
+      krasse_kresse
+      lischen_radieschen
+      mallorca
+      rhabarberbarbaras
+    ].each do |group|
+      brauni.groups.build(name: group.humanize.upcase).save
+    end
+
+    k9 = Station.create(name: 'Kinziger 9')
+    %w[
+      banana
+      basiliko
+      bombasta
+      estragon
+      fagioli
+      funbert
+      gurkentruppe
+      hortus
+      pastinake
+      rot_schwarz_k9
+    ].each do |group|
+      k9.groups.build(name: group.humanize.upcase).save
+    end
+  end
 end
