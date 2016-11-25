@@ -11,7 +11,7 @@ class ActivationsController < ApplicationController
       flash.now[:success] = "Der Anteil wurde erfolgreich aktiviert!"
       redirect_to root_url
     else
-      flash.now[:danger] = "Irgendwas ist schief gegangen, wir konnten den Anteil leider nicht aktivieren..."
+      flash.now[:danger] = "Aktivierungs-Link ungültig!"
       redirect_to root_url
     end
   end
