@@ -1,8 +1,13 @@
 class Share < ActiveRecord::Base
   belongs_to :groups
 
+  attr_accessor :activation_token
+
+  before_create :create_activation_digest
+
   validates :name, presence: true, length: { minimum: 3 }
-  validates :email, presence: true, length: { minimum: 3 }, uniqueness: true
+  validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+
   validate :full_or_half
   validate :group_not_full
   validate :agreed?
@@ -51,5 +56,15 @@ class Share < ActiveRecord::Base
 
   def all_offers
     [offer_minimum, offer_medium, offer_maximum].compact
+  end
+
+  def self.digest(token:)
+    cost = Rails.env == "production" ? BCrypt::Engine::MAX_SALT_LENGTH : 10
+    BCrypt::Password.create(token, cost: cost)
+  end
+
+  def create_activation_digest
+    self.activation_token = SecureRandom.urlsafe_base64(24)
+    self.activation_digest = Share.digest(token: activation_token)
   end
 end

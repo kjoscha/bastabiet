@@ -1,5 +1,6 @@
 class SharesController < ApplicationController
   before_action :admin_or_current_share, except: [:new, :create]
+  before_filter :is_activated?, only: [:update]
 
   def new
     @groups = Group.all
@@ -17,8 +18,9 @@ class SharesController < ApplicationController
       @group_selection = @groups.map{ |g| [g.name, g.id] }
       @share = @group.shares.build(share_params)
       if @share.save
-        log_in @share
-        redirect_to @share
+        MessageMailer.activation_link(@share).deliver_now
+        flash[:success] = "Der Account wurde erfolgreich angelegt, muss aber noch aktiviert werden. Folge dazu einfach dem Link in der Aktivierungs-Email, die wir dir soeben zugesandt haben!"
+        redirect_to root_url
       else
         flash[:danger] = @share.errors.full_messages.to_sentence
         render :new
@@ -60,5 +62,10 @@ class SharesController < ApplicationController
 
   def share_params
     params.require(:share).permit(:name, :members, :size, :group_id, :email, :offer_minimum, :offer_medium, :offer_maximum, :password, :password_confirmation, :station_help_days, :land_help_days, :no_help, :workgroup, :skills, :payment, :agreed)
+  end
+
+  def is_activated?
+    redirect_to root_url unless Share.find(params[:id]).activated    
+    flash[:danger] = "Dieser Anteil wurde noch nicht aktiviert!"
   end
 end

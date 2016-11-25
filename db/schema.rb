@@ -12,7 +12,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20161124172117) do
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,6 +43,8 @@ ActiveRecord::Schema.define(version: 20161124172117) do
     t.string   "workgroup"
     t.string   "skills"
     t.boolean  "no_help",           null: false
+    t.string   "activation_digest"
+    t.boolean  "activated",         default: false
   end
 
   add_index "shares", ["group_id"], name: "index_shares_on_group_id", using: :btree
