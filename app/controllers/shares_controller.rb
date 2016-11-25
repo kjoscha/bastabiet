@@ -19,7 +19,7 @@ class SharesController < ApplicationController
       @share = @group.shares.build(share_params)
       if @share.save
         MessageMailer.activation_link(@share).deliver_now
-        flash.now[:success] = "Der Account wurde erfolgreich angelegt, muss aber noch aktiviert werden. Folge dazu einfach dem Link in der Aktivierungs-Email, die wir dir soeben zugesandt haben!"
+        flash[:success] = "Der Account wurde erfolgreich angelegt, muss aber noch aktiviert werden. Folge dazu einfach dem Link in der Aktivierungs-Email, die wir dir soeben zugesandt haben!"
         redirect_to root_url
       else
         flash[:danger] = @share.errors.full_messages.to_sentence
@@ -66,6 +66,6 @@ class SharesController < ApplicationController
 
   def is_activated?
     redirect_to root_url unless Share.find(params[:id]).activated    
-    flash.now[:danger] = "Dieser Anteil wurde noch nicht aktiviert!"
+    flash[:danger] = "Dieser Anteil wurde noch nicht aktiviert!"
   end
 end

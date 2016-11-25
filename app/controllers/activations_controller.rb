@@ -6,10 +6,10 @@ class ActivationsController < ApplicationController
     
     if share && authenticated
       share.update_attributes(activated: true)
-      flash.now[:success] = "Der Anteil wurde erfolgreich aktiviert!"
+      flash[:success] = "Der Anteil wurde erfolgreich aktiviert!"
       redirect_to root_url
     else
-      flash.now[:danger] = "Aktivierungs-Link ungültig!"
+      flash[:danger] = "Aktivierungs-Link ungültig!"
       redirect_to root_url
     end
   end
