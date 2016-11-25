@@ -1,10 +1,9 @@
 class ActivationsController < ApplicationController
   def activate_share
-    share = Share.find_by(params[:share_id])
+    share = Share.find_by_id(params[:id])
     token = params[:token]
-    authenticated = BCrypt::Password.new(share.activation_digest).is_password?(token)
-    
-    if share && authenticated
+
+    if share && BCrypt::Password.new(share.activation_digest).is_password?(token)
       share.update_attributes(activated: true)
       flash[:success] = "Der Anteil wurde erfolgreich aktiviert!"
       redirect_to root_url

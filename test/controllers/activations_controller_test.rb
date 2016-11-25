@@ -33,4 +33,11 @@ class ActivationsControllerTest < ActionController::TestCase
     assert_equal "Aktivierungs-Link ungültig!", flash[:danger]
     assert_redirected_to root_url
   end
+
+  test "Raise error if id is invalid" do
+    get :activate_share, token: @share.activation_token, id: 9999 
+    assert_not @share.reload.activated
+    assert_equal "Aktivierungs-Link ungültig!", flash[:danger]
+    assert_redirected_to root_url
+  end
 end
