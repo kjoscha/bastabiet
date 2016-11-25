@@ -9,7 +9,7 @@ class MessageMailer < ApplicationMailer
 
   def activation_link(share)
     @share = share
-    @activation_link = nil
+    @activation_link = @share.activation_token
     mail(to: share.email, subject: 'Bastabiet-Account aktivieren') 
   end
 
