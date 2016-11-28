@@ -7,11 +7,11 @@
     %h3 Gebote (für 1 Ernteanteil)
     = form_for(@share) do |f|
       .row.margin-below
-        .col-xs-4.no-padding-right
+        .col-md-4
           = f.text_field :offer_minimum, placeholder: 'Wohlfühl', class: 'form-control offer-field green-bg'
-        .col-xs-4.no-padding-right.no-padding-left
+        .col-md-4
           = f.text_field :offer_medium, placeholder: 'Medium', class: 'form-control offer-field yellow-bg'
-        .col-xs-4.no-padding-left
+        .col-md-4
           = f.text_field :offer_maximum, placeholder: 'Schmerzgrenze', class: 'form-control offer-field red-bg'
       %h3 Infos
       .row
