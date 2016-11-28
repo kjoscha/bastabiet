@@ -75,18 +75,21 @@ $red: #d9534f;
 }
 
 .offer_minimum {
+  color: $green;
   .bar rect {
     fill: $green;
   }
 }
 
 .offer_medium {
+  color: $yellow;
   .bar rect {
     fill: $yellow;
   }
 }
 
 .offer_maximum {
+  color: $red;
   .bar rect {
     fill: $red;
   }

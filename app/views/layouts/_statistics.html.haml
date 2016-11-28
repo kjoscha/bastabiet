@@ -9,28 +9,29 @@
           Für
           %b= Share.size_altogether
           Ernteanteile wurde bereits geboten
+          %hr
         - [@offers_minimum, @offers_medium, @offers_maximum].each do |offers|
           .row
-            .col-xs-12
-              %h4 Summe
-            .col-xs-6
+            .col-xs-4{class: offers.offer.to_s}
+              %b Summe
+            .col-xs-4
               %b Ist:
               = offers.sum.to_s + '€'
-            .col-xs-6
+            .col-xs-4
               %b Soll:
               = offers.needed_sum.to_s + '€'
-            .col-xs-12
-              %h4 Durchschnitt
-            .col-xs-6
+            .col-xs-4{class: offers.offer.to_s}
+              %b Durchschnitt
+            .col-xs-4
               %b Ist:
               = offers.average.to_s + '€'
-            .col-xs-6
+            .col-xs-4
               %b Soll:
               = offers.needed_average.to_s + '€'
-            .col-xs-12
-              %hr
             .col-xs-12.text-center
               %svg.histogram{class: offers.offer.to_s}
+            .col-xs-12
+              %hr
 
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Schließen
