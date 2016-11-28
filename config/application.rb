@@ -27,11 +27,11 @@ module Bastabiet
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
       host: ENV[''],
-      address: ENV['relay_address'],
-      port: ENV['relay_port'],
+      address: 'lupus.uberspace.de',
+      port: 587,
       user_name: ENV['relay_login'],
       password: ENV['relay_passwd'],
-      authentication: ENV['relay_auth'],
+      authentication: 'plain',
       enable_starttls_auto: true
     }
   end
