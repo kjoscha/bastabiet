@@ -12,7 +12,7 @@
       = f.text_field :name, placeholder: 'Name', class: 'form-control'
     .col-sm-6.margin-below
       Für wieviele Ernteanteile bietest du?
-      = f.select :size, [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4], {prompt: "Bitte wählen"}, {class: "form-control"}
+      = f.select :size, @share.size_selections, {prompt: "Bitte wählen"}, {class: "form-control"}
     .col-sm-6.margin-below
       Wieviel Monate möchtest du im Voraus bezahlen?
       = f.select :payment, [1, 3, 12], {prompt: "Bitte wählen"}, {class: "form-control"}

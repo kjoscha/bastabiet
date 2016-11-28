@@ -7,17 +7,32 @@ class Share < ActiveRecord::Base
 
   validates :name, presence: true, length: { minimum: 3 }
   validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
-
-  validate :full_or_half
-  validate :group_not_full
+  validate :full_or_half?
+  validate :group_not_full?
   validate :agreed?
-  validates :size, inclusion: { in: [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4], message: "%{value} is not a valid size" }
+  validate :permitted_size?
 
   has_secure_password
 
-  def group_not_full
+  def permitted_size?
     if size_of_other_group_shares + (size || 0) > 4
       errors[:size] << 'Bezugsgruppe ist voll!'
+    end
+  end
+
+  def group_not_full?
+    if !size_selections.include? size
+      errors[:size] << 'nicht erlaubt!'
+    end
+  end
+
+  def agreed?
+    errors[:agreed] << 'Bitte lies bestätige die Vereinbarung!' if !agreed
+  end
+
+  def full_or_half?
+    if !size || size % 0.5 != 0
+      errors[:size] << 'muss durch 0.5 teilbar sein!'
     end
   end
 
@@ -31,16 +46,6 @@ class Share < ActiveRecord::Base
 
   def group
     Group.find(group_id)
-  end
-
-  def agreed?
-    errors[:agreed] << 'Bitte lies bestätige die Vereinbarung!' if !agreed
-  end
-
-  def full_or_half
-    if !size || size % 0.5 != 0
-      errors[:size] << 'muss durch 0.5 teilbar sein!'
-    end
   end
 
   def total_offer_minimum
@@ -67,5 +72,9 @@ class Share < ActiveRecord::Base
   def create_activation_digest
     self.activation_token = SecureRandom.urlsafe_base64(24)
     self.activation_digest = Share.digest(token: activation_token)
+  end
+
+  def size_selections
+    [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0]
   end
 end
