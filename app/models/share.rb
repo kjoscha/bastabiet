@@ -11,6 +11,7 @@ class Share < ActiveRecord::Base
   validate :full_or_half
   validate :group_not_full
   validate :agreed?
+  validates :size, inclusion: { in: [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4], message: "%{value} is not a valid size" }
 
   has_secure_password
 
