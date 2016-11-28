@@ -1,50 +1,36 @@
-.col-xs-12.text-center.margin-below
-  %h1 Ernteanteil registrieren
+.row
+  .col-xs-12.text-center.margin-below
+    %h1 Ernteanteil registrieren
 
 = form_for(@share) do |f|
-  .col-md-6
-    .row
-      .col-xs-12.margin-below
-        = f.select :group_id, @group_selection, {prompt: "Bitte eure Bezugsgruppe wählen"}, {class: "form-control"}
-      .col-xs-12
-        = f.text_field :name, placeholder: 'Name', class: 'form-control'
-      .col-xs-12
-        = f.text_field :size, placeholder: 'Ernteanteile', class: 'form-control'
-      .col-xs-12.margin-below
-        = f.email_field :email, placeholder: 'Email', class: 'form-control'
-      .col-xs-12
-        = f.password_field :password, placeholder: 'Passwort', class: 'form-control'
-      .col-xs-12.margin-below
-        = f.password_field :password_confirmation, placeholder: 'Passwort wiederholen', class: 'form-control'        
-
-  .col-md-6.margin-below
-    .row
-      .col-xs-12.margin-below
-        Wieviel Monate möchtest du im Voraus bezahlen?
-        = f.text_field :payment, placeholder: 'Monate', class: 'form-control'
-      .col-xs-12.margin-below
-        Wieviele Tage kannst du voraussichtlich bei Basta helfen?
-        = f.text_field :land_help_days, placeholder: 'Tage', class: 'form-control'
-      .col-xs-12.margin-below
-        Wieviele Tage kannst du voraussichtlich in deiner Abholstation helfen?
-        = f.text_field :station_help_days, placeholder: 'Tage', class: 'form-control'
-      .col-xs-12.margin-below
-        In welcher AG würdest du dich beteiligen?
-        = f.text_field :workgroup, placeholder: 'AG', class: 'form-control'
-      .col-xs-12.margin-below
-        Mit welchen Fähigkeiten oder Tools könntest du aushelfen?
-        = f.text_field :skills, placeholder: 'Fähigkeiten/Tools', class: 'form-control'
-      .col-xs-12
-        = f.label :no_help do
-          = f.check_box :no_help
-          Ich kann mich dieses Jahr leider nicht über die Mindestanforderungen hinaus beteiligen
-      .col-xs-12
-        = f.label :agreed do
-          = f.check_box :agreed
-          Ich habe die
-          = link_to 'Vereinbarung gelesen', 'basta_vereinbarung_2016.pdf', target: '_blank'
-          und versichere, dass meine Angaben der Wahrheit entsprechen
-
-
-  .col-xs-12
-    = f.submit "Ab geht's", class: "btn btn-primary"
+  .row
+    .col-xs-12.margin-below
+      In welcher Bezugsgruppe bist du?
+      = f.select :group_id, @group_selection, {prompt: "Bitte wählen"}, {class: "form-control"}
+    .col-xs-12.margin-below
+      Vor- und Nachname
+      = f.text_field :name, placeholder: 'Name', class: 'form-control'
+    .col-sm-6.margin-below
+      Für wieviele Ernteanteile bietest du?
+      = f.text_field :size, placeholder: 'Ernteanteile', class: 'form-control'
+    .col-sm-6.margin-below
+      Wieviel Monate möchtest du im Voraus bezahlen?
+      = f.text_field :payment, placeholder: 'Monate', class: 'form-control'
+    .col-xs-12.margin-below
+      Emaildresse
+      = f.email_field :email, placeholder: 'Email', class: 'form-control'
+    .col-sm-6.margin-below
+      Passwort
+      = f.password_field :password, class: 'form-control'
+    .col-sm-6.margin-below
+      Password wiederholen
+      = f.password_field :password_confirmation, class: 'form-control'        
+    .col-xs-12.margin-below
+      = f.label :agreed do
+        = f.check_box :agreed
+        Ich habe die
+        = link_to 'Vereinbarung gelesen', 'basta_vereinbarung_2016.pdf', target: '_blank'
+        und versichere, dass meine Angaben der Wahrheit entsprechen
+    = f.hidden_field :no_help, value: false
+    .col-xs-12
+      = f.submit "Ab geht's", class: "btn btn-primary"

@@ -65,7 +65,9 @@ class SharesController < ApplicationController
   end
 
   def is_activated?
-    redirect_to root_url unless Share.find(params[:id]).activated    
-    flash[:danger] = "Dieser Anteil wurde noch nicht aktiviert!"
+    unless Share.find(params[:id]).activated    
+      flash[:danger] = "Dieser Anteil wurde noch nicht aktiviert!"
+      redirect_to root_url
+    end
   end
 end
