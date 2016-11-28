@@ -13,7 +13,7 @@
           = f.text_field :offer_medium, placeholder: 'Medium', class: 'form-control offer-field yellow-bg'
         .col-md-4
           = f.text_field :offer_maximum, placeholder: 'Schmerzgrenze', class: 'form-control offer-field red-bg'
-      %h3 Infos
+      %h3 Pflichtangaben
       .row
         .col-xs-12.margin-below
           Vor- und Nachname
@@ -24,15 +24,18 @@
         .col-xs-12.margin-below
           Mitglieder
           = f.text_field :members, placeholder: 'Noch nichts eingetragen', class: 'form-control'
+
+        .col-xs-12
+          %h3 Folgende Angaben würden uns sehr bei der weiteren Planung helfen
         .col-xs-12.margin-below
           Wieviele Tage kannst du voraussichtlich bei Basta helfen?
-          = f.text_field :land_help_days, placeholder: 'Noch nichts eingetragen', class: 'form-control'
+          = f.text_field :land_help_days, placeholder: 'Anzahl in Tagen', class: 'form-control'
         .col-xs-12.margin-below
           In welcher AG würdest du dich beteiligen?
-          = f.text_field :workgroup, placeholder: 'Noch nichts eingetragen', class: 'form-control'
+          = f.text_field :workgroup, placeholder: 'z.B. Finanz-AG', class: 'form-control'
         .col-xs-12.margin-below
           Mit welchen Fähigkeiten oder Tools könntest du aushelfen?
-          = f.text_field :skills, placeholder: 'Noch nichts eingetragen', class: 'form-control'
+          = f.text_field :skills, placeholder: 'z.B. Grafikdesign-Kenntnisse, ökologisches, ökonomisches oder juristisches Fachwissen, Kettensäge...', class: 'form-control'
         .col-xs-12.margin-below
           = f.label :no_help do
             = f.check_box :no_help

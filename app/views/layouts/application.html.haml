@@ -23,7 +23,7 @@
               %a.statistic-button Statistik
             - if current_share
               %li
-                %a.logged-in-with= 'eingeloggt mit ' + current_share.email
+                = link_to current_share.name, share_path(current_share), class: 'logged-in-with'
               %li
                 = link_to 'Abmelden', logout_path, method: :delete, class: 'logged-in-with'
             %li
