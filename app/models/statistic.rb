@@ -18,7 +18,7 @@ class Statistic
   end
 
   def needed_average
-    needed_sum / Group.count * 4 if Group.count > 0
+    (needed_sum / 145).round(2)
   end
 
   def needed_sum

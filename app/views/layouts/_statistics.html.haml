@@ -3,8 +3,12 @@
     .modal-content
       .modal-header
         %button.close{"data-dismiss" => "modal", :type => "button"} ×
-        %h4.modal-title Statistik
+        %h3.modal-title Statistik
       .modal-body
+        %h4
+          Für
+          %b= Share.size_altogether
+          Ernteanteile wurde bereits geboten
         - [@offers_minimum, @offers_medium, @offers_maximum].each do |offers|
           .row
             .col-xs-12
