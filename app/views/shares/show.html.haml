@@ -4,7 +4,7 @@
       = @share.name
 
   .col-sm-12
-    %h3 Gebote
+    %h3 Gebote (für 1 Ernteanteil)
     = form_for(@share) do |f|
       .row.margin-below
         .col-xs-4.no-padding-right
@@ -20,7 +20,7 @@
           = f.text_field :name, placeholder: 'Name', class: 'form-control'
         .col-xs-12.margin-below
           Anzahl der Ernteanteile
-          = f.text_field :size, placeholder: 'Size', class: 'form-control'
+          = f.select :size, options_for_select([0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4], selected: @share.size), {}, { class: 'form-control' }
         .col-xs-12.margin-below
           Mitglieder
           = f.text_field :members, placeholder: 'Noch nichts eingetragen', class: 'form-control'
