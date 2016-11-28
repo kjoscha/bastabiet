@@ -1,7 +1,7 @@
 .row
   .col-xs-12
     %h1
-      = @share.name
+      = @share.name + ' (' + @share.email + ')'
 
   .col-sm-12
     %h3 Gebote (für 1 Ernteanteil)
@@ -13,8 +13,10 @@
           = f.text_field :offer_medium, placeholder: 'Medium', class: 'form-control offer-field yellow-bg'
         .col-md-4
           = f.text_field :offer_maximum, placeholder: 'Schmerzgrenze', class: 'form-control offer-field red-bg'
-      %h3 Pflichtangaben
+
       .row
+        .col-xs-12
+          %h3 Pflichtangaben 
         .col-xs-12.margin-below
           Vor- und Nachname
           = f.text_field :name, placeholder: 'Name', class: 'form-control'
@@ -25,6 +27,7 @@
           Mitglieder
           = f.text_field :members, placeholder: 'Noch nichts eingetragen', class: 'form-control'
 
+      .row
         .col-xs-12
           %h3 Folgende Angaben würden uns sehr bei der weiteren Planung helfen
         .col-xs-12.margin-below
@@ -42,5 +45,11 @@
             Ich kann mich im kommenden Jahr leider nicht über die
             = link_to 'Mindestanforderungen', '/basta_vereinbarung_2016.pdf', target: '_blank'
             hinaus beteiligen
+
+      .row
+        .col-xs-12
+          %h3 Feedback zum Bietverfahren
+        .col-xs-12.margin-below
+          = f.text_area :feedback, class: 'form-control'
         .col-xs-12
           = button_tag 'Speichern', type: 'submit', class: 'btn btn-primary'
