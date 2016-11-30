@@ -7,33 +7,35 @@ class Share < ActiveRecord::Base
 
   validates :name, presence: true, length: { minimum: 3 }
   validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
-  validate :full_or_half?
+  validates_uniqueness_of :name
+  validates_uniqueness_of :email
+  validate :name_at_least_two_words?
   validate :group_not_full?
   validate :agreed?
   validate :permitted_size?
 
   has_secure_password
 
-  def permitted_size?
-    if size_of_other_group_shares + (size || 0) > 4
-      errors[:size] << 'Bezugsgruppe ist voll!'
+  def name_at_least_two_words?
+    if name.split.size < 2
+      errors[:base] << 'BItte gib deinen Vor- und Nachnamen an'
     end
   end
 
   def group_not_full?
+    if size_of_other_group_shares + (size || 0) > 4
+      errors[:base] << 'Bezugsgruppe ist voll!'
+    end
+  end
+
+  def permitted_size?
     if !size_selections.include? size
-      errors[:size] << 'nicht erlaubt!'
+      errors[:base] << 'Nur halbe und ganze Ernteanteile erlaubt'
     end
   end
 
   def agreed?
-    errors[:agreed] << 'Bitte lies bestätige die Vereinbarung!' if !agreed
-  end
-
-  def full_or_half?
-    if !size || size % 0.5 != 0
-      errors[:size] << 'muss durch 0.5 teilbar sein!'
-    end
+    errors[:base] << 'Bitte lies und bestätige die Vereinbarung' if !agreed
   end
 
   def size_of_other_group_shares
