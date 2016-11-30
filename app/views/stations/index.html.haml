@@ -1,5 +1,12 @@
 .row
-  .col-sm-offset-8.col-sm-4
+  .col-sm-4.legend
+    %span.label.label-danger !
+    Account noch nicht aktivert
+    %br
+    %span.label.label-warning !
+    Noch nicht geboten
+  .col-sm-4
+  .col-sm-4
     .btn.btn-xs.btn-default.toggle-table-visibility
       Nur Bezugsgruppen
 
@@ -36,8 +43,10 @@
                     %td.col-xs-2
                       = link_to 'x', share_path(share), method: 'delete', data: { confirm: 'Wirklich gesamte Station löschen?' }
                       = link_to share.name, share_path(share)
-                      - if share.all_offers.empty?
+                      - if !share.activated
                         %span.label.label-danger !
+                      - if share.all_offers.empty?
+                        %span.label.label-warning !
 
                     %td.col-xs-2=share.size
                     - share.all_offers.each do |offer|

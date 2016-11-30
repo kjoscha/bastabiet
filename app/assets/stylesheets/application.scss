@@ -40,6 +40,16 @@ $red: #d9534f;
   display: none;
 }
 
+.not-activated {
+  a {
+    color: grey !important;
+  }
+}
+
+.legend {
+  font-size: 10px;
+}
+
 .btn {
   width: 100%;
 }
