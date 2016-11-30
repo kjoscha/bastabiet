@@ -25,6 +25,21 @@ $red: #d9534f;
 .yellow-bg { background-color: $yellow; }
 .red-bg { background-color: $red; }
 
+.loading-overlay {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.8);
+  line-height: 100vh;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 50px;
+  display: none;
+}
+
 .btn {
   width: 100%;
 }

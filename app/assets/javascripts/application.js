@@ -37,4 +37,8 @@ jQuery(function() {
       jQuery('.group-info-header').fadeIn();
     };
   });
+
+  jQuery("form").submit(function () {
+    jQuery('.loading-overlay').show();
+  });
 });
