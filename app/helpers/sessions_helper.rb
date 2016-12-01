@@ -21,9 +21,9 @@ module SessionsHelper
   end
 
   def admin_or_current_share
-    if !((current_share && current_share.id == params[:id].to_i) || admin?)
+    unless (current_share && current_share.id == params[:id].to_i) || admin?
       flash[:danger] = 'Nicht erlaubt!'
-      redirect_to :root
+      redirect_to root_path
     end
   end
 

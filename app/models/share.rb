@@ -2,17 +2,23 @@ class Share < ActiveRecord::Base
   belongs_to :groups
   has_many :members
 
-  attr_accessor :activation_token
+  attr_accessor :activation_token, :password_reset_token
 
-  before_create :create_activation_digest
+  before_create do
+    create_digest_for(attribute: 'activation')
+  end
 
-  validates :name, presence: true, length: { minimum: 3 }
-  validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
-  validates_uniqueness_of :name
-  validates_uniqueness_of :email
+  validates :name, presence: true,
+    length: { minimum: 3 },
+    uniqueness: true
+  validates :email, presence: true,
+    format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i },
+    uniqueness: true
+
   validate :name_at_least_two_words?
   validate :group_not_full?
   validate :agreed?, on: :update
+  validate :group_not_full?
   validate :permitted_size?
 
   has_secure_password
@@ -67,14 +73,19 @@ class Share < ActiveRecord::Base
     [offer_minimum, offer_medium, offer_maximum].compact
   end
 
-  def self.digest(token:)
-    cost = Rails.env == "production" ? BCrypt::Engine::MAX_SALT_LENGTH : 10
-    BCrypt::Password.create(token, cost: cost)
+  def authenticated?(attribute:, token:)
+    return false unless digest = self.send("#{attribute}_digest") 
+    BCrypt::Password.new(digest).is_password?(token)
   end
 
-  def create_activation_digest
-    self.activation_token = SecureRandom.urlsafe_base64(24)
-    self.activation_digest = Share.digest(token: activation_token)
+  def create_digest_for(attribute:)
+    token = SecureRandom.urlsafe_base64(24)
+    cost = Rails.env == "production" ? BCrypt::Engine::MAX_SALT_LENGTH : 4
+    digest = BCrypt::Password.create(token, cost: cost)
+
+    self.send("#{attribute}_token=", token)
+    self.send("#{attribute}_digest=", digest)
+    self.send("#{attribute}_timestamp=", Time.now)
   end
 
   def size_selections
@@ -83,5 +94,16 @@ class Share < ActiveRecord::Base
 
   def self.size_altogether
     all.map(&:size).sum
+  end
+  
+  def create_password_reset_digest
+    self.password_reset_token = SecureRandom.urlsafe_base64(24)
+    self.password_reset_digest = Share.digest(token: password_reset_token)
+    self.password_reset_timestamp = Time.now
+  end
+
+  def password_reset_token_alive?
+    return false unless password_reset_token
+    (Time.now - password_reset_timestamp)/3600 > 24
   end
 end

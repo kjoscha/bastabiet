@@ -1,6 +1,6 @@
 class SharesController < ApplicationController
-  before_action :admin_or_current_share, except: [:new, :create, :current_shares_home]
-  before_filter :is_activated?, only: [:update]
+  before_action :admin_or_current_share, only: [:edit, :update, :destroy]
+  before_action :is_activated?, only: [:update]
 
   def new
     @groups = Group.all
