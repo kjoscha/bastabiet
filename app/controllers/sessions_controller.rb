@@ -4,12 +4,18 @@ class SessionsController < ApplicationController
 
   def create
     share = Share.find_by(email: params[:session][:email].downcase)
-    if share && share.authenticate(params[:session][:password])
+    if !share
+      flash[:danger] = 'Emailadresse nicht registriert!'
+      render :new
+    elsif !share.activated
+      flash[:danger] = 'Account noch nicht aktiviert'
+      render :new
+    elsif share.authenticate(params[:session][:password])
       log_out
       log_in share
       redirect_to share
     else
-      flash[:danger] = 'Ungültig!'
+      flash[:danger] = 'Ungültiges Passwort!'
       render :new
     end
   end
