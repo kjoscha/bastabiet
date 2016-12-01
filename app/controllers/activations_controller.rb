@@ -6,7 +6,7 @@ class ActivationsController < ApplicationController
     if share && BCrypt::Password.new(share.activation_digest).is_password?(token)
       share.update_attributes(activated: true)
       flash[:success] = "Der Anteil wurde erfolgreich aktiviert!"
-      redirect_to root_url
+      redirect_to share
     else
       flash[:danger] = "Aktivierungs-Link ungültig!"
       redirect_to root_url

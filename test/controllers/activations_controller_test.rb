@@ -23,7 +23,7 @@ class ActivationsControllerTest < ActionController::TestCase
     get :activate_share, token: @share.activation_token, id: @share.id
     assert @share.reload.activated
     assert_equal "Der Anteil wurde erfolgreich aktiviert!", flash[:success]
-    assert_redirected_to root_url
+    assert_redirected_to share_path(@share.id)
   end
 
   test "Raise error if token is invalid" do
