@@ -45,4 +45,18 @@ class SharesControllerTest < ActionController::TestCase
     patch :update, id: @share, share: { payment: 3 }
     assert_not_equal 3, @share.payment
   end
+
+  test 'admin can destroy shares' do
+    session[:admin] = true
+    assert_difference('Share.count', -1) do
+      delete :destroy, id: @share.id
+    end
+  end
+
+  test 'logged in share can destroy itself' do
+    session[:share_id] = @share.id
+    assert_difference('Share.count', -1) do
+      delete :destroy, id: @share.id
+    end
+  end
 end
