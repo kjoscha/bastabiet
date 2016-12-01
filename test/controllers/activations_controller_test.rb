@@ -5,11 +5,10 @@ class ActivationsControllerTest < ActionController::TestCase
     @station = Station.create(name: "test_station")
     @group = Group.create(station_id: @station.id, name: "test_group")
     @share = Share.create(group_id: @group.id,
-                          name: "test_share", 
+                          name: "test share", 
                           members: "some test persons in this share",
                           payment: 1,
                           land_help_days: 3,
-                          station_help_days: 3,
                           workgroup: 'test_work_group',
                           no_help: false,
                           skills: 'test_skills',

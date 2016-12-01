@@ -1,0 +1,14 @@
+Joscha:
+  id: 1
+  name: Joscha Ka
+  members: some test persons in this share
+  payment: 1
+  land_help_days: 3
+  workgroup: test_work_group
+  no_help: false
+  skills: test_skills
+  size: 2 
+  password_digest: askfdkjjdjfisjijsj
+  email: joscha@basta.de
+  agreed: true
+  group_id: 1
