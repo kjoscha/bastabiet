@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'sessions#new'
+  root to: 'shares#current_shares_home'
 
   resources :stations, shallow: true do
     resources :groups do

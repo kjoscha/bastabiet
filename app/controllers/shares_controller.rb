@@ -49,6 +49,14 @@ class SharesController < ApplicationController
     redirect_to :back
   end
 
+  def current_shares_home
+    if logged_in?
+      redirect_to share_path(current_share)
+    else
+      redirect_to login_path
+    end
+  end
+
   private
 
   def fill_offers(share)
