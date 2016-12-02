@@ -4,19 +4,7 @@ class ActivationsControllerTest < ActionController::TestCase
   def setup
     @station = Station.create(name: "test_station")
     @group = Group.create(station_id: @station.id, name: "test_group")
-    @share = Share.create(group_id: @group.id,
-                          name: "test share", 
-                          members: "some test persons in this share",
-                          payment: 1,
-                          land_help_days: 3,
-                          workgroup: 'test_work_group',
-                          no_help: false,
-                          skills: 'test_skills',
-                          size: 2, 
-                          password: "secret",
-                          password_confirmation: "secret",
-                          email: "foo@bar.org",
-                          agreed: true)
+    @share = add_valid_user(false)
   end
 
   test "Share becomes activated if token is valid" do

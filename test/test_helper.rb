@@ -43,3 +43,22 @@ class Capybara::Rails::TestCase
     Capybara.current_driver = Capybara.default_driver
   end
 end
+
+def add_valid_user(activated)
+  @group = groups(:Bouffe)
+  @share = Share.create(group_id: @group.id,
+                        name: "test share", 
+                        members: "some test persons in this share",
+                        payment: 1,
+                        land_help_days: 3,
+                        workgroup: 'test_work_group',
+                        no_help: false,
+                        skills: 'test_skills',
+                        size: 2, 
+                        password: "secret",
+                        password_confirmation: "secret",
+                        email: "foo@bar.org",
+                        agreed: true,
+                        activated: activated,
+                        )
+end

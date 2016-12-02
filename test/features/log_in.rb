@@ -1,8 +1,8 @@
 require "test_helper"
 
 class LogIn < Capybara::Rails::TestCase
-  scenario 'start page working', :js do
-    add_valid_user
+  scenario 'login possible for activated shares', :js do
+    add_valid_user(true)
     visit root_path
     fill_in 'Email', with: 'foo@bar.org'
     fill_in 'Passwort', with: 'secret'
@@ -14,22 +14,38 @@ class LogIn < Capybara::Rails::TestCase
     end
   end
 
-  def add_valid_user
-    @group = groups(:Bouffe)
-    @share = Share.create(group_id: @group.id,
-                          name: "test share", 
-                          members: "some test persons in this share",
-                          payment: 1,
-                          land_help_days: 3,
-                          workgroup: 'test_work_group',
-                          no_help: false,
-                          skills: 'test_skills',
-                          size: 2, 
-                          password: "secret",
-                          password_confirmation: "secret",
-                          email: "foo@bar.org",
-                          agreed: true,
-                          activated: true,
-                          )
+  scenario 'login not possible for unregistered shares', :js do
+    add_valid_user(false)
+    visit root_path
+    fill_in 'Email', with: 'foo@bar.org'
+    fill_in 'Passwort', with: 'secret'
+    click_on "Ab geht's"
+    assert_content 'Account noch nicht aktiviert'
+  end
+
+  scenario 'login not possible with wrong email', :js do
+    add_valid_user(true)
+    visit root_path
+    fill_in 'Email', with: 'wrong@password.org'
+    fill_in 'Passwort', with: 'secret'
+    click_on "Ab geht's"
+    assert_content 'Emailadresse nicht registriert'
+  end
+
+
+  scenario 'login not possible with wrong password', :js do
+    add_valid_user(true)
+    visit root_path
+    fill_in 'Email', with: 'foo@bar.org'
+    fill_in 'Passwort', with: 'wrong'
+    click_on "Ab geht's"
+    assert_content 'Ungültiges Passwort'
+  end
+
+  scenario 'login not possible without credentials', :js do
+    add_valid_user(true)
+    visit root_path
+    click_on "Ab geht's"
+    refute_content 'Pflichtangaben'
   end
 end
