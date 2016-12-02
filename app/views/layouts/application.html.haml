@@ -18,7 +18,10 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.navbar-brand{:href => root_path} CSA BASTA
+          - if logged_in?
+            %a.navbar-brand{href: share_path(current_share)} CSA BASTA
+          - else
+            %a.navbar-brand{href: root_path} CSA BASTA
         #navbar.navbar-collapse.collapse
           %ul.nav.navbar-nav.navbar-right
             %li
