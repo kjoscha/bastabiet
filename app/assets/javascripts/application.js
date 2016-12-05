@@ -25,6 +25,11 @@ jQuery(function() {
     jQuery('#statistic-modal').modal('show');
   });
 
+  jQuery('.settings-button').click(function() {
+    jQuery('#settings-modal').modal('show');
+  });
+
+
   jQuery('.dropdown-toggle').dropdown();
 
   jQuery('.toggle-table-visibility').click(function() {

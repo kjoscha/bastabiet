@@ -1,0 +1,19 @@
+#settings-modal.modal.fade{:role => "dialog"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"} ×
+        %h3.modal-title Einstellungen
+
+
+      = form_for(@settings) do |f|
+        .modal-body
+          .row
+            .col-md-12.margin-below
+              = f.text_field :needed_sum, placeholder: 'Benötigte Summe in Euro', class: 'form-control'
+            .col-xs-12.margin-below
+              = f.label :show_statistics do
+                = f.check_box :show_statistics
+                Statistik für alle einsehbar
+        .modal-footer
+          = button_tag 'Speichern', type: 'submit', class: 'btn btn-default'

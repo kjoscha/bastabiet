@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161128195644) do
+ActiveRecord::Schema.define(version: 20161205171342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 20161128195644) do
 
   add_index "groups", ["station_id"], name: "index_groups_on_station_id", using: :btree
 
+  create_table "settings", force: :cascade do |t|
+    t.integer  "needed_sum"
+    t.boolean  "show_statistics",      default: true
+    t.boolean  "offer_minimum_active", default: true
+    t.boolean  "offer_medium_active",  default: true
+    t.boolean  "offer_maximum_active", default: true
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
   create_table "shares", force: :cascade do |t|
     t.integer  "group_id"
     t.string   "name",                              null: false
@@ -37,14 +47,14 @@ ActiveRecord::Schema.define(version: 20161128195644) do
     t.float    "offer_minimum"
     t.float    "offer_medium"
     t.float    "offer_maximum"
+    t.string   "activation_digest"
+    t.boolean  "activated",         default: false
     t.boolean  "agreed"
     t.integer  "payment",                           null: false
     t.integer  "land_help_days"
     t.string   "workgroup"
     t.string   "skills"
     t.boolean  "no_help",                           null: false
-    t.string   "activation_digest"
-    t.boolean  "activated",         default: false
     t.text     "feedback"
   end
 

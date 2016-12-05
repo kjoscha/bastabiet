@@ -22,7 +22,7 @@ class Statistic
   end
 
   def needed_sum
-    20_000
+    Setting.first.needed_sum
   end
 
   def sum

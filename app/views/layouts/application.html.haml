@@ -22,7 +22,10 @@
         #navbar.navbar-collapse.collapse
           %ul.nav.navbar-nav.navbar-right
             %li
-              %a.statistic-button Statistik
+              %a.settings-button Einstellungen
+            - if @settings.show_statistics || admin?
+              %li
+                %a.statistic-button Statistik
             - if current_share
               %li
                 = link_to current_share.name, share_path(current_share), class: 'logged-in-with'
@@ -35,4 +38,7 @@
         .alert{class: "alert-#{type} flash-message", role: 'alert'}
           = msg
       = yield
-      = render 'layouts/statistics'
+
+      - if @settings.show_statistics || admin?
+        = render 'layouts/statistics'
+      = render 'layouts/settings'

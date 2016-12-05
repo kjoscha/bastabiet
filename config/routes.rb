@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :groups
   resources :shares
   resources :offers
+  resources :settings
 
   get '/register' => 'shares#new', as: :register
   get    '/login',   to: 'sessions#new'
