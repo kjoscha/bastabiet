@@ -21,8 +21,9 @@
           %a.navbar-brand{:href => root_path} CSA BASTA
         #navbar.navbar-collapse.collapse
           %ul.nav.navbar-nav.navbar-right
-            %li
-              %a.settings-button Einstellungen
+            - if admin?
+              %li
+                %a.settings-button Einstellungen
             - if @settings.show_statistics || admin?
               %li
                 %a.statistic-button Statistik
@@ -38,7 +39,7 @@
         .alert{class: "alert-#{type} flash-message", role: 'alert'}
           = msg
       = yield
-
       - if @settings.show_statistics || admin?
         = render 'layouts/statistics'
-      = render 'layouts/settings'
+      - if admin?
+        = render 'layouts/settings'

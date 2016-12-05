@@ -8,11 +8,11 @@
     = form_for(@share) do |f|
       .row.margin-below
         .col-md-4
-          = f.text_field :offer_minimum, placeholder: 'Wohlfühl', class: 'form-control offer-field green-bg'
+          = f.text_field :offer_minimum, placeholder: 'Wohlfühl', class: 'form-control offer-field green-bg', disabled: !@settings.offer_minimum_active
         .col-md-4
-          = f.text_field :offer_medium, placeholder: 'Medium', class: 'form-control offer-field yellow-bg'
+          = f.text_field :offer_medium, placeholder: 'Medium', class: 'form-control offer-field yellow-bg', disabled: !@settings.offer_medium_active
         .col-md-4
-          = f.text_field :offer_maximum, placeholder: 'Schmerzgrenze', class: 'form-control offer-field red-bg'
+          = f.text_field :offer_maximum, placeholder: 'Schmerzgrenze', class: 'form-control offer-field red-bg', disabled: !@settings.offer_maximum_active
 
       .row
         .col-xs-12

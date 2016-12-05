@@ -1,7 +1,7 @@
 Group.add_existent
 
 Group.find(1).shares.build(
-  name:              Faker::Lorem.word,
+  name:              Faker::Name.name,
   members:           Faker::Lorem.words(rand(8)).join(', '),
   size:              [1].sample,
   email:             'test@test.com',
@@ -22,7 +22,7 @@ Group.find(1).shares.build(
 Group.all.each do |group|
   rand(1..4).times do
       group.shares.build(
-        name:              Faker::Lorem.word,
+        name:              Faker::Name.name,
         members:           Faker::Lorem.words(rand(8)).join(', '),
         size:              [0.5, 1, 1.5, 2].sample,
         email:             Faker::Internet.email,

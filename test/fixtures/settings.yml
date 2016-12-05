@@ -1,0 +1,3 @@
+Default:
+  needed_sum: 10_000
+  show_statistics: false

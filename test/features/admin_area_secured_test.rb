@@ -1,6 +1,6 @@
 require "test_helper"
 
-class AdminAreaSecured < Capybara::Rails::TestCase
+class AdminAreaSecuredTest < Capybara::Rails::TestCase
   scenario 'start page working' do
     visit root_path
     assert_content 'CSA BASTA'

@@ -1,6 +1,6 @@
 require "test_helper"
 
-class LogIn < Capybara::Rails::TestCase
+class LogInTest < Capybara::Rails::TestCase
   scenario 'login possible for activated shares', :js do
     log_in
     assert_content 'Pflichtangaben'
@@ -9,7 +9,7 @@ class LogIn < Capybara::Rails::TestCase
       assert_empty find_field("share_offer_#{m}").value
     end
     click_on 'CSA BASTA'
-    refute_content ('Anmelden')
+    refute_content 'Anmelden'
     assert_content 'Pflichtangaben'
   end
 
