@@ -8,25 +8,31 @@
       = form_for(@settings) do |f|
         .modal-body
           .row
-            .col-md-12.margin-below
+            .col-md-4
+              %b Benötigte Summe
+            .col-xs-8
               = f.text_field :needed_sum, placeholder: 'Benötigte Summe in Euro', class: 'form-control'
+            .col-xs-12
+              %hr
             .col-xs-6.margin-below
-              .col-xs-12
-                = f.label :show_statistics do
-                  = f.check_box :show_statistics
-                  Statistik für alle einsehbar
+              .row
+                .col-xs-12
+                  = f.label :show_statistics do
+                    = f.check_box :show_statistics
+                    Statistik für alle einsehbar
             .col-xs-6.margin-below
-              .col-xs-12
-                = f.label :offer_minimum_active do
-                  = f.check_box :offer_minimum_active
-                  Wohlfühlgebot aktiv
-              .col-xs-12
-                = f.label :offer_medium_active do
-                  = f.check_box :offer_medium_active
-                  Mittleres Gebot aktiv
-              .col-xs-12
-                = f.label :offer_maximum_active do
-                  = f.check_box :offer_maximum_active
-                  Schmerzgrenze aktiv
+              .row
+                .col-xs-12
+                  = f.label :offer_minimum_active do
+                    = f.check_box :offer_minimum_active
+                    %span{class: 'offer_minimum'} Wohlfühlgebot aktiv
+                .col-xs-12
+                  = f.label :offer_medium_active do
+                    = f.check_box :offer_medium_active
+                    %span{class: 'offer_medium'} Mittleres Gebot aktiv
+                .col-xs-12
+                  = f.label :offer_maximum_active do
+                    = f.check_box :offer_maximum_active
+                    %span{class: 'offer_maximum'} Schmerzgrenze aktiv
         .modal-footer
           = button_tag 'Speichern', type: 'submit', class: 'btn btn-default'
