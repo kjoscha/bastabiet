@@ -13,7 +13,7 @@ class SharesControllerTest < ActionController::TestCase
     user = 'admin'
     pw = 'secret'
     request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials(user,pw)
-  end  
+  end
 
   test 'Can create share' do
     assert_difference 'Share.count' do
@@ -33,6 +33,14 @@ class SharesControllerTest < ActionController::TestCase
         group_id: @group.id
       }
     end
+  end
+
+  test 'landing page depending on login state' do
+    get :current_shares_home
+    assert_redirected_to login_path
+    session[:share_id] = @share.id
+    get :current_shares_home
+    assert_redirected_to share_path(@share.id)
   end
 
   test 'guest cannot destroy shares' do 
