@@ -1,3 +1,6 @@
 Default:
   needed_sum: 10_000
   show_statistics: false
+  offer_minimum_active: true
+  offer_medium_active: true
+  offer_maximum_active: true

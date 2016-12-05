@@ -61,6 +61,14 @@ class SharesControllerTest < ActionController::TestCase
     end
   end
 
+  test 'admin can update shares' do
+    skip 'not working?!'
+    session[:admin] = true
+    patch :update, id: @share.id, share: { offer_minimum: 1564 }
+    @share.reload
+    assert_equal 1564, @share.offer_minimum
+  end
+
   test 'logged in share can destroy itself' do
     session[:share_id] = @share.id
     assert_difference('Share.count', -1) do
