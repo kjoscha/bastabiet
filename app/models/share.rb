@@ -1,5 +1,6 @@
 class Share < ActiveRecord::Base
   belongs_to :groups
+  has_many :members
 
   attr_accessor :activation_token
 
@@ -18,7 +19,7 @@ class Share < ActiveRecord::Base
 
   def name_at_least_two_words?
     if name.split.size < 2
-      errors[:base] << 'BItte gib deinen Vor- und Nachnamen an'
+      errors[:base] << 'Bitte gib deinen Vor- und Nachnamen an'
     end
   end
 

@@ -3,6 +3,31 @@
     %h1
       = @share.name + ' (' + @share.email + ')'
 
+- @share.members.each do |m|
+  .row
+    .col-xs-6.col-md-3
+      %b= m.name
+    .col-xs-6.col-md-3
+      = m.email
+    .col-xs-6.col-md-3
+      = m.telephone
+    .col-xs-6.col-md-3.margin-below
+      = link_to 'Löschen', member_path(m.id), method: 'delete', data: { confirm: 'Wirklich gesamte Station löschen?' }
+
+.row
+  = form_for([@share, @share.members.build]) do |mf|
+    .col-md-3
+      = mf.text_field :name, placeholder: 'Name', class: 'form-control'
+    .col-md-3
+      = mf.text_field :email, placeholder: 'Email', class: 'form-control'
+    .col-md-3
+      = mf.text_field :telephone, placeholder: 'Telefon', class: 'form-control'
+    .col-md-3
+      = button_tag('Mitglied hinzufügen', type: 'submit', class: 'btn btn-success')
+
+  .col-xs-12
+    %hr
+
   .col-sm-12
     %h3 Gebote (für 1 Ernteanteil)
     = form_for(@share) do |f|
@@ -23,9 +48,6 @@
         .col-xs-12.margin-below
           Anzahl der Ernteanteile
           = f.select :size, options_for_select(@share.size_selections, selected: @share.size), {}, { class: 'form-control' }
-        .col-xs-12.margin-below
-          Mitglieder
-          = f.text_field :members, placeholder: 'Noch nichts eingetragen', class: 'form-control'
 
       .row
         .col-xs-12
@@ -52,4 +74,4 @@
         .col-xs-12.margin-below
           = f.text_area :feedback, class: 'form-control'
         .col-xs-12
-          = button_tag 'Speichern', type: 'submit', class: 'btn btn-primary'
+          = button_tag 'Speichern', type: 'submit', class: 'btn btn-success'
