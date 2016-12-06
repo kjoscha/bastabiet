@@ -3,6 +3,10 @@
     %h1
       = @share.name + ' (' + @share.email + ')'
 
+-if @share.members.count == 0
+  .row
+    .col-xs-12.margin-below
+      %span.label.label-warning Noch keine Mitglieder eingetragen!
 - @share.members.each do |m|
   .row
     .col-xs-6.col-md-3
