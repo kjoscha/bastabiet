@@ -12,7 +12,7 @@ class Share < ActiveRecord::Base
   validates_uniqueness_of :email
   validate :name_at_least_two_words?
   validate :group_not_full?
-  validate :agreed?
+  validate :agreed?, on: :update
   validate :permitted_size?
 
   has_secure_password

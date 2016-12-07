@@ -49,9 +49,18 @@
         .col-xs-12.margin-below
           Vor- und Nachname
           = f.text_field :name, placeholder: 'Name', class: 'form-control'
-        .col-xs-12.margin-below
+        .col-sm-6.margin-below
           Anzahl der Ernteanteile
           = f.select :size, options_for_select(@share.size_selections, selected: @share.size), {}, { class: 'form-control' }
+        .col-sm-6.margin-below
+          Wieviel Monate möchtest du im Voraus bezahlen?
+          = f.select :payment, [1, 3, 12], {prompt: "Bitte wählen"}, {class: "form-control"}
+        .col-xs-12.margin-below
+          = f.label :agreed do
+            = f.check_box :agreed
+            Ich habe die
+            = link_to 'Vereinbarung gelesen', '/basta_vereinbarung_2016.pdf', target: '_blank'
+            und versichere, dass meine Angaben der Wahrheit entsprechen
 
       .row
         .col-xs-12
@@ -72,7 +81,7 @@
             = link_to 'Mindestanforderungen', '/basta_vereinbarung_2016.pdf', target: '_blank'
             hinaus beteiligen
 
-      .row
+          .row
         .col-xs-12
           %h3 Feedback zum Bietverfahren
         .col-xs-12.margin-below

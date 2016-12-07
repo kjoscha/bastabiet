@@ -4,7 +4,8 @@ class ActivationsController < ApplicationController
     token = params[:token]
 
     if share && BCrypt::Password.new(share.activation_digest).is_password?(token)
-      share.update_attributes(activated: true)
+      # use update_attribute to skip validation due to agreed attribute
+      share.update_attribute('activated', true)
       flash[:success] = "Der Anteil wurde erfolgreich aktiviert!"
       log_in share
       redirect_to share

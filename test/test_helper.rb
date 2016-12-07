@@ -57,7 +57,11 @@ def add_valid_user(activated)
                         password: "secret",
                         password_confirmation: "secret",
                         email: "foo@bar.org",
-                        agreed: true,
+                        agreed: false,
                         activated: activated,
                         )
+end
+
+def saoi
+  screenshot_and_open_image
 end
