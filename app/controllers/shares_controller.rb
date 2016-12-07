@@ -1,6 +1,6 @@
 class SharesController < ApplicationController
-  before_action :admin_or_current_share, except: [:new, :create, :current_shares_home]
-  before_filter :is_activated?, only: [:update]
+  before_action :admin_or_current_share, only: [:edit, :update, :destroy]
+  before_action :is_activated?, only: [:update]
 
   def new
     @groups = Group.all
@@ -34,6 +34,7 @@ class SharesController < ApplicationController
 
   def update
     @share = Share.find(params[:id])
+    @share.form_edit
     if @share.update_attributes(share_params) && fill_offers(@share)
       flash[:success] = 'Erfolgreich aktualisiert'
       redirect_to :back

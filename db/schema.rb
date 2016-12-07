@@ -48,24 +48,27 @@ ActiveRecord::Schema.define(version: 20161207101831) do
 
   create_table "shares", force: :cascade do |t|
     t.integer  "group_id"
-    t.string   "name",                              null: false
-    t.float    "size",                              null: false
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.string   "name",                                     null: false
+    t.float    "size",                                     null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.string   "email"
     t.string   "password_digest"
     t.float    "offer_minimum"
     t.float    "offer_medium"
     t.float    "offer_maximum"
-    t.string   "activation_digest"
-    t.boolean  "activated",         default: false
-    t.boolean  "agreed",                            null: false
+    t.boolean  "agreed"
     t.integer  "payment"
     t.integer  "land_help_days"
     t.string   "workgroup"
     t.string   "skills"
-    t.boolean  "no_help",                           null: false
+    t.boolean  "no_help",                                  null: false
+    t.string   "activation_digest"
+    t.boolean  "activated",                default: false
     t.text     "feedback"
+    t.string   "password_reset_digest"
+    t.datetime "password_reset_timestamp"
+    t.datetime "activation_timestamp"
   end
 
   add_index "shares", ["group_id"], name: "index_shares_on_group_id", using: :btree

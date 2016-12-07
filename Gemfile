@@ -64,4 +64,5 @@ group :test do
   gem 'poltergeist' # headless javascript testing
   gem 'selenium-webdriver' # non-headless javascript testing
   gem 'capybara-screenshot'
+  gem 'launchy'
 end

@@ -1,9 +1,9 @@
 class MessageMailer < ApplicationMailer
-  default from: 'noreply@lpkb.menkent.uberspace.de'
+  default from: 'no-reply@lpkb.menkent.uberspace.de'
 
-  def password_reset(share)
+  def send_password_reset_link(share)
     @share = share
-    @password_reset_link = nil
+    @password_reset_link = reset_password_url id: @share.id, token: @share.password_reset_token
     mail(to: share.email, subject: 'Password zurücksetzen für Bastabiet') 
   end
 

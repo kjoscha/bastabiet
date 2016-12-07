@@ -5,6 +5,18 @@ require 'minitest/rails'
 require 'minitest/reporters'
 require 'minitest/rails/capybara'
 require 'capybara/poltergeist'
+require 'capybara-screenshot/minitest'
+
+def validate_captcha
+  fill_in 'captcha', with: SimpleCaptcha::SimpleCaptchaData.first.value
+end
+
+def login
+  visit login_path
+  fill_in 'sessions_email', with: 'admin@example.com'
+  fill_in 'sessions_password', with: 'secret'
+  click_on 'Login'
+end
 
 reporter_options = { color: true }
 Minitest::Reporters.use!(
