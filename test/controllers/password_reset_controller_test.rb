@@ -4,19 +4,7 @@ class PasswordResetControllerTest < ActionController::TestCase
   def setup
     @station = Station.create(name: "test_station")
     @group = Group.create(station_id: @station.id, name: "test_group")
-    @activated_share = Share.create(group_id: @group.id,
-                                    name: "foo bar", 
-                                    payment: 1,
-                                    land_help_days: 3,
-                                    workgroup: 'test_work_group',
-                                    no_help: false,
-                                    skills: 'test_skills',
-                                    size: 2, 
-                                    password: "secret",
-                                    password_confirmation: "secret",
-                                    email: "foo@bar.org",
-                                    activated: true,
-                                    agreed: true)
+    @activated_share = add_valid_user(false)
   end
 
   test "Can request password reset" do
