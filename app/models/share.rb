@@ -17,7 +17,7 @@ class Share < ActiveRecord::Base
 
   validate :name_at_least_two_words?
   validate :group_not_full?
-  validate :agreed?, on: :update
+  validate :agreed?, on: :update, if: :form_edit?
   validate :group_not_full?
   validate :permitted_size?
 
@@ -43,6 +43,14 @@ class Share < ActiveRecord::Base
 
   def agreed?
     errors[:base] << 'Bitte lies und bestätige die Vereinbarung' if !agreed
+  end
+
+  def form_edit?
+    @form_edit
+  end
+
+  def form_edit
+    @form_edit = true
   end
 
   def size_of_other_group_shares

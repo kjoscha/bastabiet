@@ -34,6 +34,7 @@ class SharesController < ApplicationController
 
   def update
     @share = Share.find(params[:id])
+    @share.form_edit
     if @share.update_attributes(share_params) && fill_offers(@share)
       flash[:success] = 'Erfolgreich aktualisiert'
       redirect_to :back
