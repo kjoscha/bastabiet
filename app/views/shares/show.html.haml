@@ -71,21 +71,24 @@
   .row
     .col-xs-12
       %h3 Folgende Angaben würden uns sehr bei der weiteren Planung helfen
-    .col-xs-12.margin-below
+    .col-xs-6.margin-below
       Wieviele Tage kannst du voraussichtlich im kommenden Jahr bei Basta helfen?
       = f.text_field :land_help_days, placeholder: 'Anzahl in Tagen', class: 'form-control'
-    .col-xs-12.margin-below
-      In welcher AG würdest du dich im kommenden Jahr beteiligen?
-      = f.text_field :workgroup, placeholder: 'z.B. Finanz-AG', class: 'form-control'
-    .col-xs-12.margin-below
+    .col-xs-6.margin-below
       Mit welchen Fähigkeiten oder Tools könntest du aushelfen?
       = f.text_field :skills, placeholder: 'z.B. Grafikdesign-Kenntnisse, ökologisches, ökonomisches oder juristisches Fachwissen, Kettensäge...', class: 'form-control'
+    .col-xs-12
+      %h4 In welchen AG's werdet ihr euch 2017 beteiligen?
+  .row
+    = f.collection_check_boxes :workgroup_ids, Workgroup.all, :id, :name do |w|
+      .col-sm-4
+        = w.check_box
+        = w.text
     .col-xs-12.margin-below
-      = f.label :no_help do
-        = f.check_box :no_help
-        Ich kann mich im kommenden Jahr leider nicht über die
-        = link_to 'Mindestanforderungen', '/basta_vereinbarung_2017.pdf', target: '_blank'
-        hinaus beteiligen
+      = f.check_box :no_help
+      Ich kann mich im kommenden Jahr leider nicht über die
+      %span.minimum-participation-button.blue Mindestanforderungen
+      hinaus beteiligen
 
   .row
     .col-xs-12

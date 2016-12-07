@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161207101831) do
+ActiveRecord::Schema.define(version: 20161207183056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,24 +57,37 @@ ActiveRecord::Schema.define(version: 20161207101831) do
     t.float    "offer_minimum"
     t.float    "offer_medium"
     t.float    "offer_maximum"
-    t.boolean  "agreed"
-    t.integer  "payment"
-    t.integer  "land_help_days"
-    t.string   "workgroup"
-    t.string   "skills"
-    t.boolean  "no_help",                                  null: false
     t.string   "activation_digest"
     t.boolean  "activated",                default: false
+    t.boolean  "agreed",                                   null: false
+    t.integer  "payment"
+    t.integer  "land_help_days"
+    t.string   "skills"
+    t.boolean  "no_help",                                  null: false
     t.text     "feedback"
     t.string   "password_reset_digest"
     t.datetime "password_reset_timestamp"
     t.datetime "activation_timestamp"
+    t.string   "workgroup_ids"
   end
 
   add_index "shares", ["group_id"], name: "index_shares_on_group_id", using: :btree
 
   create_table "stations", force: :cascade do |t|
     t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "workgroup_shares", force: :cascade do |t|
+    t.integer  "share_id"
+    t.integer  "workgroup_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "workgroups", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

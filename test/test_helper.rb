@@ -62,7 +62,6 @@ def add_valid_user(activated)
                         name: "test share", 
                         payment: 1,
                         land_help_days: 3,
-                        workgroup: 'test_work_group',
                         no_help: false,
                         skills: 'test_skills',
                         size: 2, 
