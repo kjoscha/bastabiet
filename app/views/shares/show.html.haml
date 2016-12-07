@@ -1,12 +1,16 @@
-.row
+.row.margin-below
   .col-xs-12
     %h1
-      = @share.name + ' (' + @share.email + ')'
+      = @share.name + ' | ' + @share.email + ' | ' + 736743675637.to_s
 
--if @share.members.count == 0
-  .row
-    .col-xs-12.margin-below
-      %span.label.label-warning Noch keine Mitglieder eingetragen!
+.row
+  .col-xs-12
+    %hr
+
+.row
+  .col-xs-12
+    %h3 Mitglieder
+    .margin-below Bitte gib alle Menschen an, die regelmäßig von euerm Anteil essen
 - @share.members.each do |m|
   .row
     .col-xs-6.col-md-3
@@ -18,7 +22,7 @@
     .col-xs-6.col-md-3.margin-below
       = link_to 'Löschen', member_path(m.id), method: 'delete', data: { confirm: 'Wirklich gesamte Station löschen?' }
 
-.row
+.row.margin-below
   = form_for([@share, @share.members.build]) do |mf|
     .col-md-3
       = mf.text_field :name, placeholder: 'Name', class: 'form-control'
@@ -29,63 +33,68 @@
     .col-md-3
       = button_tag('Mitglied hinzufügen', type: 'submit', class: 'btn btn-success')
 
+.row
   .col-xs-12
     %hr
 
-  .col-sm-12
-    %h3 Gebote (für 1 Ernteanteil)
-    = form_for(@share) do |f|
-      .row.margin-below
-        .col-md-4
-          = f.text_field :offer_minimum, placeholder: 'Wohlfühl', class: 'form-control offer-field green-bg', disabled: !@settings.offer_minimum_active
-        .col-md-4
-          = f.text_field :offer_medium, placeholder: 'Medium', class: 'form-control offer-field yellow-bg', disabled: !@settings.offer_medium_active
-        .col-md-4
-          = f.text_field :offer_maximum, placeholder: 'Schmerzgrenze', class: 'form-control offer-field red-bg', disabled: !@settings.offer_maximum_active
+= form_for(@share) do |f|
+  .row
+    .col-xs-12
+      %h3 Pflichtangaben 
+      Gebote pro 1 Ernteanteil
+  .row.margin-below
+    .col-md-4
+      = f.text_field :offer_minimum, placeholder: 'Wohlfühl', class: 'form-control offer-field green-bg', disabled: !@settings.offer_minimum_active
+    .col-md-4
+      = f.text_field :offer_medium, placeholder: 'Medium', class: 'form-control offer-field yellow-bg', disabled: !@settings.offer_medium_active
+    .col-md-4
+      = f.text_field :offer_maximum, placeholder: 'Schmerzgrenze', class: 'form-control offer-field red-bg', disabled: !@settings.offer_maximum_active
+  .row
+    .col-sm-6.margin-below
+      Anzahl der Ernteanteile
+      = f.select :size, options_for_select(@share.size_selections, selected: @share.size), {}, { class: 'form-control' }
+    .col-sm-6
+      Wieviel Monate möchtest du im Voraus bezahlen?
+      = f.select :payment, [1, 3, 12], {prompt: "Bitte wählen"}, {class: "form-control"}
+    .col-xs-12.margin-below
+      %h4.blue
+        = f.label :agreed do
+          = f.check_box :agreed
+        Ich habe die
+        = link_to 'Vereinbarung gelesen', '/basta_vereinbarung_2017.pdf', target: '_blank'
+        und versichere, dass meine Angaben der Wahrheit entsprechen
 
-      .row
-        .col-xs-12
-          %h3 Pflichtangaben 
-        .col-xs-12.margin-below
-          Vor- und Nachname
-          = f.text_field :name, placeholder: 'Name', class: 'form-control'
-        .col-sm-6.margin-below
-          Anzahl der Ernteanteile
-          = f.select :size, options_for_select(@share.size_selections, selected: @share.size), {}, { class: 'form-control' }
-        .col-sm-6
-          Wieviel Monate möchtest du im Voraus bezahlen?
-          = f.select :payment, [1, 3, 12], {prompt: "Bitte wählen"}, {class: "form-control"}
-        .col-xs-12.margin-below
-          %h4.blue
-            = f.label :agreed do
-              = f.check_box :agreed
-            Ich habe die
-            = link_to 'Vereinbarung gelesen', '/basta_vereinbarung_2016.pdf', target: '_blank'
-            und versichere, dass meine Angaben der Wahrheit entsprechen
+  .row
+    .col-xs-12
+      %hr
 
-      .row
-        .col-xs-12
-          %h3 Folgende Angaben würden uns sehr bei der weiteren Planung helfen
-        .col-xs-12.margin-below
-          Wieviele Tage kannst du voraussichtlich im kommenden Jahr bei Basta helfen?
-          = f.text_field :land_help_days, placeholder: 'Anzahl in Tagen', class: 'form-control'
-        .col-xs-12.margin-below
-          In welcher AG würdest du dich im kommenden Jahr beteiligen?
-          = f.text_field :workgroup, placeholder: 'z.B. Finanz-AG', class: 'form-control'
-        .col-xs-12.margin-below
-          Mit welchen Fähigkeiten oder Tools könntest du aushelfen?
-          = f.text_field :skills, placeholder: 'z.B. Grafikdesign-Kenntnisse, ökologisches, ökonomisches oder juristisches Fachwissen, Kettensäge...', class: 'form-control'
-        .col-xs-12.margin-below
-          = f.label :no_help do
-            = f.check_box :no_help
-            Ich kann mich im kommenden Jahr leider nicht über die
-            = link_to 'Mindestanforderungen', '/basta_vereinbarung_2016.pdf', target: '_blank'
-            hinaus beteiligen
+  .row
+    .col-xs-12
+      %h3 Folgende Angaben würden uns sehr bei der weiteren Planung helfen
+    .col-xs-12.margin-below
+      Wieviele Tage kannst du voraussichtlich im kommenden Jahr bei Basta helfen?
+      = f.text_field :land_help_days, placeholder: 'Anzahl in Tagen', class: 'form-control'
+    .col-xs-12.margin-below
+      In welcher AG würdest du dich im kommenden Jahr beteiligen?
+      = f.text_field :workgroup, placeholder: 'z.B. Finanz-AG', class: 'form-control'
+    .col-xs-12.margin-below
+      Mit welchen Fähigkeiten oder Tools könntest du aushelfen?
+      = f.text_field :skills, placeholder: 'z.B. Grafikdesign-Kenntnisse, ökologisches, ökonomisches oder juristisches Fachwissen, Kettensäge...', class: 'form-control'
+    .col-xs-12.margin-below
+      = f.label :no_help do
+        = f.check_box :no_help
+        Ich kann mich im kommenden Jahr leider nicht über die
+        = link_to 'Mindestanforderungen', '/basta_vereinbarung_2017.pdf', target: '_blank'
+        hinaus beteiligen
 
-          .row
-        .col-xs-12
-          %h3 Feedback zum Bietverfahren
-        .col-xs-12.margin-below
-          = f.text_area :feedback, class: 'form-control'
-        .col-xs-12
-          = button_tag 'Speichern', type: 'submit', class: 'btn btn-success'
+  .row
+    .col-xs-12
+      %hr
+
+  .row
+    .col-xs-12
+      %h3 Feedback zum Bietverfahren
+    .col-xs-12.margin-below
+      = f.text_area :feedback, class: 'form-control'
+    .col-xs-12
+      = button_tag 'Speichern', type: 'submit', class: 'btn btn-success'
