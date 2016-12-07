@@ -111,7 +111,7 @@ class Share < ActiveRecord::Base
   end
 
   def password_reset_token_alive?
-    return false unless password_reset_token
-    (Time.now - password_reset_timestamp)/3600 > 24
+    return false unless password_reset_timestamp
+    (Time.now - password_reset_timestamp)/3600 < 24
   end
 end

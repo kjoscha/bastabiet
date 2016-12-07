@@ -37,7 +37,7 @@ class PasswordResetControllerTest < ActionController::TestCase
     @activated_share.save
 
     get :reset_password, id: @activated_share.id, token: @activated_share.password_reset_token
-    assert_response :redirect
+    assert_response :success
   end
 
   test "Shall alert and redirect to root url if link is invalid" do
