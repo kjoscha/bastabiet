@@ -1,7 +1,6 @@
 Joscha:
   id: 1
   name: Joscha Ka
-  members: some test persons in this share
   payment: 1
   land_help_days: 3
   workgroup: test_work_group

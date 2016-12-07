@@ -19,7 +19,6 @@ class SharesControllerTest < ActionController::TestCase
     assert_difference 'Share.count' do
       post :create, share: {
         name: "Test user", 
-        members: "some test persons in this share",
         payment: 1,
         land_help_days: 3,
         workgroup: 'test_work_group',
