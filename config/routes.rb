@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :stations, shallow: true do
     resources :groups do
       resources :shares do
-        resources :offers
+        resources :members
       end
     end
   end
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :stations
   resources :groups
   resources :shares
-  resources :offers
+  resources :members
   resources :settings
 
   get '/register' => 'shares#new', as: :register
