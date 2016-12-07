@@ -20,15 +20,18 @@
 $green: #5cb85c;
 $yellow: #f0ad4e;
 $red: #d9534f;
+$blue: #5bc0de;
 
 .green-bg { background-color: $green; }
 .yellow-bg { background-color: $yellow; }
 .red-bg { background-color: $red; }
 
+.blue { color: $blue; }
+
 .loading-overlay {
   width: 100vw;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   z-index: 9999;
   top: 0;
   left: 0;
