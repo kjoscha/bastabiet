@@ -8,7 +8,6 @@ class MessageMailerTest < ActionMailer::TestCase
     @group = Group.create(station_id: @station.id, name: "test_group")
     @share = Share.create(group_id: @group.id,
                           name: "test share", 
-                          members: "some test persons in this share",
                           payment: 1,
                           land_help_days: 3,
                           workgroup: 'test_work_group',

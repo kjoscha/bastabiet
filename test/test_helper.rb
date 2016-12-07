@@ -48,7 +48,6 @@ def add_valid_user(activated)
   @group = groups(:Bouffe)
   @share = Share.create(group_id: @group.id,
                         name: "test share", 
-                        members: "some test persons in this share",
                         payment: 1,
                         land_help_days: 3,
                         workgroup: 'test_work_group',
