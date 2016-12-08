@@ -11,11 +11,18 @@ def validate_captcha
   fill_in 'captcha', with: SimpleCaptcha::SimpleCaptchaData.first.value
 end
 
-def login
-  visit login_path
-  fill_in 'sessions_email', with: 'admin@example.com'
-  fill_in 'sessions_password', with: 'secret'
-  click_on 'Login'
+def enter_admin_area
+  visit root_path
+  page.driver.basic_authorize('admin', 'secret')
+  click_on 'Admin'
+end
+
+def log_in
+  add_valid_user(true)
+  visit root_path
+  fill_in 'Email', with: 'foo@bar.org'
+  fill_in 'Passwort', with: 'secret'
+  click_on "Ab geht's"
 end
 
 reporter_options = { color: true }
