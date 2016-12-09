@@ -48,23 +48,29 @@
         <Cell><Data ss:Type="String">Station</Data></Cell>
         <Cell><Data ss:Type="String">Gruppe</Data></Cell>
         <Cell><Data ss:Type="String">Name Hauptkontakt</Data></Cell>
-        <Cell><Data ss:Type="String">Email Hauptkontakt</Data></Cell>
-        <Cell><Data ss:Type="String">Telefonnummer Hauptkontakt</Data></Cell>
         <Cell><Data ss:Type="String">Name Mitglied</Data></Cell>
         <Cell><Data ss:Type="String">Email Mitglied</Data></Cell>
         <Cell><Data ss:Type="String">Telefonnummer Mitglied</Data></Cell>
       </Row>
-    <% @members.each do |member| %>
+    <% @shares.each do |share| %>
       <Row>
-        <Cell><Data ss:Type="String"><%= member.station.name %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= member.group.name %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= member.share.name %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= member.share.email %></Data></Cell>
-        <Cell><Data ss:Type="member"><%= member.share.telephone %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= member.name %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= member.email %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= member.telephone %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.station.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.group.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.email %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.telephone %></Data></Cell>
       </Row>
+      <% share.members.each do |member| %>
+        <Row>
+          <Cell><Data ss:Type="String"><%= member.station.name %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= member.group.name %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= member.share.name %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= member.name %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= member.email %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= member.telephone %></Data></Cell>
+        </Row>
+      <% end %>
     <% end %>
     </Table>
   </Worksheet>

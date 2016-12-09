@@ -27,10 +27,13 @@ class SharesControllerTest < ActionController::TestCase
         password: "secret",
         password_confirmation: "secret",
         email: "foo@bar.org",
+        telephone: "0307187623",
         agreed: true,
         group_id: @group.id
       }
     end
+
+    assert_equal "0307187623", Share.find_by(email: "foo@bar.org").telephone
   end
 
   test 'landing page depending on login state' do
