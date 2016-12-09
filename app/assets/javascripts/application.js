@@ -23,7 +23,7 @@ jQuery(function() {
     var minimumOffer = jQuery('#share_offer_minimum').val() * size;
     var maximumOffer = jQuery('#share_offer_maximum').val() * size;
 
-    var message = 'Möchtest du wirklich mindestens ' + minimumOffer + '€ bzw. maximal ' + maximumOffer + '€ für ' + size.toString() + ' Ernteanteile zahlen?'
+    var message = 'Möchtet ihr wirklich mindestens ' + minimumOffer + '€ bzw. maximal ' + maximumOffer + '€ für ' + size.toString() + ' Ernteanteile zahlen?'
 
     return message;
   };
