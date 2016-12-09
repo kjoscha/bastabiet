@@ -34,7 +34,6 @@ Group.all.each do |group|
       agreed:            true,
       payment:           [1, 3, 12].sample,
       land_help_days:    (1..10).to_a.sample,
-      workgroup:         Faker::Lorem.word,
       skills:            Faker::Lorem.words(rand(3)).join(', '),
       no_help:           [true, false].sample,
       activated:         [true, false].sample,
