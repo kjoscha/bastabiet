@@ -36,7 +36,12 @@ class Group < ActiveRecord::Base
       luftplankton
       mai_2
       newyork_cheesecake
-      buklearhokkaido
+      nuklearhokkaido
+      zucchini
+      zweitopf
+      runkelruebchen
+      zazaza
+      topinambur
     ].each do |group|
       ida.groups.build(name: group.humanize.upcase).save
     end
@@ -58,7 +63,6 @@ class Group < ActiveRecord::Base
 
     k9 = Station.create(name: 'Kinziger 9')
     %w[
-      banana
       basiliko
       bombasta
       estragon
@@ -68,8 +72,17 @@ class Group < ActiveRecord::Base
       hortus
       pastinake
       rot_schwarz_k9
+      travolta
+      machen_wa_noch
     ].each do |group|
       k9.groups.build(name: group.humanize.upcase).save
+    end
+
+    woennich = Station.create(name: 'woennich')
+    %w[
+      woennich_103
+    ].each do |group|
+      woennich.groups.build(name: group.humanize.upcase).save
     end
   end
 end
