@@ -1,6 +1,6 @@
 class Workgroup < ActiveRecord::Base
   has_many :workgroup_shares, dependent: :destroy  
-  has_many :shares, through: :groupings
+  has_many :shares, through: :workgroup_shares
 
   def self.add_existant
     [

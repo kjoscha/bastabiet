@@ -4,6 +4,15 @@ class StationsController < ApplicationController
   def index
     @stations = Station.all
     @station = Station.new
+
+		@shares = Share.all
+    @members = Member.all
+    @workgroups = Workgroup.all
+
+    respond_to do |format|
+      format.html
+      format.xls { headers["Content-Disposition"] = "attachment; filename=\"basta_bietverfahren - #{Date.today.to_s}.xls\"" }
+    end
   end
 
   def create

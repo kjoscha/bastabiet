@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Ernteanteile">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Station</Data></Cell>
+        <Cell><Data ss:Type="String">Gruppe</Data></Cell>
+        <Cell><Data ss:Type="String">Name Hauptkontakt</Data></Cell>
+        <Cell><Data ss:Type="String">Email Hauptkontakt</Data></Cell>
+        <Cell><Data ss:Type="String">Telefonnummer Hauptkontakt</Data></Cell>
+        <Cell><Data ss:Type="String">Größe des Ernteanteils</Data></Cell>
+        <Cell><Data ss:Type="String">Vereinbarung akzeptiert?</Data></Cell>
+        <Cell><Data ss:Type="String">Bezahlung im Vorraus [Monate]</Data></Cell>
+        <Cell><Data ss:Type="String">Arbeitseinsatz-Tage</Data></Cell>
+        <Cell><Data ss:Type="String">Fähigkeiten / Tools</Data></Cell>
+        <Cell><Data ss:Type="String">Nur Mindestbeteiligung</Data></Cell>
+        <% @workgroups.each do |workgroup| %>
+          <Cell><Data ss:Type="String"><%= workgroup.name %></Data></Cell>
+        <% end %>
+      </Row>
+    <% @shares.each do |share| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= share.station.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.group.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.email %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.telephone %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.size %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.agreed ? "x" : "" %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.payment %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.land_help_days %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.skills %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.no_help ? "x" : "" %></Data></Cell>
+        <% @workgroups.each do |workgroup| %>
+          <Cell><Data ss:Type="String"><%= is_share_in_workgroup?(share, workgroup) %></Data></Cell>
+        <% end %>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+  <Worksheet ss:Name="Mitgliederliste">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Station</Data></Cell>
+        <Cell><Data ss:Type="String">Gruppe</Data></Cell>
+        <Cell><Data ss:Type="String">Name Hauptkontakt</Data></Cell>
+        <Cell><Data ss:Type="String">Email Hauptkontakt</Data></Cell>
+        <Cell><Data ss:Type="String">Telefonnummer Hauptkontakt</Data></Cell>
+        <Cell><Data ss:Type="String">Name Mitglied</Data></Cell>
+        <Cell><Data ss:Type="String">Email Mitglied</Data></Cell>
+        <Cell><Data ss:Type="String">Telefonnummer Mitglied</Data></Cell>
+      </Row>
+    <% @members.each do |member| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= member.station.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= member.group.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= member.share.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= member.share.email %></Data></Cell>
+        <Cell><Data ss:Type="member"><%= member.share.telephone %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= member.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= member.email %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= member.telephone %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

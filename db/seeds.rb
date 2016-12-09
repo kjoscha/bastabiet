@@ -41,6 +41,16 @@ Group.all.each do |group|
   end
 end
 
+Share.all.each do |share|
+  rand(1..3).times do
+    share.members.create(
+      name:   Faker::Name.first_name + ' ' + Faker::Name.last_name,
+      email: Faker::Internet.email,
+      telephone: Faker::PhoneNumber.cell_phone
+    )
+  end
+end
+
 Setting.new(
   needed_sum: 10_000,
   show_statistics: true,
