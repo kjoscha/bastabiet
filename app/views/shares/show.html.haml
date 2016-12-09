@@ -8,8 +8,7 @@
 
 .row
   .col-xs-12
-    %h3 Mitglieder
-
+    %h3 Hautpkontakt
 .row.margin-below
   .col-xs-6.col-md-3
     %b= @share.name
@@ -17,19 +16,24 @@
     = @share.email
   .col-xs-6.col-md-3
     = @share.telephone
-  .col-xs-6.col-md-3
-    %i (Hauptkontaktperson)
 
-- @share.members.each do |m|
-  .row
-    .col-xs-6.col-md-3
-      %b= m.name
-    .col-xs-6.col-md-3
-      = m.email
-    .col-xs-6.col-md-3
-      = m.telephone
-    .col-xs-6.col-md-3.margin-below
-      = link_to 'Löschen', member_path(m.id), method: 'delete', data: { confirm: 'Wirklich Mitglied löschen?' }
+.row
+  .col-xs-12
+    %h3 Alle weiteren Mitglieder
+- if @share.members.count == 0
+  .margin-below
+    Bitte tragt alle weiteren Menschen ein, die sich von euerm Ernteanteil ernähren
+- else
+  - @share.members.each do |m|
+    .row
+      .col-xs-6.col-md-3
+        %b= m.name
+      .col-xs-6.col-md-3
+        = m.email
+      .col-xs-6.col-md-3
+        = m.telephone
+      .col-xs-6.col-md-3.margin-below
+        = link_to 'Löschen', member_path(m.id), method: 'delete', data: { confirm: 'Wirklich Mitglied löschen?' }
 
 .row.margin-below
   = form_for([@share, @share.members.build]) do |mf|
