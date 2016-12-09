@@ -28,6 +28,24 @@ $blue: #5bc0de;
 
 .blue { color: $blue; }
 
+body:after{
+  position: fixed;
+  content: '';
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  width: 100%;
+  background-image: url(image-path('background-image.png'));
+  background-position: center bottom;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  z-index:-1;
+  opacity: 0.05;
+}
+
 .coderat {
   margin: 7px;
   padding-top: 30px;
