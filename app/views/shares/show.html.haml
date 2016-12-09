@@ -1,7 +1,6 @@
-.row.margin-below
+.row
   .col-xs-12
-    %h1
-      = @share.name + ' | ' + @share.email + ' | ' + 736743675637.to_s
+    %h1 Details zu eurem Ernteanteil
 
 .row
   .col-xs-12
@@ -10,7 +9,17 @@
 .row
   .col-xs-12
     %h3 Mitglieder
-    .margin-below Bitte gib alle Menschen an, die regelmäßig von euerm Anteil essen
+
+.row.margin-below
+  .col-xs-6.col-md-3
+    %b= @share.name
+  .col-xs-6.col-md-3
+    = @share.email
+  .col-xs-6.col-md-3
+    = @share.telephone
+  .col-xs-6.col-md-3
+    %i (Hauptkontaktperson)
+
 - @share.members.each do |m|
   .row
     .col-xs-6.col-md-3

@@ -29,7 +29,7 @@ class SettingsTest < Capybara::Rails::TestCase
   def log_in
     add_valid_user(true)
     visit root_path
-    fill_in 'Email', with: 'foo@bar.org'
+    fill_in 'Email der Hauptkontaktperson', with: 'foo@bar.org'
     fill_in 'Passwort', with: 'secret'
     click_on "Ab geht's"
   end

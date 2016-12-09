@@ -10,12 +10,16 @@ class Share < ActiveRecord::Base
     create_digest_for(attribute: 'activation')
   end
 
-  validates :name, presence: true,
+  validates :name,
+    presence: true,
     length: { minimum: 3 },
     uniqueness: true
-  validates :email, presence: true,
+  validates :email,
+    presence: true,
     format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i },
     uniqueness: true
+  validates :telephone,
+    format: { with: /\A((?![a-zA-Z]).){3,20}\z/ }, if: 'telephone.present?'
 
   validate :name_at_least_two_words?
   validate :group_not_full?

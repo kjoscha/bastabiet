@@ -6,23 +6,36 @@
   .row
     .col-xs-6.margin-below
       In welcher Bezugsgruppe bist du?
+      %sup *
       = f.select :group_id, @group_selection, {prompt: "Bitte wählen"}, {class: "form-control"}
     .col-sm-6.margin-below
       Für wieviele Ernteanteile bietest du?
+      %sup *
       = f.select :size, @share.size_selections, {prompt: "Bitte wählen"}, {class: "form-control"}
     .col-xs-12.margin-below
-      Vor- und Nachname
+      Vor- und Nachname (Hauptkontaktperson)
+      %sup *
       = f.text_field :name, placeholder: 'Name', class: 'form-control'
-    .col-xs-12.margin-below
-      Emaildresse
+    .col-xs-6.margin-below
+      Emaildresse (Hauptkontaktperson)
+      %sup *
       = f.email_field :email, placeholder: 'Email', class: 'form-control'
+    .col-xs-6.margin-below
+      Telefonnummer (Hauptkontaktperson)
+      = f.text_field :telephone, placeholder: 'Telefonnummer', class: 'form-control'
     .col-sm-6.margin-below
       Passwort
+      %sup *
       = f.password_field :password, class: 'form-control'
     .col-sm-6.margin-below
       Password wiederholen
+      %sup *
       = f.password_field :password_confirmation, class: 'form-control'
     = f.hidden_field :no_help, value: false
     = f.hidden_field :agreed, value: false
-    .col-xs-12
+    .col-xs-12.margin-below
       = f.submit "Ab geht's", class: "btn btn-success"
+    .col-xs-12
+      %i
+        %sup *
+        sind Pflichtfelder
