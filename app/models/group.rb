@@ -3,6 +3,7 @@ class Group < ActiveRecord::Base
   has_many :shares, dependent: :destroy  
 
   validates_length_of :name, minimum: 3, allow_blank: false
+  validates :name, uniqueness: true
 
   def shares_count
     shares.map(&:size).sum
