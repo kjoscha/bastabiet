@@ -45,7 +45,9 @@ jQuery(function() {
         .call(d3.axisBottom(x));
   };
 
-  createHistogram("svg.offer_minimum", window.offers_minimum);
-  createHistogram("svg.offer_medium", window.offers_medium);
-  createHistogram("svg.offer_maximum", window.offers_maximum);
+  jQuery("svg").each(function() {
+    createHistogram("svg.offer_minimum", window.offers_minimum);
+    createHistogram("svg.offer_medium", window.offers_medium);
+    createHistogram("svg.offer_maximum", window.offers_maximum);
+  });
 });
