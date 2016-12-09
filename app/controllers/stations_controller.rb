@@ -6,6 +6,7 @@ class StationsController < ApplicationController
     @station = Station.new
 
 		@shares = Share.all
+    @members = Member.all
 
     respond_to do |format|
       format.html
