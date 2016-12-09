@@ -70,6 +70,10 @@ body:after{
   display: none;
 }
 
+.minimum-participation-button {
+  cursor: pointer;
+}
+
 .not-activated {
   a {
     color: grey !important;

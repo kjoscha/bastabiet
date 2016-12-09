@@ -1,5 +1,5 @@
 class MessageMailer < ApplicationMailer
-  default from: 'no-reply@lpkb.menkent.uberspace.de'
+  default from: 'basta@lupus.uberspace.de'
 
   def send_password_reset_link(share)
     @share = share
