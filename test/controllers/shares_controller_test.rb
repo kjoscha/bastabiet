@@ -43,7 +43,7 @@ class SharesControllerTest < ActionController::TestCase
 
   test 'guest cannot see shares' do
     get :show, id: @share.id
-    assert_redirect root_path
+    assert_redirected_to root_path
   end
 
   test 'guest cannot destroy shares' do 
