@@ -10,7 +10,7 @@ class StationsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.xls
+      format.xls { headers["Content-Disposition"] = "attachment; filename=\"basta_bietverfahren - #{Date.today.to_s}.xls\"" }
     end
   end
 

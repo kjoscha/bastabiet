@@ -1,5 +1,5 @@
 module StationsHelper
-  def members_to_string(share)
-    share.members.pluck(:name, :email).map { |name, email| "#{name} (#{email})" }.join(', ')
+  def workgroup_names(share)
+    share.workgroups.pluck(:name).join(', ')
   end
 end

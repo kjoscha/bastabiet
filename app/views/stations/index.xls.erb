@@ -12,14 +12,13 @@
         <Cell><Data ss:Type="String">Name Hauptkontakt</Data></Cell>
         <Cell><Data ss:Type="String">Email Hauptkontakt</Data></Cell>
         <Cell><Data ss:Type="String">Telefonnummer Hauptkontakt</Data></Cell>
-        <Cell><Data ss:Type="String">Mitglieder</Data></Cell>
         <Cell><Data ss:Type="String">Größe des Ernteanteils</Data></Cell>
         <Cell><Data ss:Type="String">Vereinbarung akzeptiert?</Data></Cell>
         <Cell><Data ss:Type="String">Bezahlung im Vorraus [Monate]</Data></Cell>
         <Cell><Data ss:Type="String">Arbeitseinsatz-Tage</Data></Cell>
         <Cell><Data ss:Type="String">Arbeitsgruppe</Data></Cell>
         <Cell><Data ss:Type="String">Fähigkeiten</Data></Cell>
-        <Cell><Data ss:Type="String">Keine Hilfe</Data></Cell>
+        <Cell><Data ss:Type="String">Nur Mindestbeteiligung</Data></Cell>
       </Row>
     <% @shares.each do |share| %>
       <Row>
@@ -28,14 +27,13 @@
         <Cell><Data ss:Type="String"><%= share.name %></Data></Cell>
         <Cell><Data ss:Type="String"><%= share.email %></Data></Cell>
         <Cell><Data ss:Type="String"><%= share.telephone %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= members_to_string(share) %></Data></Cell>
         <Cell><Data ss:Type="String"><%= share.size %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= share.agreed %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.agreed ? "x" : "" %></Data></Cell>
         <Cell><Data ss:Type="String"><%= share.payment %></Data></Cell>
         <Cell><Data ss:Type="String"><%= share.land_help_days %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= share.workgrou p%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= workgroup_names(share) %></Data></Cell>
         <Cell><Data ss:Type="String"><%= share.skills %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= share.no_help %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.no_help ? "x" : "" %></Data></Cell>
       </Row>
     <% end %>
     </Table>
