@@ -18,6 +18,28 @@ class UpdateTest < Capybara::Rails::TestCase
     assert_equal @share.offer_minimum, 70
   end
 
+  scenario 'can add members', :js do
+    log_in
+    fill_in 'member_name', with: 'Member name'
+    fill_in 'member_email', with: 'test@member.com'
+    fill_in 'member_telephone', with: '1234'
+    click_on 'Mitglied hinzufügen'
+    refute_content 'Nicht erlaubt!'
+    assert_content 'Member name'
+  end
+
+  scenario 'can change workgroups', :js do
+    @internet_ag_checkbox = "share_workgroup_ids_#{workgroups(:InternetAG).id}"
+    @finanz_ag_checkbox = "share_workgroup_ids_#{workgroups(:FinanzAG).id}"
+    log_in
+    check 'share_agreed'
+    check @internet_ag_checkbox
+    click_on 'Speichern'
+    assert_equal 1, @share.workgroups.count
+    has_checked_field? @internet_ag_checkbox
+    !has_checked_field? @finanz_ag_checkbox
+  end
+
   def log_in
     add_valid_user(true)
     visit root_path

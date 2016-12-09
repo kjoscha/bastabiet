@@ -24,7 +24,7 @@ class Group < ActiveRecord::Base
     shares.map(&:total_offer_maximum).sum
   end
 
-  def self.add_existent
+  def self.add_existant
     ida = Station.create(name: 'Ida Nowhere')
     %w[
       bouffe
