@@ -41,6 +41,11 @@ class SharesControllerTest < ActionController::TestCase
     assert_redirected_to share_path(@share.id)
   end
 
+  test 'guest cannot see shares' do
+    get :show, id: @share.id
+    assert_redirect root_path
+  end
+
   test 'guest cannot destroy shares' do 
     assert_no_difference('Share.count') do
       delete :destroy, id: @share.id
@@ -48,7 +53,7 @@ class SharesControllerTest < ActionController::TestCase
   end
 
   test 'guest cannot update shares' do 
-    patch :update, id: @share, share: { payment: 3 }
+    patch :update, id: @share.id, share: { payment: 3 }
     assert_not_equal 3, @share.payment
   end
 
@@ -72,5 +77,13 @@ class SharesControllerTest < ActionController::TestCase
     assert_difference('Share.count', -1) do
       delete :destroy, id: @share.id
     end
+  end
+
+  test 'logged in share can update itself' do
+    skip 'to do'
+    session[:share_id] = @share.id
+    patch :update, id: @share.id, share: { payment: 12 }
+    @share.reload
+    assert_equal 12, @share.payment
   end
 end

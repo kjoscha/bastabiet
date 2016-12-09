@@ -1,5 +1,5 @@
 class SharesController < ApplicationController
-  before_action :admin_or_current_share, only: [:edit, :update, :destroy]
+  before_action :admin_or_current_share, only: [:show, :edit, :update, :destroy]
   before_action :is_activated?, only: [:update]
 
   def new

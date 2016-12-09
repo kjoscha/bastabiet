@@ -17,8 +17,22 @@
 //= require d3 
 //= require_tree .
 
-
 jQuery(function() {
+  var offerConfirm = function() {
+    var size = jQuery('#share_size').val();
+    var minimumOffer = jQuery('#share_offer_minimum').val() * size;
+    var maximumOffer = jQuery('#share_offer_maximum').val() * size;
+
+    var message = 'Möchtest du wirklich mindestens ' + minimumOffer + '€ bzw. maximal ' + maximumOffer + '€ für ' + size.toString() + ' Ernteanteile zahlen?'
+
+    return message;
+  };
+
+  $('.share-update-submit').click(function(event){
+      if(!confirm(offerConfirm()))
+          event.preventDefault();
+  });
+
   jQuery('.flash-message').fadeOut(10000);
 
   jQuery('.statistic-button').click(function() {
