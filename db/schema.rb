@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20161207183056) do
     t.datetime "password_reset_timestamp"
     t.datetime "activation_timestamp"
     t.string   "workgroup_ids"
+    t.string   "telephone"
   end
 
   add_index "shares", ["group_id"], name: "index_shares_on_group_id", using: :btree
