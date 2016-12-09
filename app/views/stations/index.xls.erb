@@ -16,9 +16,11 @@
         <Cell><Data ss:Type="String">Vereinbarung akzeptiert?</Data></Cell>
         <Cell><Data ss:Type="String">Bezahlung im Vorraus [Monate]</Data></Cell>
         <Cell><Data ss:Type="String">Arbeitseinsatz-Tage</Data></Cell>
-        <Cell><Data ss:Type="String">Arbeitsgruppe</Data></Cell>
-        <Cell><Data ss:Type="String">Fähigkeiten</Data></Cell>
+        <Cell><Data ss:Type="String">Fähigkeiten / Tools</Data></Cell>
         <Cell><Data ss:Type="String">Nur Mindestbeteiligung</Data></Cell>
+        <% @workgroups.each do |workgroup| %>
+          <Cell><Data ss:Type="String"><%= workgroup.name %></Data></Cell>
+        <% end %>
       </Row>
     <% @shares.each do |share| %>
       <Row>
@@ -31,9 +33,11 @@
         <Cell><Data ss:Type="String"><%= share.agreed ? "x" : "" %></Data></Cell>
         <Cell><Data ss:Type="String"><%= share.payment %></Data></Cell>
         <Cell><Data ss:Type="String"><%= share.land_help_days %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= workgroup_names(share) %></Data></Cell>
         <Cell><Data ss:Type="String"><%= share.skills %></Data></Cell>
         <Cell><Data ss:Type="String"><%= share.no_help ? "x" : "" %></Data></Cell>
+        <% @workgroups.each do |workgroup| %>
+          <Cell><Data ss:Type="String"><%= is_share_in_workgroup?(share, workgroup) %></Data></Cell>
+        <% end %>
       </Row>
     <% end %>
     </Table>

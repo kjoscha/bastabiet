@@ -1,5 +1,9 @@
 module StationsHelper
-  def workgroup_names(share)
-    share.workgroups.pluck(:name).join(', ')
+  def is_share_in_workgroup?(share, workgroup)
+    if workgroup.shares.include? share
+      "x"
+    else
+      ""
+    end
   end
 end

@@ -7,6 +7,7 @@ class StationsController < ApplicationController
 
 		@shares = Share.all
     @members = Member.all
+    @workgroups = Workgroup.all
 
     respond_to do |format|
       format.html
