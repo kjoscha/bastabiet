@@ -5,6 +5,6 @@ class ExportToXlsTest < Capybara::Rails::TestCase
     enter_admin_area
     click_on 'Herunterladen als xls'
 
-    assert_equal "application/xls", page.response_headers['Content-Type']
+    assert_equal 'application/xls; charset=utf-8', page.response_headers['Content-Type']
   end
 end

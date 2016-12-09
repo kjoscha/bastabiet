@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
-  belongs_to :stations
+  belongs_to :station
   has_many :shares, dependent: :destroy  
 
   validates_length_of :name, minimum: 3, allow_blank: false

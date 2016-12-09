@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Station</Data></Cell>
+        <Cell><Data ss:Type="String">Gruppe</Data></Cell>
+        <Cell><Data ss:Type="String">Name Ernteanteil</Data></Cell>
+        <Cell><Data ss:Type="String">Email Ernteanteil</Data></Cell>
+        <Cell><Data ss:Type="String">Mitglieder</Data></Cell>
+        <Cell><Data ss:Type="String">Größe des Ernteanteils</Data></Cell>
+        <Cell><Data ss:Type="String">Vereinbarung akzeptiert?</Data></Cell>
+        <Cell><Data ss:Type="String">Bezahlung im Vorraus [Monate]</Data></Cell>
+        <Cell><Data ss:Type="String">Arbeitseinsatz-Tage</Data></Cell>
+        <Cell><Data ss:Type="String">Arbeitsgruppe</Data></Cell>
+        <Cell><Data ss:Type="String">Fähigkeiten</Data></Cell>
+        <Cell><Data ss:Type="String">Keine Hilfe</Data></Cell>
+      </Row>
+    <% @shares.each do |share| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= share.station.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.group.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.email%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= members_to_string(share) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.size%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.agreed%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.payment%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.land_help_days%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.workgroup%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.skills%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.no_help%></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

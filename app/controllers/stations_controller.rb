@@ -4,6 +4,13 @@ class StationsController < ApplicationController
   def index
     @stations = Station.all
     @station = Station.new
+
+		@shares = Share.all
+
+    respond_to do |format|
+      format.html
+      format.xls
+    end
   end
 
   def create
