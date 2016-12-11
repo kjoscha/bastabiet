@@ -25,7 +25,11 @@ class Statistic
     Setting.first.needed_sum
   end
 
+  def total_offers
+    Share.all.map{ |share| share.send("total_#{offer}") }.compact
+  end
+
   def sum
-    offers.sum
+    total_offers.sum
   end
 end
