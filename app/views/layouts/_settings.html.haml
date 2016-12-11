@@ -7,11 +7,16 @@
 
       = form_for(@settings) do |f|
         .modal-body
-          .row
+          .row.margin-below
             .col-md-4
               %b Benötigte Summe
             .col-xs-8
               = f.text_field :needed_sum, placeholder: 'Benötigte Summe in Euro', class: 'form-control'
+          .row
+            .col-md-4
+              %b Ernteanteile insgesamt
+            .col-xs-8
+              = f.text_field :total_shares, placeholder: 'Anzahl der Ernteanteile', class: 'form-control'
             .col-xs-12
               %hr
             .col-xs-6.margin-below

@@ -6,28 +6,44 @@
         %h3.modal-title Statistik
       .modal-body
         %h4
-          Für
-          %b= Share.size_altogether
-          Ernteanteile wurde bereits geboten
+          %b= Share.size_altogether.round
+          von
+          %b= @settings.total_shares
+          Ernteanteile wurden registriert
           %hr
         - [@offers_minimum, @offers_medium, @offers_maximum].each do |offers|
           .row
-            .col-xs-4{class: offers.offer.to_s}
+
+            .col-xs-4
+              %b Geboten
+            .col-xs-4
+              %b Ist:
+              %span{class: offers.offer.to_s}
+                = offers.offers_count
+            .col-xs-4
+              %b Soll:
+              = @settings.total_shares
+
+            .col-xs-4
               %b Summe
             .col-xs-4
               %b Ist:
-              = offers.sum.to_s + '€'
+              %span{class: offers.offer.to_s}
+                = offers.sum.to_s + '€'
             .col-xs-4
               %b Soll:
               = offers.needed_sum.to_s + '€'
-            .col-xs-4{class: offers.offer.to_s}
+
+            .col-xs-4
               %b Durchschnitt
             .col-xs-4
               %b Ist:
-              = offers.average.to_s + '€'
+              %span{class: offers.offer.to_s}
+                = offers.average.to_s + '€'
             .col-xs-4
               %b Soll:
               = offers.needed_average.to_s + '€'
+
             .col-xs-12.text-center
               %svg.histogram{class: offers.offer.to_s}
             .col-xs-12

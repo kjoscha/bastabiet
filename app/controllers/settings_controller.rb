@@ -10,6 +10,6 @@ class SettingsController < ApplicationController
   private
 
   def settings_params
-    params.require(:setting).permit(:needed_sum, :show_statistics, :offer_minimum_active, :offer_medium_active, :offer_maximum_active)
+    params.require(:setting).permit(:needed_sum, :show_statistics, :offer_minimum_active, :offer_medium_active, :offer_maximum_active, :total_shares)
   end
 end
