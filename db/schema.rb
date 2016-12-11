@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209101758) do
+ActiveRecord::Schema.define(version: 20161211192439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20161209101758) do
     t.boolean  "offer_maximum_active", default: true
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "total_shares",         default: 145,  null: false
   end
 
   create_table "shares", force: :cascade do |t|
@@ -57,17 +58,17 @@ ActiveRecord::Schema.define(version: 20161209101758) do
     t.float    "offer_minimum"
     t.float    "offer_medium"
     t.float    "offer_maximum"
-    t.boolean  "agreed"
+    t.string   "activation_digest"
+    t.boolean  "activated",                default: false
+    t.boolean  "agreed",                                   null: false
     t.integer  "payment"
     t.integer  "land_help_days"
     t.string   "skills"
     t.boolean  "no_help",                                  null: false
-    t.string   "activation_digest"
-    t.boolean  "activated",                default: false
-    t.text     "feedback"
     t.string   "password_reset_digest"
     t.datetime "password_reset_timestamp"
     t.datetime "activation_timestamp"
+    t.text     "feedback"
     t.string   "telephone"
   end
 

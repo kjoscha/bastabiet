@@ -1,5 +1,6 @@
 Default:
   needed_sum: 10_000
+  total_shares: 100
   show_statistics: false
   offer_minimum_active: true
   offer_medium_active: true
