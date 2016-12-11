@@ -10,12 +10,14 @@ class UpdateTest < Capybara::Rails::TestCase
   scenario 'updates share if agreement is accepted', :js do
     log_in
     check 'share_agreed'
-    fill_in 'share_offer_minimum', with: '70'
+    fill_in 'share_offer_minimum', with: '140'
+    select '2.0', from: 'share_size'
     click_on 'Speichern'
     assert_content 'Erfolgreich aktualisiert'
     @share.reload
     assert_equal true, @share.agreed
     assert_equal @share.offer_minimum, 70
+    assert_equal '70.0', find('#share_offer_minimum').value
   end
 
   scenario 'can add members', :js do
