@@ -9,6 +9,10 @@ class Statistic
     Share.all.map{ |share| share.send(offer) }.compact
   end
 
+  def offers_count
+    offers.size
+  end
+
   def average
     (offers.inject{ |sum, el| sum + el }.to_f / offers.size).round(2)
   end
