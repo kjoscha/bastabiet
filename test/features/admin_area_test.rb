@@ -12,10 +12,20 @@ class AdminAreaTest < Capybara::Rails::TestCase
     refute_content 'Nur Bezugsgruppen'
   end
 
-  scenario 'admin area accessible with authentication', :js do
+  scenario 'admin area correct and accessible with authentication', :js do
+    add_valid_user(true)
     visit root_path
+    @share.update_attributes(
+      offer_minimum: 10,
+      offer_medium: 50,
+      offer_maximum: 100,
+      size: 2
+    )
     page.driver.basic_authorize('admin', 'secret')
     click_on 'Admin'
     assert_content 'Nur Bezugsgruppen'
+    assert_content '20€'
+    assert_content '100€'
+    assert_content '200€'
   end
 end

@@ -53,11 +53,11 @@
                         %span.label.label-warning !
 
                     %td.col-xs-2=share.size
-                    - share.all_offers.each do |offer|
+                    - %w[minimum medium maximum].each do |offer|
                       %td.col-xs-2
-                        - if offer
+                        - if share.send("total_offer_#{offer}")
                           %span.label.label-success
-                            = to_euro(offer)
+                            = to_euro(share.send("total_offer_#{offer}"))
           - else
             %table.table.col-xs-12.shares-table.margin-below
               %thead
