@@ -29,7 +29,7 @@
                 = ' (' + to_euro(group.total_offer_minimum) + ')'
               .col-xs-8
                 .completion-bar{style: "width: #{group.completion}%"}
-                  = group.completion.to_s + '% registriert'
+                  = 'Auf ' + group.completion.to_s + '% der Ernteanteile wurde geboten'
           .panel-body.group-info-header
             = link_to 'Löschen', group_path(group), method: 'delete', data: { confirm: 'Wirklich gesamte Station löschen?' }
           - if group.shares.count > 0

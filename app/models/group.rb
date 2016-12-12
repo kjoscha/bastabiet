@@ -5,12 +5,18 @@ class Group < ActiveRecord::Base
   validates_length_of :name, minimum: 3, allow_blank: false
   validates :name, uniqueness: true
 
-  def shares_count
-    shares.map(&:size).sum
+  def shares_with_offer
+    shares.find_all do |share|
+      share.offer_minimum
+    end
+  end
+
+  def total_size_of_shares_with_offer
+    shares_with_offer.map(&:size).sum
   end
 
   def completion
-    shares_count / 4 * 100
+    total_size_of_shares_with_offer / 4 * 100
   end
 
   def total_offer_minimum
