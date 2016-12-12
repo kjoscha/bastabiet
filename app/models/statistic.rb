@@ -14,7 +14,7 @@ class Statistic
   end
 
   def average
-    (offers.inject{ |sum, el| sum + el }.to_f / offers.size).round(2)
+    (single_offers.inject{ |sum, el| sum + el }.to_f / single_offers.size).round(2)
   end
 
   def shares
@@ -29,11 +29,11 @@ class Statistic
     Setting.first.needed_sum
   end
 
-  def total_offers
-    Share.all.map{ |share| share.send("total_#{offer}") }.compact
+  def single_offers
+    Share.all.map{ |share| share.send("one_#{offer}") }.compact
   end
 
   def sum
-    total_offers.sum
+    offers.sum
   end
 end

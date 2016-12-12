@@ -12,7 +12,7 @@ class SettingsTest < Capybara::Rails::TestCase
     assert_content 'Statistik'
     find('.statistic-button').trigger('click')
     sleep(1)
-    assert_content 'wurde bereits geboten'
+    assert_content 'Statistik'
   end
 
   scenario 'Offer edit can be deactivated', :js do

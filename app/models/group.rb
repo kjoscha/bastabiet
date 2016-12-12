@@ -14,15 +14,15 @@ class Group < ActiveRecord::Base
   end
 
   def total_offer_minimum
-    shares.map(&:total_offer_minimum).sum
+    shares.map(&:offer_minimum).compact.sum
   end
 
   def total_offer_medium
-    shares.map(&:total_offer_medium).sum
+    shares.map(&:offer_medium).compact.sum
   end
 
   def total_offer_maximum
-    shares.map(&:total_offer_maximum).sum
+    shares.map(&:offer_maximum).compact.sum
   end
 
   def self.add_existant

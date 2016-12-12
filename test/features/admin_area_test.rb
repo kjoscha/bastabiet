@@ -24,8 +24,8 @@ class AdminAreaTest < Capybara::Rails::TestCase
     page.driver.basic_authorize('admin', 'secret')
     click_on 'Admin'
     assert_content 'Nur Bezugsgruppen'
-    assert_content '20€'
+    assert_content '10€'
+    assert_content '50€'
     assert_content '100€'
-    assert_content '200€'
   end
 end

@@ -72,16 +72,16 @@ class Share < ActiveRecord::Base
     Group.find(group_id)
   end
 
-  def total_offer_minimum
-    offer_minimum ? offer_minimum * size : 0
+  def one_offer_minimum
+    offer_minimum / size if offer_minimum
   end
 
-  def total_offer_medium
-    offer_medium ? offer_medium * size : 0
+  def one_offer_medium
+    offer_medium / size if offer_medium
   end
 
-  def total_offer_maximum
-    offer_maximum ? offer_maximum * size : 0
+  def one_offer_maximum
+    offer_maximum / size if offer_maximum
   end
 
   def all_offers
