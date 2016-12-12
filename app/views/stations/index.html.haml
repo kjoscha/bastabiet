@@ -49,8 +49,6 @@
                       = link_to share.name, share_path(share)
                       - if !share.activated
                         %span.label.label-danger !
-                      - if share.all_offers.empty?
-                        %span.label.label-warning !
 
                     %td.col-xs-2=share.size
                     - %w[minimum medium maximum].each do |offer|
