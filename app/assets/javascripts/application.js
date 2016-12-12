@@ -20,8 +20,8 @@
 jQuery(function() {
   var offerConfirm = function() {
     var size = jQuery('#share_size').val();
-    var minimumOffer = jQuery('#share_offer_minimum').val() * size;
-    var maximumOffer = jQuery('#share_offer_maximum').val() * size;
+    var minimumOffer = jQuery('#share_offer_minimum').val();
+    var maximumOffer = jQuery('#share_offer_maximum').val();
 
     var message = 'Möchtet ihr wirklich mindestens ' + minimumOffer + '€ bzw. maximal ' + maximumOffer + '€ für ' + size.toString() + ' Ernteanteile zahlen?'
 

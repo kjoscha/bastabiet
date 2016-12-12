@@ -1,7 +1,7 @@
 class Share < ActiveRecord::Base
   belongs_to :group
   has_one :station, through: :group
-  has_many :members
+  has_many :members, dependent: :destroy
   has_many :workgroup_shares, dependent: :destroy
   has_many :workgroups, through: :workgroup_shares
 
