@@ -19,6 +19,7 @@
     %table.share-table.display.responsive.no-wrap.compact{cellspacing: '0', width: '100%'}
       %thead
         %tr
+          %th Station
           %th Bezugsgruppe
           %th Name
           %th Ernteanteile
@@ -30,6 +31,7 @@
       %tbody
         - Share.all.each do |share|
           %tr
+            %td= share.station.name
             %td= share.group.name
             %td= share.name
             %td= share.size

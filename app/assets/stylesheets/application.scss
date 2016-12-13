@@ -165,8 +165,14 @@ li > a {
   width: 100%;
 }
 
-table {
-  background-color: none !important;
+tr.odd {
+  background-color: transparent !important;
+}
+tr {
+  background-color: transparent !important;
+}
+td {
+  background-color: transparent !important;
 }
 
 .histogram {
