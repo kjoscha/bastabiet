@@ -12,49 +12,46 @@
           Ernteanteile wurden registriert
           %hr
         - [@offers_minimum, @offers_medium, @offers_maximum].each do |offers|
-          .row.margin-below
-            .col-xs-6
-              %b Geboten
-            .col-xs-3
-              %b Ist:
-              %span{class: offers.offer.to_s}
-                = offers.total_share_size_with_offers
-            .col-xs-3
-              %b Soll:
-              = @settings.total_shares
 
-          .row.margin-below
-            .col-xs-6
-              %b Summe
-            .col-xs-3
-              %b Ist:
-              %span{class: offers.offer.to_s}
-                = offers.sum.to_s + '€'
-            .col-xs-3
-              %b Soll:
-              = offers.needed_sum.to_s + '€'
-
-          .row.margin-below
-            .col-xs-6
-              %b Monatliche Summe
-            .col-xs-3
-              %b Ist:
-              %span{class: offers.offer.to_s}
-                = offers.monthly_sum.to_s + '€'
-            .col-xs-3
-              %b Soll:
-              = offers.needed_monthly_sum.to_s + '€'
-
-          .row.margin-below
-            .col-xs-6
-              %b Monatlicher Durchschnitt
-            .col-xs-3
-              %b Ist:
-              %span{class: offers.offer.to_s}
-                = offers.monthly_average.to_s + '€'
-            .col-xs-3
-              %b Soll:
-              = offers.needed_monthly_average.to_s + '€'
+          .col-xx-12
+            %table.statistic-table
+              %tbody
+                %tr
+                  %td
+                  %td IST
+                  %td SOLL
+                %tr.yearly-sum
+                  %td
+                    %b Summe
+                  %td
+                    %span{class: offers.offer.to_s}
+                      = offers.sum.to_s + '€'
+                  %td
+                    = offers.needed_sum.to_s + '€'
+                %tr
+                  %td
+                    %b Geboten
+                  %td
+                    %span{class: offers.offer.to_s}
+                      = offers.total_share_size_with_offers
+                  %td
+                    = @settings.total_shares
+                %tr
+                  %td
+                    %b Monatliche Summe
+                  %td
+                    %span{class: offers.offer.to_s}
+                      = offers.monthly_sum.to_s + '€'
+                  %td
+                    = offers.needed_monthly_sum.to_s + '€'
+                %tr
+                  %td
+                    %b Monatlicher Durchschnitt
+                  %td
+                    %span{class: offers.offer.to_s}
+                      = offers.monthly_average.to_s + '€'
+                  %td
+                    = offers.needed_monthly_average.to_s + '€'
 
             .col-xs-12.text-center
               %svg.histogram{class: offers.offer.to_s}

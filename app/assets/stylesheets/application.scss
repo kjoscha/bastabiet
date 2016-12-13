@@ -159,9 +159,17 @@ li > a {
   font: 10px sans-serif;
 }
 
+.statistic-table {
+  width: 100%;
+}
+
 .histogram {
   height: 300px;
   width: 350px;
+}
+
+.yearly-sum {
+  font-size: 20px;
 }
 
 .logged-in-with {
