@@ -28,7 +28,7 @@ class Statistic
   end
 
   def needed_average
-    (needed_sum / Setting.first.total_shares / 12).round(2)
+    (needed_sum / Setting.first.total_shares).round(2)
   end
 
   def needed_sum
