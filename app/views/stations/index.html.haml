@@ -11,6 +11,44 @@
     .btn.btn-xs.btn-default.toggle-table-visibility
       Nur Bezugsgruppen
 
+
+
+
+.row
+  .col-xs-12
+    %table.share-table.display.responsive.no-wrap.compact{cellspacing: '0', width: '100%'}
+      %thead
+        %tr
+          %th Bezugsgruppe
+          %th Name
+          %th Ernteanteile
+          %th Wohlfühl
+          %th Medium
+          %th Schmerzgrenze
+          %th Schmerzgrenze
+          %th Schmerzgrenze
+      %tbody
+        - Share.all.each do |share|
+          %tr
+            %td= share.group.name
+            %td= share.name
+            %td= share.size
+            - %w[minimum medium maximum].each do |offer|
+              %td
+                - if share.send("offer_#{offer}")
+                  %span.label.label-success
+                    = to_euro(share.send("offer_#{offer}"))
+
+            %td
+              sjsfijdsjfjsdfujhdsgdf figjidfuhudfuhgufdfg uifgiujgfifgigfdfugfuifg fduigfuigfufgiufdoudfugsd dfuigfusdifudgsifudgidufg dfuigfuugdsiodf
+            %td
+              sjsfijdsjfjsdfujhdsgdf figjidfuhudfuhgufdfg uifgiujgfifgigfdfugfuifg fduigfuigfufgiufdoudfugsd dfuigfusdifudgsifudgidufg dfuigfuugdsiodf
+
+
+
+
+
+
 - @stations.each do |station|
   .row
     .col-xs-12

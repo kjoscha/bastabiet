@@ -11,6 +11,8 @@
  * file per style scope.
  *
  *= require bootstrap_superhero_theme.min
+ *= require dataTables/jquery.dataTables
+ *= require dataTables/extras/dataTables.responsive
  *= require_tree .
  *= require_self
  */
@@ -161,6 +163,10 @@ li > a {
 
 .statistic-table {
   width: 100%;
+}
+
+table {
+  background-color: none !important;
 }
 
 .histogram {
