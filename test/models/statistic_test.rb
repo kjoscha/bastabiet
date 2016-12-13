@@ -17,9 +17,9 @@ class StatisticTest < ActiveSupport::TestCase
 
   test 'calculates correct needed average' do
     create_shares
-    assert_equal 100, Statistic.new('offer_minimum').needed_average
-    assert_equal 100, Statistic.new('offer_medium').needed_average
-    assert_equal 100, Statistic.new('offer_maximum').needed_average
+    assert_equal 10, Statistic.new('offer_minimum').needed_average
+    assert_equal 10, Statistic.new('offer_medium').needed_average
+    assert_equal 10, Statistic.new('offer_maximum').needed_average
   end
 
   test 'calculates correct total size of shares with offers' do
