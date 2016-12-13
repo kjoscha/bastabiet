@@ -32,7 +32,7 @@ class Statistic
   end
 
   def needed_sum
-    Setting.first.needed_sum / 12
+    Setting.first.needed_sum.to_f / 12
   end
 
   def single_offers

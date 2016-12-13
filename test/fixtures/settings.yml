@@ -1,6 +1,6 @@
 Default:
-  needed_sum: 12_000
-  total_shares: 100
+  needed_sum: 153_077
+  total_shares: 145
   show_statistics: false
   offer_minimum_active: true
   offer_medium_active: true
