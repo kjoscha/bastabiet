@@ -3,23 +3,23 @@ require 'test_helper'
 class StatisticTest < ActiveSupport::TestCase
   test 'calculates correct sum' do
     create_shares
-    assert_equal 30, Statistic.new('offer_minimum').sum
-    assert_equal 60, Statistic.new('offer_medium').sum
-    assert_equal 110, Statistic.new('offer_maximum').sum
+    assert_equal 30, Statistic.new('offer_minimum').monthly_sum
+    assert_equal 60, Statistic.new('offer_medium').monthly_sum
+    assert_equal 110, Statistic.new('offer_maximum').monthly_sum
   end
 
   test 'calculates correct average' do
     create_shares
-    assert_equal 25, Statistic.new('offer_minimum').average
-    assert_equal 50, Statistic.new('offer_medium').average
-    assert_equal 95, Statistic.new('offer_maximum').average
+    assert_equal 25, Statistic.new('offer_minimum').monthly_average
+    assert_equal 50, Statistic.new('offer_medium').monthly_average
+    assert_equal 95, Statistic.new('offer_maximum').monthly_average
   end
 
   test 'calculates correct needed average' do
     create_shares
-    assert_equal 87.98, Statistic.new('offer_minimum').needed_average
-    assert_equal 87.98, Statistic.new('offer_medium').needed_average
-    assert_equal 87.98, Statistic.new('offer_maximum').needed_average
+    assert_equal 87.98, Statistic.new('offer_minimum').needed_monthly_average
+    assert_equal 87.98, Statistic.new('offer_medium').needed_monthly_average
+    assert_equal 87.98, Statistic.new('offer_maximum').needed_monthly_average
   end
 
   test 'calculates correct total size of shares with offers' do

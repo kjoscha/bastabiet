@@ -29,10 +29,10 @@
             .col-xs-3
               %b Ist:
               %span{class: offers.offer.to_s}
-                = offers.sum.to_s + '€'
+                = offers.monthly_sum.to_s + '€'
             .col-xs-3
               %b Soll:
-              = offers.needed_sum.to_s + '€'
+              = offers.needed_monthly_sum.to_s + '€'
 
           .row.margin-below
             .col-xs-6
@@ -40,10 +40,10 @@
             .col-xs-3
               %b Ist:
               %span{class: offers.offer.to_s}
-                = offers.average.to_s + '€'
+                = offers.monthly_average.to_s + '€'
             .col-xs-3
               %b Soll:
-              = offers.needed_average.to_s + '€'
+              = offers.needed_monthly_average.to_s + '€'
 
             .col-xs-12.text-center
               %svg.histogram{class: offers.offer.to_s}
