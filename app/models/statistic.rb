@@ -22,12 +22,21 @@ class Statistic
   end
 
   def needed_monthly_sum
-    (Setting.first.needed_sum.to_f / 12).round(2)
+    (needed_sum.to_f / 12).round(2)
   end
 
   def monthly_sum
     offers.sum
   end
+
+  def sum
+    offers.sum * 12
+  end
+
+  def needed_sum
+    Setting.first.needed_sum
+  end
+
 
   def single_offers
     Share.all.map{ |share| share.send("one_#{offer}") }.compact

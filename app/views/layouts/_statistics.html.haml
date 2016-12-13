@@ -25,6 +25,17 @@
 
           .row.margin-below
             .col-xs-6
+              %b Summe
+            .col-xs-3
+              %b Ist:
+              %span{class: offers.offer.to_s}
+                = offers.sum.to_s + '€'
+            .col-xs-3
+              %b Soll:
+              = offers.needed_sum.to_s + '€'
+
+          .row.margin-below
+            .col-xs-6
               %b Monatliche Summe
             .col-xs-3
               %b Ist:
