@@ -25,7 +25,7 @@ class UpdateTest < Capybara::Rails::TestCase
     assert_equal '80.0', find('#share_offer_maximum').value
   end
 
-  scenario 'can add members', :js do
+  scenario 'can add and remove members', :js do
     log_in
     fill_in 'member_name', with: 'Member name'
     fill_in 'member_email', with: 'test@member.com'
@@ -33,6 +33,8 @@ class UpdateTest < Capybara::Rails::TestCase
     click_on 'Mitglied hinzufügen'
     refute_content 'Nicht erlaubt!'
     assert_content 'Member name'
+    click_on 'Löschen'
+    refute_content 'Member name'
   end
 
   scenario 'can change workgroups', :js do
