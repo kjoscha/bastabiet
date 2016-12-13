@@ -6,7 +6,7 @@
         %h3.modal-title Statistik
       .modal-body
         %h4
-          %b= Share.size_altogether.round
+          %b= Share.size_altogether.round(1)
           von
           %b= @settings.total_shares
           Ernteanteile wurden registriert
@@ -19,7 +19,7 @@
             .col-xs-4
               %b Ist:
               %span{class: offers.offer.to_s}
-                = offers.offers_count
+                = offers.total_share_size_with_offers
             .col-xs-4
               %b Soll:
               = @settings.total_shares

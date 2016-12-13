@@ -9,8 +9,14 @@ class Statistic
     Share.all.map{ |share| share.send(offer) }.compact
   end
 
-  def offers_count
-    offers.size
+  def shares_with_offer
+    Share.all.find_all do |share|
+      share.send(offer)
+    end
+  end
+
+  def total_share_size_with_offers
+    shares_with_offer.map(&:size).sum
   end
 
   def average
