@@ -63,7 +63,7 @@ jQuery(function() {
     'bInfo': false,
     'order': [[ 0, 'asc' ]],
     'aoColumnDefs': [
-        { 'bSortable': false, 'aTargets': [6,5,4,3] }
+        { 'bSortable': false, 'aTargets': [5,6,7,8] }
      ]
   });
 

@@ -33,7 +33,7 @@ module SessionsHelper
 
   def authenticate
     authenticate_or_request_with_http_basic('Administration') do |username, password|
-      session[:admin] = (username == ENV['htaccess_login'] && password == ENV['htaccess_passwd'])
+      session[:admin] = (username == 'admin' && password == 'secret')
     end
   end
 end

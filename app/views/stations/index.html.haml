@@ -15,8 +15,10 @@
           %th.dt-center Name
           %th.dt-center Ernteanteile
           %th.dt-center Gebote
+          %th.dt-center Bezahlung
           %th.dt-center Mitglieder
           %th.dt-center Arbeitsgruppen
+          %th.dt-center Feedback
           %th
       %tbody
         - Share.all.each do |share|
@@ -35,9 +37,13 @@
                   %span.label.label-success
                     = to_euro(share.send("offer_#{offer}"))
             %td
+              = share.payment
+            %td
               = share.members.map(&:name).join(', ')
             %td
               = share.workgroups.map(&:name).join(', ')
+            %td
+              = share.feedback + ' Monate' if share.feedback
             %td
               = link_to 'Löschen', share_path(share), method: 'delete', data: { confirm: 'Wirklich gesamte Station löschen?' }
 
