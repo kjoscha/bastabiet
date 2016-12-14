@@ -68,6 +68,10 @@ class Share < ActiveRecord::Base
     group.shares.where.not(id: id)
   end
 
+  def station
+    Station.find(group.station_id)
+  end
+
   def group
     Group.find(group_id)
   end

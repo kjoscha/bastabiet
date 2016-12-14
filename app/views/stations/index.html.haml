@@ -3,68 +3,70 @@
     = link_to 'Übersicht als Excel-File herunterladen', stations_path(format: 'xls')
 
 .row
-  .col-sm-4.legend
-    %span.label.label-danger !
-    Account noch nicht aktivert
-  .col-sm-4
-  .col-sm-4
-    .btn.btn-xs.btn-default.toggle-table-visibility
-      Nur Bezugsgruppen
+  .col-xs-12
+    %h1 Ernteanteile
+
+.row.margin-below
+  .col-xs-12
+    %table.share-table.display.responsive.no-wrap.compact{cellspacing: '0', width: '100%'}
+      %thead
+        %tr
+          %th.dt-center Station | Bezugsgruppe
+          %th.dt-center Name
+          %th.dt-center Ernteanteile
+          %th.dt-center Gebote
+          %th.dt-center Mitglieder
+          %th.dt-center Arbeitsgruppen
+          %th
+      %tbody
+        - Share.all.each do |share|
+          - css_class = share.activated ? '' : 'not-activated'
+          %tr{class: css_class}
+            %td= share.station.name + ' | ' + share.group.name
+            %td
+              = link_to share.name, share_path(share)
+              - if !share.activated
+                %span.label.label-danger !
+
+            %td= share.size
+            %td.offers-cell
+              - %w[minimum medium maximum].each do |offer|
+                - if share.send("offer_#{offer}")
+                  %span.label.label-success
+                    = to_euro(share.send("offer_#{offer}"))
+            %td
+              = share.members.map(&:name).join(', ')
+            %td
+              = share.workgroups.map(&:name).join(', ')
+            %td
+              = link_to 'Löschen', share_path(share), method: 'delete', data: { confirm: 'Wirklich gesamte Station löschen?' }
+
+.row
+  .col-xs-12
+    %h1 Stationen & Bezugsgruppen
 
 - @stations.each do |station|
   .row
     .col-xs-12
       %h2
         = station.name
-    - station.groups.each do |group|
-      .col-xs-12
-        .panel.panel-info
-          .panel-heading
-            .row
-              .col-xs-4
-                = group.name
-                = ' (' + to_euro(group.total_offer_minimum) + ')'
-              .col-xs-8
-                .completion-bar{style: "width: #{group.completion}%"}
-                  = 'Auf ' + group.completion.to_s + '% der Ernteanteile wurde geboten'
-          .panel-body.group-info-header
-            = link_to 'Löschen', group_path(group), method: 'delete', data: { confirm: 'Wirklich gesamte Station löschen?' }
-          - if group.shares.count > 0
-            %table.table.col-xs-12.shares-table.margin-below
-              %thead
-                %tr
-                  %th.col-xs-2 Name
-                  %th.col-xs-1 Ernteanteile
-                  %th.col-xs-2 Wohlfühl
-                  %th.col-xs-2 Medium
-                  %th.col-xs-2 Schmerzgrenze
-              %tbody
-                - group.shares.each do |share|
-                  %tr
-                    %td.col-xs-2
-                      = link_to 'x', share_path(share), method: 'delete', data: { confirm: 'Wirklich gesamte Station löschen?' }
-                      = link_to share.name, share_path(share)
-                      - if !share.activated
-                        %span.label.label-danger !
-
-                    %td.col-xs-2=share.size
-                    - %w[minimum medium maximum].each do |offer|
-                      %td.col-xs-2
-                        - if share.send("offer_#{offer}")
-                          %span.label.label-success
-                            = to_euro(share.send("offer_#{offer}"))
-          - else
-            %table.table.col-xs-12.shares-table.margin-below
-              %thead
-                %tr
-                  %th Noch kein Ernteanteil registriert
+  - station.groups.each do |group|
+    .row.margin-below
+      .col-sm-4
+        = group.name
+        = link_to 'Löschen', group_path(group), method: 'delete', data: { confirm: 'Wirklich gesamte Station löschen?' }
+      .col-sm-8
+        .register-completion-bar{style: "width: #{group.register_completion}%"}
+          = group.register_completion.to_s + '% der Ernteanteile haben sich registriert'
+        .completion-bar{style: "width: #{group.offer_completion}%"}
+          = 'Auf ' + group.offer_completion.to_s + '% der Ernteanteile wurde geboten'
 
   .row
     = form_for([station, station.groups.build]) do |f|
       .col-md-8
         = f.text_field :name, placeholder: 'Neue Bezugsgruppe', class: 'form-control'
       .col-md-4
-        = button_tag('Hinzufügen', type: 'submit', class: 'btn btn-success')
+        = button_tag('Hinzufügen', type: 'submit', class: 'btn btn-info')
   .row
     .col-xs-12
       %hr

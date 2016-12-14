@@ -12,9 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require dataTables/jquery.dataTables
+//= require dataTables/extras/dataTables.responsive
 //= require bootstrap
 //= require bootstrap-sprockets
-//= require d3 
+//= require d3
+//= require_self
 //= require_tree .
 
 jQuery(function() {
@@ -49,18 +52,19 @@ jQuery(function() {
 
   jQuery('.dropdown-toggle').dropdown();
 
-  jQuery('.toggle-table-visibility').click(function() {
-    jQuery(this).toggleClass('active');
-    if (jQuery(this).hasClass('active')) {
-      jQuery('.shares-table').fadeOut();
-      jQuery('.group-info-header').fadeOut();
-    } else {
-      jQuery('.shares-table').fadeIn();
-      jQuery('.group-info-header').fadeIn();
-    };
-  });
-
   jQuery("form").submit(function () {
     jQuery('.loading-overlay').show();
   });
+
+  jQuery('.share-table').DataTable({
+    responsive: true,
+    'searching': true,
+    'paging': false,
+    'bInfo': false,
+    'order': [[ 0, 'asc' ]],
+    'aoColumnDefs': [
+        { 'bSortable': false, 'aTargets': [6,5,4,3] }
+     ]
+  });
+
 });

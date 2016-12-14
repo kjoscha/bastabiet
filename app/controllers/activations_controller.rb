@@ -9,7 +9,7 @@ class ActivationsController < ApplicationController
       log_in share
       redirect_to share
     else
-      flash[:danger] = "Aktivierungs-Link ungültig!"
+      flash[:danger] = "Aktivierungs-Link ungültig! Bitte kontaktiere die Webmaster."
       redirect_to root_url
     end
   end
