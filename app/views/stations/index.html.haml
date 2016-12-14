@@ -37,13 +37,13 @@
                   %span.label.label-success
                     = to_euro(share.send("offer_#{offer}"))
             %td
-              = share.payment
+              = share.payment.to_s + ' Monat(e)'
             %td
               = share.members.map(&:name).join(', ')
             %td
               = share.workgroups.map(&:name).join(', ')
             %td
-              = share.feedback + ' Monate' if share.feedback
+              = truncate(share.feedback) if share.feedback
             %td
               = link_to 'Löschen', share_path(share), method: 'delete', data: { confirm: 'Wirklich gesamte Station löschen?' }
 

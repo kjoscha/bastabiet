@@ -6,4 +6,12 @@ module StationsHelper
       ""
     end
   end
+
+  def truncate(s, length = 80, ellipsis = '...')
+    if s.length > length
+      s.to_s[0..length].gsub(/[^\w]\w+\s*$/, ellipsis)
+    else
+      s
+    end
+  end
 end
