@@ -53,10 +53,10 @@
                     %td
                       = offers.needed_monthly_average.to_s + '€'
 
-                .col-xs-12.text-center
-                  %svg.histogram{class: offers.offer.to_s}
-                .col-xs-12
-                  %hr
+              .col-xs-12.text-center
+                %svg.histogram{class: offers.offer.to_s}
+              .col-xs-12
+                %hr
 
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Schließen
