@@ -21,6 +21,8 @@ class Share < ActiveRecord::Base
     uniqueness: true
   validates :telephone,
     format: { with: /\A((?![a-zA-Z]).){3,20}\z/ }, if: 'telephone.present?'
+  validates :payment, presence: true
+  validates :size, presence: true
 
   validate :name_at_least_two_words?
   validate :group_not_full?

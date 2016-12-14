@@ -13,6 +13,7 @@ class UpdateTest < Capybara::Rails::TestCase
     fill_in 'share_offer_minimum', with: '10'
     fill_in 'share_offer_maximum', with: '80'
     select '1.5', from: 'share_size'
+    select '12', from: 'share_payment'
     click_on 'Speichern'
     assert_content 'Erfolgreich aktualisiert'
     @share.reload
