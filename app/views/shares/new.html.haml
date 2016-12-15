@@ -8,7 +8,7 @@
       In welcher Bezugsgruppe bist du?
       %sup *
       = f.select :group_id, @group_selection, {prompt: "Bitte wählen"}, {class: "form-control"}
-    .col-sm-6.margin-below
+    .col-xs-6.margin-below
       Für wieviele Ernteanteile bietest du?
       %sup *
       = f.select :size, @share.size_selections, {prompt: "Bitte wählen"}, {class: "form-control"}
@@ -23,11 +23,11 @@
     .col-xs-6.margin-below
       Telefonnummer (Hauptkontaktperson)
       = f.text_field :telephone, placeholder: 'Telefonnummer', class: 'form-control'
-    .col-sm-6.margin-below
+    .col-xs-6.margin-below
       Passwort
       %sup *
       = f.password_field :password, class: 'form-control'
-    .col-sm-6.margin-below
+    .col-xs-6.margin-below
       Password wiederholen
       %sup *
       = f.password_field :password_confirmation, class: 'form-control'
