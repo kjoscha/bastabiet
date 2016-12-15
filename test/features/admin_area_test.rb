@@ -9,7 +9,7 @@ class AdminAreaTest < Capybara::Rails::TestCase
   scenario 'admin area not accessible working without authentication', :js do
     visit root_path
     click_on 'Admin'
-    refute_content 'Nur Bezugsgruppen'
+    refute_content 'Ernteanteile'
   end
 
   scenario 'admin area correct and accessible with authentication', :js do
@@ -23,7 +23,7 @@ class AdminAreaTest < Capybara::Rails::TestCase
     )
     page.driver.basic_authorize('admin', 'secret')
     click_on 'Admin'
-    assert_content 'Nur Bezugsgruppen'
+    assert_content 'Ernteanteile'
     assert_content '10€'
     assert_content '50€'
     assert_content '100€'

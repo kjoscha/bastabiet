@@ -15,7 +15,11 @@ class Group < ActiveRecord::Base
     shares_with_offer.map(&:size).sum
   end
 
-  def completion
+  def register_completion
+    shares.map(&:size).sum / 4 * 100
+  end
+
+  def offer_completion
     total_size_of_shares_with_offer / 4 * 100
   end
 

@@ -5,58 +5,58 @@
         %button.close{"data-dismiss" => "modal", :type => "button"} ×
         %h3.modal-title Statistik
       .modal-body
-        %h4
-          %b= Share.size_altogether.round(1)
-          von
-          %b= @settings.total_shares
-          Ernteanteile wurden registriert
-          %hr
-        - [@offers_minimum, @offers_medium, @offers_maximum].each do |offers|
-
-          .col-xx-12
-            %table.statistic-table
-              %tbody
-                %tr
-                  %td
-                  %td IST
-                  %td SOLL
-                %tr.yearly-sum
-                  %td
-                    %b Summe
-                  %td
-                    %span{class: offers.offer.to_s}
-                      = offers.sum.to_s + '€'
-                  %td
-                    = offers.needed_sum.to_s + '€'
-                %tr
-                  %td
-                    %b Geboten
-                  %td
-                    %span{class: offers.offer.to_s}
-                      = offers.total_share_size_with_offers
-                  %td
-                    = @settings.total_shares
-                %tr
-                  %td
-                    %b Monatliche Summe
-                  %td
-                    %span{class: offers.offer.to_s}
-                      = offers.monthly_sum.to_s + '€'
-                  %td
-                    = offers.needed_monthly_sum.to_s + '€'
-                %tr
-                  %td
-                    %b Monatlicher Durchschnitt
-                  %td
-                    %span{class: offers.offer.to_s}
-                      = offers.monthly_average.to_s + '€'
-                  %td
-                    = offers.needed_monthly_average.to_s + '€'
-
-            .col-xs-12.text-center
-              %svg.histogram{class: offers.offer.to_s}
-            .col-xs-12
+        .row
+          .col-xs-12
+            %h4
+              %b= Share.size_altogether.round(1)
+              von
+              %b= @settings.total_shares
+              Ernteanteile wurden registriert
               %hr
+            - [@offers_minimum, @offers_medium, @offers_maximum].each do |offers|
+              %table.statistic-table
+                %tbody
+                  %tr
+                    %td
+                    %td IST
+                    %td SOLL
+                  %tr.yearly-sum
+                    %td
+                      %b Summe
+                    %td
+                      %span{class: offers.offer.to_s}
+                        = offers.sum.to_s + '€'
+                    %td
+                      = offers.needed_sum.to_s + '€'
+                  %tr
+                    %td
+                      %b Geboten
+                    %td
+                      %span{class: offers.offer.to_s}
+                        = offers.total_share_size_with_offers
+                    %td
+                      = @settings.total_shares
+                  %tr
+                    %td
+                      %b Monatliche Summe
+                    %td
+                      %span{class: offers.offer.to_s}
+                        = offers.monthly_sum.to_s + '€'
+                    %td
+                      = offers.needed_monthly_sum.to_s + '€'
+                  %tr
+                    %td
+                      %b Monatlicher Durchschnitt
+                    %td
+                      %span{class: offers.offer.to_s}
+                        = offers.monthly_average.to_s + '€'
+                    %td
+                      = offers.needed_monthly_average.to_s + '€'
+
+              .col-xs-12.text-center
+                %svg.histogram{class: offers.offer.to_s}
+              .col-xs-12
+                %hr
 
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Schließen

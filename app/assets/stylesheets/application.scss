@@ -11,6 +11,8 @@
  * file per style scope.
  *
  *= require bootstrap_superhero_theme.min
+ *= require dataTables/jquery.dataTables
+ *= require dataTables/extras/dataTables.responsive
  *= require_tree .
  *= require_self
  */
@@ -21,6 +23,7 @@ $green: #5cb85c;
 $yellow: #f0ad4e;
 $red: #d9534f;
 $blue: #5bc0de;
+$white-t: rgba(255,255,255,0.3);
 
 .green-bg { background-color: $green; }
 .yellow-bg { background-color: $yellow; }
@@ -75,13 +78,10 @@ body:after{
 }
 
 .not-activated {
+  color: grey;
   a {
     color: grey !important;
   }
-}
-
-.legend {
-  font-size: 10px;
 }
 
 .btn {
@@ -126,8 +126,20 @@ li > a {
 .completion-bar {
   background-color: $green;
   height: 20px;
-  color: green;
+  color: $white-t;
   font-size: 11px;
+  font-weight: bold;
+  padding: 3px;
+  min-width: 2%;
+  white-space: nowrap;
+}
+
+.register-completion-bar {
+  background-color: $blue;
+  height: 20px;
+  color: $white-t;
+  font-size: 11px;
+  font-weight: bold;
   padding: 3px;
   min-width: 2%;
   white-space: nowrap;
@@ -178,4 +190,48 @@ li > a {
 
 textarea {
   resize: vertical;
+}
+
+
+/* datatable */
+
+.share-table {
+  tr.odd {
+    background-color: transparent !important;
+  }
+  tr {
+    background-color: transparent !important;
+    height: 50px;
+    .child {
+      background: $white-t !important;
+    }
+  }
+  td {
+    border-top: 1px solid $white-t !important;
+    background-color: transparent !important;
+  }
+
+  th {
+    border-bottom: 1px solid $white-t !important;
+    font-size: 14px !important;
+  }
+
+  .offers-cell {
+    white-space: nowrap;
+    .label {
+      margin: 0 3px;
+      font-size: 12px;
+    }
+  }
+}
+
+.dataTables_filter {
+  color: white !important;
+  input {
+    font-size: 14px;
+    border: none;
+    width: 200px;
+    height: 30px;
+    border-radius: 0 !important;
+  }
 }

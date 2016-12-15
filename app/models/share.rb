@@ -21,6 +21,8 @@ class Share < ActiveRecord::Base
     uniqueness: true
   validates :telephone,
     format: { with: /\A((?![a-zA-Z]).){3,20}\z/ }, if: 'telephone.present?'
+  validates :payment, presence: true, on: :update, if: :form_edit?
+  validates :size, presence: true
 
   validate :name_at_least_two_words?
   validate :group_not_full?
@@ -66,6 +68,10 @@ class Share < ActiveRecord::Base
 
   def other_group_shares
     group.shares.where.not(id: id)
+  end
+
+  def station
+    Station.find(group.station_id)
   end
 
   def group
