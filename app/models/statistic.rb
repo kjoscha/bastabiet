@@ -37,6 +37,9 @@ class Statistic
     Setting.first.needed_sum
   end
 
+  def active?
+    Setting.first.send("#{offer}_active")
+  end
 
   def single_offers
     Share.all.map{ |share| share.send("one_#{offer}") }.compact

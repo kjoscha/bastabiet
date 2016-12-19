@@ -173,11 +173,19 @@ li > a {
 
 .statistic-table {
   width: 100%;
+  opacity: 0.3;
+  &.true {
+    opacity: 1;
+  }
 }
 
 .histogram {
   height: 300px;
   width: 350px;
+  opacity: 0.3;
+  &.true {
+    opacity: 1;
+  }
 }
 
 .yearly-sum {

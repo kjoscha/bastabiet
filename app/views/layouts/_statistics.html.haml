@@ -14,7 +14,7 @@
               Ernteanteile wurden registriert
               %hr
             - [@offers_minimum, @offers_medium, @offers_maximum].each do |offers|
-              %table.statistic-table
+              %table.statistic-table{class: offers.active?}
                 %tbody
                   %tr
                     %td
@@ -54,7 +54,7 @@
                       = offers.needed_monthly_average.to_s + '€'
 
               .col-xs-12.text-center
-                %svg.histogram{class: offers.offer.to_s}
+                %svg.histogram{class: "#{offers.offer.to_s} #{offers.active?}"}
               .col-xs-12
                 %hr
 
