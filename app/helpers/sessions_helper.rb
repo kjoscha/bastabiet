@@ -12,6 +12,10 @@ module SessionsHelper
     session[:admin]
   end
 
+  def restricted_admin?
+    session[:restricted_admin]
+  end
+
   def current_share
     @current_share ||= Share.find_by(id: session[:share_id])
   end
@@ -25,7 +29,7 @@ module SessionsHelper
   end
 
   def admin_or_current_share
-    unless (current_share && current_share?) || admin?
+    unless (current_share && current_share?) || admin? || restricted_admin?
       flash[:danger] = 'Nicht erlaubt!'
       redirect_to root_path
     end
@@ -33,7 +37,11 @@ module SessionsHelper
 
   def authenticate
     authenticate_or_request_with_http_basic('Administration') do |username, password|
-      session[:admin] = (username == ENV['htaccess_login'] && password == ENV['htaccess_passwd'])
+      if (username == ENV['htaccess_login_admin'] && password == ENV['htaccess_passwd_admin'])
+        session[:admin] = true
+      elsif (ENV['htaccess_login_admin_restricted'] && password == ENV['htaccess_passwd_admin_restricted'])
+        session[:restricted_admin] = true
+      end
     end
   end
 end

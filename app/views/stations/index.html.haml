@@ -14,7 +14,8 @@
           %th.dt-center Station | Bezugsgruppe
           %th.dt-center Name
           %th.dt-center Ernteanteile
-          %th.dt-center Gebote
+          - if admin?
+            %th.dt-center Gebote
           %th.dt-center Bezahlung
           %th.dt-center Mitglieder
           %th.dt-center Arbeitsgruppen
@@ -31,11 +32,12 @@
                 %span.label.label-danger !
 
             %td= share.size
-            %td.offers-cell
-              - %w[minimum medium maximum].each do |offer|
-                - if share.send("offer_#{offer}")
-                  %span.label.label-success
-                    = to_euro(share.send("offer_#{offer}"))
+            - if admin?
+              %td.offers-cell
+                - %w[minimum medium maximum].each do |offer|
+                  - if share.send("offer_#{offer}")
+                    %span.label.label-success
+                      = to_euro(share.send("offer_#{offer}"))
             %td
               = share.payment.to_s + ' Monat(e)'
             %td
