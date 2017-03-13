@@ -21,7 +21,7 @@ module SessionsHelper
   end
 
   def current_share?
-    current_share.id == params[:id].to_i || current_share.id == params[:share_id].to_i
+    current_share && (current_share.id == params[:id].to_i || current_share.id == params[:share_id].to_i)
   end
 
   def logged_in?
