@@ -31,7 +31,6 @@ class SettingsTest < Capybara::Rails::TestCase
     fill_in 'share_offer_minimum', with: '10'
     check 'share_agreed'
     click_on 'Speichern'
-    saoi
     assert find_field('share_offer_minimum', disabled: true)
   end
 
