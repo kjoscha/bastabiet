@@ -15,15 +15,24 @@ class SettingsTest < Capybara::Rails::TestCase
     assert_content 'Statistik'
   end
 
-  scenario 'Offer edit can be deactivated', :js do
+  scenario 'Offer input fields stay active when no offers are present', :js do
     Setting.first.update!(offer_minimum_active: false)
+    Setting.first.update!(offer_medium_active: true)
+    Setting.first.update!(offer_maximum_active: false)
     log_in
-    assert find_field('share_offer_minimum', disabled: true)
+    assert find_field('share_offer_minimum', disabled: false)
     assert find_field('share_offer_medium', disabled: false)
     assert find_field('share_offer_maximum', disabled: false)
-    Setting.first.update!(offer_minimum_active: true)
-    visit root_path
-    assert find_field('share_offer_minimum', disabled: false)
+  end
+
+  scenario 'Offer inputs are inactive when they are disabled in settings', :js do
+    Setting.first.update!(offer_minimum_active: false)
+    log_in
+    fill_in 'share_offer_minimum', with: '10'
+    check 'share_agreed'
+    click_on 'Speichern'
+    saoi
+    assert find_field('share_offer_minimum', disabled: true)
   end
 
   def log_in
