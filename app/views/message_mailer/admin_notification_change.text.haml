@@ -1,0 +1,8 @@
+Ein Ernteanteil hat seine Angaben geändert:
+\
+Hauptkontakt: #{@share.name}
+Email:  #{@share.email}
+\
+Änderungen:
+- @changes.each do |k, v|
+  = "#{k}: alt: #{v[0]}, neu: #{v[1]}"

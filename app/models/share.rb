@@ -11,6 +11,14 @@ class Share < ActiveRecord::Base
     create_digest_for(attribute: 'activation')
   end
 
+  after_create do
+    MessageMailer.admin_notification_creation(self).deliver_now
+  end
+
+  after_update do
+    MessageMailer.admin_notification_change(self, self.previous_changes).deliver_now
+  end
+
   validates :name,
     presence: true,
     length: { minimum: 3 },
@@ -64,7 +72,7 @@ class Share < ActiveRecord::Base
 
   def size_of_other_group_shares
     other_group_shares.map(&:size).sum
-  end 
+  end
 
   def other_group_shares
     group.shares.where.not(id: id)
@@ -95,7 +103,7 @@ class Share < ActiveRecord::Base
   end
 
   def authenticated?(attribute:, token:)
-    return false unless digest = self.send("#{attribute}_digest") 
+    return false unless digest = self.send("#{attribute}_digest")
     BCrypt::Password.new(digest).is_password?(token)
   end
 
@@ -116,7 +124,7 @@ class Share < ActiveRecord::Base
   def self.size_altogether
     all.map(&:size).sum
   end
-  
+
   def create_password_reset_digest
     self.password_reset_token = SecureRandom.urlsafe_base64(24)
     self.password_reset_digest = Share.digest(token: password_reset_token)
