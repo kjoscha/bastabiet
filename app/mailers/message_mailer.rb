@@ -33,14 +33,14 @@ class MessageMailer < ApplicationMailer
     @share = share
     @changes = changes
     ['willkommen@csa-basta.org', 'basta@lupus.uberspace.de'].each do |email|
-      mail(to: email, subject: 'Ernteanteil geändert)')
+      mail(to: email, subject: 'Ernteanteil geändert')
     end
   end
 
   def admin_notification_creation(share)
     @share = share
     ['willkommen@csa-basta.org', 'basta@lupus.uberspace.de'].each do |email|
-      mail(to: email, subject: 'Ernteanteil geändert)')
+      mail(to: email, subject: 'Neuer Ernteanteil')
     end
   end
 end
