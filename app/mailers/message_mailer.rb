@@ -30,10 +30,12 @@ class MessageMailer < ApplicationMailer
   end
 
   def admin_notification_change(share, changes)
-    @share = share
-    @changes = changes
-    ['willkommen@csa-basta.org', 'basta@lupus.uberspace.de'].each do |email|
-      mail(to: email, subject: 'Ernteanteil geändert')
+    unless changes.empty?
+      @share = share
+      @changes = changes
+      ['willkommen@csa-basta.org', 'basta@lupus.uberspace.de'].each do |email|
+        mail(to: email, subject: 'Ernteanteil geändert')
+      end
     end
   end
 
