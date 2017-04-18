@@ -3,8 +3,8 @@ class MessageMailer < ApplicationMailer
 
   RECEIVERS = %w[
     willkommen@csa-basta.org
-    basta@posteo.de
     basta@lupus.uberspace.de
+    basta@posteo.de
     jo5cha@web.de
   ].freeze
 
@@ -40,16 +40,12 @@ class MessageMailer < ApplicationMailer
     unless changes.empty?
       @share = share
       @changes = changes
-      RECEIVERS.each do |email|
-        mail(to: email, subject: 'Ernteanteil geändert')
-      end
+      mail(to: RECEIVERS, subject: 'Ernteanteil geändert')
     end
   end
 
   def admin_notification_creation(share)
     @share = share
-    RECEIVERS.each do |email|
-      mail(to: email, subject: 'Neuer Ernteanteil')
-    end
+    mail(to: RECEIVERS, subject: 'Neuer Ernteanteil')
   end
 end
