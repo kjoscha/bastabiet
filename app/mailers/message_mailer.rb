@@ -1,6 +1,13 @@
 class MessageMailer < ApplicationMailer
   default from: 'basta@lupus.uberspace.de'
 
+  RECEIVERS = %w[
+    willkommen@csa-basta.org
+    basta@lupus.uberspace.de
+    basta@posteo.de
+    jo5cha@web.de
+  ].freeze
+
   def send_password_reset_link(share)
     @share = share
     @password_reset_link = reset_password_url id: @share.id, token: @share.password_reset_token
@@ -33,16 +40,12 @@ class MessageMailer < ApplicationMailer
     unless changes.empty?
       @share = share
       @changes = changes
-      ['willkommen@csa-basta.org', 'basta@lupus.uberspace.de'].each do |email|
-        mail(to: email, subject: 'Ernteanteil geändert')
-      end
+      mail(to: RECEIVERS, subject: 'Ernteanteil geändert')
     end
   end
 
   def admin_notification_creation(share)
     @share = share
-    ['willkommen@csa-basta.org', 'basta@lupus.uberspace.de'].each do |email|
-      mail(to: email, subject: 'Neuer Ernteanteil')
-    end
+    mail(to: RECEIVERS, subject: 'Neuer Ernteanteil')
   end
 end
