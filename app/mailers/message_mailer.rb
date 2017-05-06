@@ -14,11 +14,17 @@ class MessageMailer < ApplicationMailer
     mail(to: share.email, subject: 'Password zurücksetzen für Bastabiet')
   end
 
+  def admin_created_share(share)
+    @share = share
+    mail(to: share.email, subject: 'Ein Bastabiet-Account wurde für dich erstellt')
+  end
+
   def activation_link(share)
     @share = share
     @activation_link = activate_share_url id: @share.id, token: @share.activation_token
     mail(to: share.email, subject: 'Bastabiet-Account aktivieren')
   end
+
 
   def remind_registering(share)
     @share = share
