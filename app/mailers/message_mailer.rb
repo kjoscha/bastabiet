@@ -48,4 +48,9 @@ class MessageMailer < ApplicationMailer
     @share = share
     mail(to: RECEIVERS, subject: 'Neuer Ernteanteil')
   end
+
+  def admin_notification_deletion(share)
+    @share = share
+    mail(to: RECEIVERS, subject: 'Ernteanteil gelöscht')
+  end
 end
