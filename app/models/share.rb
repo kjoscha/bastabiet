@@ -19,6 +19,10 @@ class Share < ActiveRecord::Base
     MessageMailer.admin_notification_change(self, self.previous_changes).deliver_now
   end
 
+  after_destroy do
+    MessageMailer.admin_notification_deletion(self).deliver_now
+  end
+
   validates :name,
     presence: true,
     length: { minimum: 3 },
