@@ -5,7 +5,6 @@ class MessageMailer < ApplicationMailer
     willkommen@csa-basta.org
     basta@lupus.uberspace.de
     basta@posteo.de
-    jo5cha@web.de
   ].freeze
 
   def send_password_reset_link(share)
