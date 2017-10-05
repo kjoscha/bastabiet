@@ -62,8 +62,9 @@ jQuery(function() {
     'paging': false,
     'bInfo': false,
     'order': [[ 0, 'asc' ]],
-    'aoColumnDefs': [
-        { 'bSortable': false, 'aTargets': [5,6,7,8] }
+    'columnDefs': [
+      { 'targets': [2],       'visible': false },
+      { 'targets': [5,6,7,8], 'sortable': false }
      ]
   });
 
