@@ -35,9 +35,11 @@
         %b= m.name
       .col-xs-6.col-md-3
         = m.email
-      .col-xs-6.col-md-3
+      .col-xs-6.col-md-2
         = m.telephone
-      .col-xs-6.col-md-3.margin-below
+      .col-xs-6.col-md-2
+        = 'Moneymaker' if m.moneymaker
+      .col-xs-6.col-md-2.margin-below.pull-right
         = link_to 'Löschen', member_path(m.id, share_id: @share.id), method: 'delete', data: { confirm: 'Wirklich Mitglied löschen?' }
 
 .row.margin-below
@@ -46,9 +48,12 @@
       = mf.text_field :name, placeholder: 'Name', class: 'form-control'
     .col-md-3
       = mf.text_field :email, placeholder: 'Email', class: 'form-control'
-    .col-md-3
+    .col-md-2
       = mf.text_field :telephone, placeholder: 'Telefon', class: 'form-control'
-    .col-md-3
+    .col-md-2
+      = mf.check_box :moneymaker
+      Moneymaker
+    .col-md-2
       = button_tag('Mitglied hinzufügen', type: 'submit', class: 'btn btn-success')
 
 .row

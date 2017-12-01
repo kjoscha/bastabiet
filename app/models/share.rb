@@ -51,7 +51,7 @@ class Share < ActiveRecord::Base
   end
 
   def group_not_full?
-    if size_of_other_group_shares + (size || 0) > 4
+    if size_of_siblings + (size || 0) > 4
       errors[:base] << 'Bezugsgruppe ist voll!'
     end
   end
@@ -74,11 +74,11 @@ class Share < ActiveRecord::Base
     @form_edit = true
   end
 
-  def size_of_other_group_shares
-    other_group_shares.map(&:size).sum
+  def size_of_siblings
+    siblings.map(&:size).sum
   end
 
-  def other_group_shares
+  def siblings
     group.shares.where.not(id: id)
   end
 
