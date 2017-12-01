@@ -10,13 +10,17 @@
 .row
   .col-xs-12
     %h3 Hautpkontakt
-.row.margin-below
-  .col-xs-6.col-md-3
-    %b= @share.name
-  .col-xs-6.col-md-3
-    = @share.email
-  .col-xs-6.col-md-3
-    = @share.telephone
+
+= form_for(@share) do |f|
+  .row.margin-below
+    .col-xs-6.col-md-3
+      %b= f.text_field :name, placeholder: 'Name', class: 'form-control'
+    .col-xs-6.col-md-3
+      %b= f.text_field :email, placeholder: 'Email', class: 'form-control'
+    .col-xs-6.col-md-3
+      %b= f.text_field :telephone, placeholder: 'Telefon', class: 'form-control'
+    .col-xs-6.col-md-3
+      = button_tag 'Speichern', type: 'submit', class: 'btn btn-success'
 
 .row
   .col-xs-12
