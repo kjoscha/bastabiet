@@ -54,7 +54,7 @@
               %td
                 = link_to 'Löschen', share_path(share), method: 'delete', data: { confirm: 'Wirklich Ernteanteil löschen?' }
 
-    = select_tag 'Absender', options_for_select(MessageMailer::RECEIVERS), value: MessageMailer::RECEIVERS.first, class: 'form-control'
+    = select_tag 'email_from', options_for_select(MessageMailer::RECEIVERS), value: MessageMailer::RECEIVERS.first, class: 'form-control'
     = text_field_tag 'email_subject', '', placeholder: 'Betreff', class: 'form-control'
     = text_area_tag 'email_text', '', placeholder: 'Text', class: 'form-control'
     = button_tag 'Email senden', class: 'btn btn-default'
