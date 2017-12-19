@@ -7,49 +7,57 @@
     %h1 Ernteanteile
     = link_to 'Neuen Ernteanteil erstellen', register_path
 
-.row.margin-below
-  .col-xs-12
-    %table.share-table.display.responsive.no-wrap.compact{cellspacing: '0', width: '100%'}
-      %thead
-        %tr
-          %th.dt-center Station | Bezugsgruppe
-          %th.dt-center Name
-          %th.dt-center Email
-          %th.dt-center Ernteanteile
-          - if admin?
-            %th.dt-center Gebote
-          %th.dt-center Bezahlung
-          %th.dt-center Mitglieder
-          %th.dt-center Arbeitsgruppen
-          %th.dt-center Feedback
-          %th
-      %tbody
-        - Share.all.each do |share|
-          - css_class = share.activated ? '' : 'not-activated'
-          %tr{class: css_class}
-            %td= share.station.name + ' | ' + share.group.name
-            %td
-              = link_to share.name, share_path(share)
-              - if !share.activated
-                %span.label.label-danger !
-            %td= share.email
-            %td= share.size
+= form_tag 'shares/send_mail', method: :post do
+  .row.margin-below
+    .col-xs-12
+      %table.share-table.display.responsive.no-wrap.compact{cellspacing: '0', width: '100%'}
+        %thead
+          %tr
+            %th.dt-center Email
+            %th.dt-center Station | Bezugsgruppe
+            %th.dt-center Name
+            %th.dt-center Email
+            %th.dt-center Ernteanteile
             - if admin?
-              %td.offers-cell
-                - %w[minimum medium maximum].each do |offer|
-                  - if share.send("offer_#{offer}")
-                    %span.label.label-success
-                      = to_euro(share.send("offer_#{offer}"))
-            %td
-              = share.payment.to_s + ' Monat(e)'
-            %td
-              = share.members.map(&:name).join(', ')
-            %td
-              = share.workgroups.map(&:name).join(', ')
-            %td
-              = truncate(share.feedback) if share.feedback
-            %td
-              = link_to 'Löschen', share_path(share), method: 'delete', data: { confirm: 'Wirklich Ernteanteil löschen?' }
+              %th.dt-center Gebote
+            %th.dt-center Bezahlung
+            %th.dt-center Mitglieder
+            %th.dt-center Arbeitsgruppen
+            %th.dt-center Feedback
+            %th
+        %tbody
+          - Share.all.each do |share|
+            - css_class = share.activated ? '' : 'not-activated'
+            %tr{class: css_class}
+              %td= check_box_tag 'ids_for_custom_mail[]', share.id, false
+              %td= share.station.name + ' | ' + share.group.name
+              %td
+                = link_to share.name, share_path(share)
+                - if !share.activated
+                  %span.label.label-danger !
+              %td= share.email
+              %td= share.size
+              - if admin?
+                %td.offers-cell
+                  - %w[minimum medium maximum].each do |offer|
+                    - if share.send("offer_#{offer}")
+                      %span.label.label-success
+                        = to_euro(share.send("offer_#{offer}"))
+              %td
+                = share.payment.to_s + ' Monat(e)'
+              %td
+                = share.members.map(&:name).join(', ')
+              %td
+                = share.workgroups.map(&:name).join(', ')
+              %td
+                = truncate(share.feedback) if share.feedback
+              %td
+                = link_to 'Löschen', share_path(share), method: 'delete', data: { confirm: 'Wirklich Ernteanteil löschen?' }
+
+    = select_tag 'Absender', options_for_select(MessageMailer::RECEIVERS), value: MessageMailer::RECEIVERS.first, class: 'form-control'
+    = text_field_tag 'email_subject', '', placeholder: 'Betreff', class: 'form-control'
+    = text_area_tag 'email_text', '', placeholder: 'Text', class: 'form-control'
+    = button_tag 'Email senden', class: 'btn btn-default'
 
 .row
   .col-xs-12
