@@ -76,7 +76,7 @@ class SharesController < ApplicationController
         from: params[:email_from],
         subject: params[:email_subject],
         text: params[:email_text]
-      )
+      ).deliver_now
       flash[:success] = 'Email(s) erfolgreich gesendet!'
     else
       flash[:danger] = 'Keine Empfänger_innen ausgewählt!'
