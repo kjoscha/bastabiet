@@ -58,4 +58,9 @@ class MessageMailer < ApplicationMailer
     @share = share
     mail(to: RECEIVERS, subject: 'Ernteanteil gelöscht')
   end
+
+  def custom_mail(from:, emails:, subject:, text:)
+    @text = text
+    mail(from: from, to: emails, subject: subject)
+  end
 end

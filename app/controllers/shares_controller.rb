@@ -1,6 +1,7 @@
 class SharesController < ApplicationController
   before_action :admin_or_current_share, only: [:show, :edit, :update, :destroy]
   before_action :is_activated?, only: [:update]
+  before_action :validate_email_subject_and_text_present, only: [:send_mail]
 
   def new
     @groups = Group.all
@@ -63,7 +64,33 @@ class SharesController < ApplicationController
     end
   end
 
+  def send_mail
+    share_ids = params[:ids_for_custom_mail]
+
+    if share_ids&.any?
+      share_emails = Share.where(id: share_ids).pluck(:email)
+      member_emails = Member.where(share_id: share_ids).pluck(:email)
+      emails = (share_emails + member_emails).uniq
+      MessageMailer.custom_mail(
+        emails: emails,
+        from: params[:email_from],
+        subject: params[:email_subject],
+        text: params[:email_text]
+      )
+      flash[:success] = 'Email(s) erfolgreich gesendet!'
+    else
+      flash[:danger] = 'Keine Empfänger_innen ausgewählt!'
+    end
+    redirect_to :back
+  end
+
   private
+
+  def validate_email_subject_and_text_present
+    return true if params[:email_subject].present? && params[:email_text].present?
+    flash[:danger] = 'Betreff und Text dürfen nicht leer sein!'
+    redirect_to :back
+  end
 
   def fill_offers(share)
     all_offers = share.all_offers

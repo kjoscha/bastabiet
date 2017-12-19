@@ -26,4 +26,6 @@ Rails.application.routes.draw do
   post '/request_password_reset', to: 'password_reset#create_password_reset'
   get '/reset_password/:id/:token', to: 'password_reset#reset_password', as: :reset_password
   patch '/reset_password', to: 'password_reset#set_new_password'
+
+  post '/shares/send_mail', to: 'shares#send_mail'
 end
