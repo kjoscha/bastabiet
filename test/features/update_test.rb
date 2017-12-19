@@ -3,7 +3,7 @@ require "test_helper"
 class UpdateTest < Capybara::Rails::TestCase
   scenario 'update not possible if agreement not accepted', :js do
     log_in
-    click_on 'Speichern'
+    find('.share-update-submit').trigger('click')
     assert_content 'Bitte lies und bestätige die Vereinbarung'
   end
 
@@ -14,7 +14,7 @@ class UpdateTest < Capybara::Rails::TestCase
     fill_in 'share_offer_maximum', with: '80'
     select '1.5', from: 'share_size'
     select '12', from: 'share_payment'
-    click_on 'Speichern'
+    find('.share-update-submit').trigger('click')
     assert_content 'Erfolgreich aktualisiert'
     @share.reload
     assert_equal true, @share.agreed
@@ -44,10 +44,10 @@ class UpdateTest < Capybara::Rails::TestCase
     log_in
     check 'share_agreed'
     check @internet_ag_checkbox
-    click_on 'Speichern'
-    assert_equal 1, @share.workgroups.count
+    find('.share-update-submit').trigger('click')
     has_checked_field? @internet_ag_checkbox
     !has_checked_field? @finanz_ag_checkbox
+    assert_equal 1, @share.workgroups.count
   end
 
   def log_in

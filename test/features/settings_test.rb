@@ -30,7 +30,7 @@ class SettingsTest < Capybara::Rails::TestCase
     log_in
     fill_in 'share_offer_minimum', with: '10'
     check 'share_agreed'
-    click_on 'Speichern'
+    find('.share-update-submit').trigger('click')
     assert find_field('share_offer_minimum', disabled: true)
   end
 
