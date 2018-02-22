@@ -22,6 +22,7 @@
       = f.email_field :email, placeholder: 'Email', class: 'form-control'
     .col-xs-6.margin-below
       Telefonnummer (Hauptkontaktperson)
+      %sup *
       = f.text_field :telephone, placeholder: 'Telefonnummer', class: 'form-control'
     .col-xs-6.margin-below
       Passwort
@@ -38,7 +39,7 @@
     .col-xs-12
       %i
         %sup *
-        sind Pflichtfelder
+        Pflichtfeld
 
   .row
     .col-xs-12

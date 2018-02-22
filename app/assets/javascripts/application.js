@@ -36,8 +36,6 @@ jQuery(function() {
           event.preventDefault();
   });
 
-  jQuery('.flash-message').fadeOut(10000);
-
   jQuery('.statistic-button').click(function() {
     jQuery('#statistic-modal').modal('show');
   });

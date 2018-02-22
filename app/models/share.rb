@@ -32,7 +32,8 @@ class Share < ActiveRecord::Base
     format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i },
     uniqueness: true
   validates :telephone,
-    format: { with: /\A((?![a-zA-Z]).){3,20}\z/ }, if: 'telephone.present?'
+    presence: true,
+    format: { with: /\A((?![a-zA-Z]).){3,20}\z/ }
   validates :payment, presence: true, on: :update, if: :form_edit?
   validates :size, presence: true
 
