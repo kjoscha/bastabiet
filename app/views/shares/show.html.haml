@@ -80,13 +80,6 @@
     .col-sm-6
       Wieviel Monate möchtet ihr im Voraus bezahlen?
       = f.select :payment, [1, 3, 12], {prompt: "Bitte wählen"}, {class: "form-control"}
-    .col-xs-12.margin-below
-      %h4.blue
-        = f.label :agreed do
-          = f.check_box :agreed
-        Ich habe die
-        = link_to 'Vereinbarung gelesen', '/basta_vereinbarung_2017.pdf', target: '_blank'
-        und versichere, dass meine Angaben der Wahrheit entsprechen
 
   .row
     .col-xs-12
@@ -124,4 +117,5 @@
     .col-xs-12.margin-below
       = f.text_area :feedback, class: 'form-control'
     .col-xs-12
-      = button_tag 'Speichern', type: 'submit', class: 'btn btn-success share-update-submit'
+      = render 'agreement_modal', f: f
+      %button.btn.btn-success.show-agreement-button{type: 'button'} weiter

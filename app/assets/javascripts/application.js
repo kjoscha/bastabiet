@@ -44,6 +44,10 @@ jQuery(function() {
     jQuery('#settings-modal').modal('show');
   });
 
+  jQuery('.show-agreement-button').click(function() {
+    jQuery('#agreement-modal').modal('show');
+  });
+
   jQuery('.minimum-participation-button').click(function() {
     jQuery('#minimum-participation-modal').modal('show');
   });

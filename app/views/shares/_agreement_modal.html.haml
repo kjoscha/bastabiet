@@ -1,0 +1,19 @@
+#agreement-modal.modal.fade{:role => "dialog"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"} ×
+        %h3.modal-title Vereibarung
+
+      .modal-body
+        .col-xs-12.margin-below
+          %h4.blue
+            = f.label :agreed do
+              = f.check_box :agreed
+            Ich habe die
+            = link_to 'Vereinbarung gelesen', '/basta_vereinbarung_2017.pdf', target: '_blank'
+            und versichere, dass meine Angaben der Wahrheit entsprechen
+
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Schließen
+        = button_tag 'Absenden', type: 'submit', class: 'btn btn-success share-update-submit'
