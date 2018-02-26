@@ -27,14 +27,13 @@
             %th
         %tbody
           - Share.all.each do |share|
-            - css_class = share.activated ? '' : 'not-activated'
-            %tr{class: css_class}
+            %tr
               %td= check_box_tag 'ids_for_custom_mail[]', share.id, false
               %td= share.station.name + ' | ' + share.group.name
               %td
                 = link_to share.name, share_path(share)
                 - if !share.activated
-                  %span.label.label-danger !
+                  %span.label.label-danger{title: 'Account wurde noch nicht vom User aktiviert!'} !
               %td= share.email
               %td= share.size
               - if admin?
