@@ -26,15 +26,10 @@ jQuery(function() {
     var minimumOffer = jQuery('#share_offer_minimum').val();
     var maximumOffer = jQuery('#share_offer_maximum').val();
 
-    var message = 'Möchtet ihr wirklich mindestens ' + minimumOffer + '€ bzw. maximal ' + maximumOffer + '€ für ' + size.toString() + ' Ernteanteile zahlen?'
+    var message = 'Wir wollen mindestens ' + minimumOffer + '€ bzw. maximal ' + maximumOffer + '€ für ' + size.toString() + ' Ernteanteile zahlen.'
 
     return message;
   };
-
-  $('.share-update-submit').click(function(event){
-      if(!confirm(offerConfirm()))
-          event.preventDefault();
-  });
 
   jQuery('.statistic-button').click(function() {
     jQuery('#statistic-modal').modal('show');
@@ -44,13 +39,18 @@ jQuery(function() {
     jQuery('#settings-modal').modal('show');
   });
 
+  jQuery('.show-agreement-button').click(function() {
+    jQuery('#calculated-offers').text(offerConfirm());
+    jQuery('#agreement-modal').modal('show');
+  });
+
   jQuery('.minimum-participation-button').click(function() {
     jQuery('#minimum-participation-modal').modal('show');
   });
 
   jQuery('.dropdown-toggle').dropdown();
 
-  jQuery("form").submit(function () {
+  jQuery("form").submit(function() {
     jQuery('.loading-overlay').show();
   });
 
@@ -59,11 +59,16 @@ jQuery(function() {
     'searching': true,
     'paging': false,
     'bInfo': false,
-    'order': [[ 1, 'asc' ]],
-    'columnDefs': [
-      { 'targets': [3],       'visible': false },
-      { 'targets': [6,7,8, 9], 'sortable': false }
-     ]
+    'order': [
+      [1, 'asc']
+    ],
+    'columnDefs': [{
+      'targets': [3],
+      'visible': false
+    }, {
+      'targets': [6, 7, 8, 9],
+      'sortable': false
+    }]
   });
 
 });

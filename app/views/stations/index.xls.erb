@@ -12,6 +12,8 @@
         <Cell><Data ss:Type="String">Name Hauptkontakt</Data></Cell>
         <Cell><Data ss:Type="String">Email Hauptkontakt</Data></Cell>
         <Cell><Data ss:Type="String">Telefonnummer Hauptkontakt</Data></Cell>
+        <Cell><Data ss:Type="String">Erstellt</Data></Cell>
+        <Cell><Data ss:Type="String">Letzte Änderung</Data></Cell>
         <Cell><Data ss:Type="String">Größe des Ernteanteils</Data></Cell>
         <% if admin? %>
           <Cell><Data ss:Type="String">Wohlfühlgebot</Data></Cell>
@@ -35,6 +37,8 @@
         <Cell><Data ss:Type="String"><%= share.name %></Data></Cell>
         <Cell><Data ss:Type="String"><%= share.email %></Data></Cell>
         <Cell><Data ss:Type="String"><%= share.telephone %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.created_at.strftime('%d.%m.%Y %H:%M')%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.updated_at.strftime('%d.%m.%Y %H:%M')%></Data></Cell>
         <Cell><Data ss:Type="String"><%= share.size %></Data></Cell>
         <% if admin? %>
           <Cell><Data ss:Type="String"><%= share.offer_minimum %></Data></Cell>

@@ -17,6 +17,8 @@
             %th.dt-center Station | Bezugsgruppe
             %th.dt-center Name
             %th.dt-center Email
+            %th.dt-center Registriert
+            %th.dt-center Änderung
             %th.dt-center Ernteanteile
             - if admin?
               %th.dt-center Gebote
@@ -35,6 +37,8 @@
                 - if !share.activated
                   %span.label.label-danger{title: 'Account wurde noch nicht vom User aktiviert!'} !
               %td= share.email
+              %td= share.created_at.strftime('%d.%m.%Y %H:%M')
+              %td= share.updated_at.strftime('%d.%m.%Y %H:%M')
               %td= share.size
               - if admin?
                 %td.offers-cell

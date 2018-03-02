@@ -2,6 +2,23 @@
   .col-xs-12
     %h1 Details zu eurem Ernteanteil
     Angaben können jederzeit geändert werden
+    %hr
+    %h3 Bitte lesen
+    %br
+    %h4
+      Bist du über die Inhalte des aktuellen
+      = link_to 'Finanzplans', 'https://csa-basta.org/basta/content/brand-new-finanzplan'
+      gut informiert?
+    %h4
+      Bist du darüber informiert, wie das
+      = link_to 'Bietverfahren', 'https://csa-basta.org/basta/content/bietverfahren'
+      läuft und worauf du bietest?
+    %h4{style: 'font-style: italic; color: grey'}
+      Ja, ja... aber ich hab keine Zeit diese ganze Geschichte zu lesen, sag mal: was ist der Preis?
+    %h4
+      Es gibt keinen Preis, Mensch! Wenn das Durchschnittsgebot bei 89,45 € liegt, dann ist der
+      = link_to 'Finanzplan', 'https://csa-basta.org/basta/content/brand-new-finanzplan'
+      gedeckt.
 
 .row
   .col-xs-12
@@ -80,13 +97,6 @@
     .col-sm-6
       Wieviel Monate möchtet ihr im Voraus bezahlen?
       = f.select :payment, [1, 3, 12], {prompt: "Bitte wählen"}, {class: "form-control"}
-    .col-xs-12.margin-below
-      %h4.blue
-        = f.label :agreed do
-          = f.check_box :agreed
-        Ich habe die
-        = link_to 'Vereinbarung gelesen', '/basta_vereinbarung_2017.pdf', target: '_blank'
-        und versichere, dass meine Angaben der Wahrheit entsprechen
 
   .row
     .col-xs-12
@@ -124,4 +134,5 @@
     .col-xs-12.margin-below
       = f.text_area :feedback, class: 'form-control'
     .col-xs-12
-      = button_tag 'Speichern', type: 'submit', class: 'btn btn-success share-update-submit'
+      = render 'agreement_modal', f: f
+      %button.btn.btn-success.show-agreement-button{type: 'button'} weiter
