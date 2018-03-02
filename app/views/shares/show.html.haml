@@ -112,7 +112,10 @@
       Mit welchen Fähigkeiten oder Tools könntet ihr aushelfen?
       = f.text_field :skills, placeholder: 'z.B. Grafikdesign-Kenntnisse, ökologisches, ökonomisches oder juristisches Fachwissen, Kettensäge...', class: 'form-control'
     .col-xs-12
-      %h4 In welchen AG's werdet ihr euch 2017 beteiligen?
+      %h4
+        In welchen AG's werdet ihr euch 2017 beteiligen?
+        = link_to ' Hier', 'https://csa-basta.org/basta/arbeitsgruppen'
+        kannst du die AGs kontaktieren.
   .row
     = f.collection_check_boxes :workgroup_ids, Workgroup.all, :id, :name do |w|
       .col-sm-4

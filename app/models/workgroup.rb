@@ -1,22 +1,20 @@
 class Workgroup < ActiveRecord::Base
-  has_many :workgroup_shares, dependent: :destroy  
+  has_many :workgroup_shares, dependent: :destroy
   has_many :shares, through: :workgroup_shares
 
-  def self.add_existant
+  def self.update_existant
+    Workgroup.delete_all
     [
-      'Willkommens-AG',
-      'Finanz-AG',
       'Internet-AG',
       'Landkauf-AG',
       'Plenums-AG',
       'Rechtsform-AG',
       'Soli-AG',
-      'Brot-AG',
-      'Eier-AG',
-      'Betreuung der Ida',
-      'Betreuung der K9',
-      'Betreuung der Brauni',
-      'Hoffest-Crew',
+      'Hoffest-AG',
+      'Stadt-AG',
+      'AG Abholstation Ida',
+      'AG Abholstation Bödie',
+      'AG Abholstation Brauni',
     ].each do |w|
       Workgroup.new(name: w).save
     end
