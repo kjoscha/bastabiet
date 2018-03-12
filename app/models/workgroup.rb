@@ -12,6 +12,7 @@ class Workgroup < ActiveRecord::Base
       'Soli-AG',
       'Hoffest-AG',
       'Stadt-AG',
+      'Willkommens-AG',
       'AG Abholstation Ida',
       'AG Abholstation Bödie',
       'AG Abholstation Brauni',
