@@ -15,8 +15,7 @@ namespace :bidding_over_mail do
 
   desc 'Send a test mail'
   task test: :environment do
-    share = Share.find_by(email: 'matteo.toller@gmail.com')
+    share = Share.first
     MessageMailer.bidding_over(share, 'jo5cha@web.de').deliver_now
-    MessageMailer.bidding_over(share, share.email).deliver_now
   end
 end
