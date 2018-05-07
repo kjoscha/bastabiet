@@ -1,24 +1,24 @@
 Lieb* #{@share.name.split(' ').first},
 \
-mit eurem gelben Gebot von monatlich #{@share.offer_medium} Euro unterstützt ihr die Landwirtschaft auf Basta für den Zeitraum vom 1. Januar 2018 bis zum  31. Dezember 2018. Ihr bekommt dafür #{@share.size} Ernteanteil(e).
+mit eurem gelben Gebot von monatlich #{number_to_currency(@share.offer_medium, unit: '€')} Euro unterstützt ihr die Landwirtschaft auf Basta für den Zeitraum vom 1. Januar 2018 bis zum  31. Dezember 2018. Ihr bekommt dafür #{@share.size} Ernteanteil(e).
 \
-Zusätzlich unterstützt ihr das Projekt mit XXX Arbeitstagen auf dem Hof und seid in folgenden AGs aktiv: XXX
-\ 
+Zusätzlich unterstützt ihr das Projekt mit #{@share.land_help_days} Arbeitstagen auf dem Hof und seid in folgenden AGs aktiv: #{@share.workgroups.map(&:name).join(', ')}
+\
 Darüber hinaus seid ihr bereit diese Fähigkeiten oder Tools zu Verfügung zu stellen: XXX
 \
 Mit den gelben Geboten aus dem Bietverfahren fehlen uns voraussichtlich ca. 2400€ zur Deckung des Finanzplans 2018: 155399€ vs. 157788€
 \
 Wir haben entschieden, mit dem Minus in die Saison zu starten und werden am Ende des Wirtschaftsjahrs abgleichen, ob die angenommen Zahlen den reellen Zahlen entsprechen. Sollte das Minus nicht gedeckt werden, liegt es in der Verantwortung der Stadtgruppe, dieses zu decken.
 \
-Vielleicht gibt es Leute, die bereit sind, einen höheren Betrag zu zahlen. z.B. gelbes Gebot + 1 oder 2 Euro monatlich bzw. euren roten Betrag...? Wenn ihr das machen wollt, toll. Und orga-buchhaltungs-technisch wäre es gut, wenn ihr im Biettool (link_to 'http://basta.lupus.uberspace.de/', 'http://basta.lupus.uberspace.de/') euer gelbes Gebot anpasst. Bitte passt dementsprechend eure Überweisung auf euer finales gelbes Gebot an.
+Vielleicht gibt es Leute, die bereit sind, einen höheren Betrag zu zahlen. z.B. gelbes Gebot + 1 oder 2 Euro monatlich bzw. euren roten Betrag...? Wenn ihr das machen wollt, toll. Und orga-buchhaltungs-technisch wäre es gut, wenn ihr im Biettool (#{link_to 'http://basta.lupus.uberspace.de/', 'http://basta.lupus.uberspace.de/'}) euer gelbes Gebot anpasst. Bitte passt dementsprechend eure Überweisung auf euer finales gelbes Gebot an.
 \
 Falls ihr während des Jahres oder am Ende des Jahres euren Ernteanteil abgeben wollt, kommuniziert das bitte unbedingt an die Willkommens-AG (willkommens-ag@lists.csa-basta.org) mit 2 Monaten Vorlauf.
 \
-Die Zahlung erfolgt im Voraus für #{@share.payment} Monate und wird gesammelt von eurer Bezugsgruppe überwiesen. 
+Die Zahlung erfolgt im Voraus für #{@share.payment} Monate und wird gesammelt von eurer Bezugsgruppe überwiesen.
 \
 Folgende Infos haben wir von euch bekommen:
 \
-Hauptkontaktperson: 
+Hauptkontaktperson:
 = @share.name
 = @share.email
 = @share.telephone
@@ -30,7 +30,7 @@ Hauptkontaktperson:
     = member.email
     = member.telephone
     \
-Bezugsgruppenname: 
+Bezugsgruppenname:
 = @share.group.name
 \
 Wenn sich daran etwas ändert, informiert bitte die Willkommens-AG. Falls ihr nur einen halben Anteil bezieht, achtet bitte darauf, dass wir immer auch aktuelle Kontaktdaten für den anderen Ernteanteil haben.
@@ -45,14 +45,14 @@ BITTE PASST EUREN DAUERAUFTRAG SO SCHNELL WIE MÖGLICH AN!!! MACHT GGF. EINE NAC
 Konto:
 \------
 Covelli, Jahn
-Triodos Bank 
+Triodos Bank
 IBAN: DE82 5003 1000 1016 1840 00
-BIC: TRODDEF1XXX 
+BIC: TRODDEF1XXX
 \
 Kontakt:
 \--------
 Bio e Basta GbR
 Tel.: 033475145006
 Email: basta@posteo.de
-Bastaer Straße 10 
+Bastaer Straße 10
 15324 Letschin
