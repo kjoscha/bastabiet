@@ -92,10 +92,15 @@
     .col-xs-12
       %hr
 
-.row
+.row.margin-below
   .col-xs-12
   = form_for(@station) do |f|
     .col-md-8
       = f.text_field :name, placeholder: 'Neue Abholstation', class: 'form-control'
     .col-md-4
       = button_tag('Hinzufügen', type: 'submit', class: 'btn btn-success')
+
+
+.row
+  .col-xs-12
+    <iframe name="embed_readwrite" src="https://piratenpad.de/p/bastabiet_01?showControls=true&showChat=true&showLineNumbers=true&useMonospaceFont=false" width=600 height=400></iframe>

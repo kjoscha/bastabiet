@@ -2,7 +2,7 @@ class Workgroup < ActiveRecord::Base
   has_many :workgroup_shares, dependent: :destroy
   has_many :shares, through: :workgroup_shares
 
-  def self.update_existant
+  def self.add_existant
     Workgroup.delete_all
     [
       'Internet-AG',
