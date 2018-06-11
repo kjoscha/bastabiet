@@ -70,7 +70,7 @@ class SharesController < ApplicationController
     if share_ids&.any?
       share_emails = Share.where(id: share_ids).pluck(:email)
       member_emails = Member.where(share_id: share_ids).pluck(:email)
-      emails = (share_emails + member_emails).uniq
+      emails = (share_emails + member_emails + [params[:email_from]]).uniq
       MessageMailer.custom_mail(
         emails: emails,
         from: params[:email_from],
