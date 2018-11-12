@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171201161906) do
+ActiveRecord::Schema.define(version: 20181112155254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,7 +62,6 @@ ActiveRecord::Schema.define(version: 20171201161906) do
     t.string   "activation_digest"
     t.boolean  "activated",                default: false
     t.boolean  "agreed",                                   null: false
-    t.integer  "payment"
     t.integer  "land_help_days"
     t.string   "skills"
     t.boolean  "no_help",                                  null: false

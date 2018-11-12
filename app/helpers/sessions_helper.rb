@@ -36,10 +36,22 @@ module SessionsHelper
   end
 
   def authenticate
+    if Rails.env.production?
+      admin_user = ENV['htaccess_login_admin']
+      admin_password = ENV['htaccess_passwd_admin']
+      restricted_admin_user = ENV['htaccess_login_admin_restricted']
+      restricted_admin_password = ENV['htaccess_passwd_admin_restricted']
+    else
+      admin_user = 'admin'
+      admin_password = 'secret'
+      restricted_admin_user = 'restricted_admin'
+      restricted_admin_password = 'secret'
+    end
+
     authenticate_or_request_with_http_basic('Administration') do |username, password|
-      if (username == ENV['htaccess_login_admin'] && password == ENV['htaccess_passwd_admin'])
+      if (username == admin_user && password == admin_password)
         session[:admin] = true
-      elsif (ENV['htaccess_login_admin_restricted'] && password == ENV['htaccess_passwd_admin_restricted'])
+      elsif (username == restricted_admin_user && password == restricted_admin_password)
         session[:restricted_admin] = true
       end
     end

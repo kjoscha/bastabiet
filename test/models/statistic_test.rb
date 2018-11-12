@@ -36,7 +36,6 @@ class StatisticTest < ActiveSupport::TestCase
     @group = groups :Bouffe
     Share.create(group_id: @group.id,
                   name: "test share",
-                  payment: 1,
                   land_help_days: 3,
                   no_help: false,
                   skills: 'test_skills',
@@ -52,7 +51,6 @@ class StatisticTest < ActiveSupport::TestCase
                 )
     Share.create( group_id: @group.id,
                   name: "test share 2",
-                  payment: 1,
                   land_help_days: 3,
                   no_help: false,
                   skills: 'test_skills',
@@ -68,7 +66,6 @@ class StatisticTest < ActiveSupport::TestCase
                 )
     Share.create( group_id: @group.id,
                   name: "test share 3",
-                  payment: 1,
                   land_help_days: 3,
                   no_help: false,
                   skills: 'test_skills',

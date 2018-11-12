@@ -92,13 +92,9 @@
       .col-md-4
         = f.text_field :offer_maximum, placeholder: 'Maximal', class: 'form-control offer-field red-bg', disabled: !@settings.offer_maximum_active && @share.offer_maximum.present?
   .row
-    .col-sm-6.margin-below
+    .col-sm-3.margin-below
       Anzahl der Ernteanteile
       = f.select :size, options_for_select(@share.size_selections, selected: @share.size), {}, { class: 'form-control' }
-    .col-sm-6
-      Wieviel Monate möchtet ihr im Voraus bezahlen?
-      = f.select :payment, [1, 3, 12], {prompt: "Bitte wählen"}, {class: "form-control"}
-
   .row
     .col-xs-12
       %hr

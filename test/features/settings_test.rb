@@ -47,7 +47,6 @@ class SettingsTest < Capybara::Rails::TestCase
     all('#share_agreed')[0].set(true)
     all('#share_agreed')[1].set(true)
     all('#share_agreed')[2].set(true)
-    all('#share_agreed')[3].set(true)
     find('.share-update-submit').trigger('click')
   end
 end

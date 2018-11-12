@@ -18,12 +18,11 @@ class SharesControllerTest < ActionController::TestCase
   test 'Can create share' do
     assert_difference 'Share.count' do
       post :create, share: {
-        name: "Test user", 
-        payment: 1,
+        name: "Test user",
         land_help_days: 3,
         no_help: false,
         skills: 'test_skills',
-        size: 2, 
+        size: 2,
         password: "secret",
         password_confirmation: "secret",
         email: "foo@bar.org",
@@ -49,15 +48,15 @@ class SharesControllerTest < ActionController::TestCase
     assert_redirected_to root_path
   end
 
-  test 'guest cannot destroy shares' do 
+  test 'guest cannot destroy shares' do
     assert_no_difference('Share.count') do
       delete :destroy, id: @share.id
     end
   end
 
-  test 'guest cannot update shares' do 
-    patch :update, id: @share.id, share: { payment: 3 }
-    assert_not_equal 3, @share.payment
+  test 'guest cannot update shares' do
+    patch :update, id: @share.id, share: { offer_minimum: 7634 }
+    assert_not_equal 7634, @share.offer_minimum
   end
 
   test 'admin can destroy shares' do
@@ -85,8 +84,8 @@ class SharesControllerTest < ActionController::TestCase
   test 'logged in share can update itself' do
     skip 'to do'
     session[:share_id] = @share.id
-    patch :update, id: @share.id, share: { payment: 12 }
+    patch :update, id: @share.id, share: { offer_minimum: 12}
     @share.reload
-    assert_equal 12, @share.payment
+    assert_equal 12, @share.offer_minimum
   end
 end

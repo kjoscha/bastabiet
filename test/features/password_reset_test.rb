@@ -7,7 +7,6 @@ feature 'Password reset' do
     @group = Group.create(station_id: @station.id, name: "test_group")
     @activated_share = Share.create(group_id: @group.id,
                                     name: "foo bar",
-                                    payment: 1,
                                     land_help_days: 3,
                                     no_help: false,
                                     skills: 'test_skills',

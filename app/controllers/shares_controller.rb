@@ -102,7 +102,7 @@ class SharesController < ApplicationController
   end
 
   def share_params
-    params.require(:share).permit(:name, :size, :group_id, :email, :telephone, :offer_minimum, :offer_medium, :offer_maximum, :password, :password_confirmation, :feedback, :land_help_days, :no_help, :skills, :payment, :agreed, workgroup_ids: [])
+    params.require(:share).permit(:name, :size, :group_id, :email, :telephone, :offer_minimum, :offer_medium, :offer_maximum, :password, :password_confirmation, :feedback, :land_help_days, :no_help, :skills, :agreed, workgroup_ids: [])
   end
 
   def is_activated?

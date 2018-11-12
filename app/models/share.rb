@@ -34,7 +34,6 @@ class Share < ActiveRecord::Base
   validates :telephone,
     presence: true,
     format: { with: /\A((?![a-zA-Z]).){3,20}\z/ }
-  validates :payment, presence: true, on: :update, if: :form_edit?
   validates :size, presence: true
 
   validate :name_at_least_two_words?

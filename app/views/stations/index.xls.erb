@@ -21,7 +21,6 @@
           <Cell><Data ss:Type="String">Schmerzgrenze</Data></Cell>
         <% end %>
         <Cell><Data ss:Type="String">Vereinbarung akzeptiert?</Data></Cell>
-        <Cell><Data ss:Type="String">Bezahlung im Vorraus [Monate]</Data></Cell>
         <Cell><Data ss:Type="String">Arbeitseinsatz-Tage</Data></Cell>
         <Cell><Data ss:Type="String">Fähigkeiten / Tools</Data></Cell>
         <Cell><Data ss:Type="String">Nur Mindestbeteiligung</Data></Cell>
@@ -46,7 +45,6 @@
           <Cell><Data ss:Type="String"><%= share.offer_maximum %></Data></Cell>
         <% end %>
         <Cell><Data ss:Type="String"><%= share.agreed ? "x" : "" %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= share.payment %></Data></Cell>
         <Cell><Data ss:Type="String"><%= share.land_help_days %></Data></Cell>
         <Cell><Data ss:Type="String"><%= share.skills %></Data></Cell>
         <Cell><Data ss:Type="String"><%= share.no_help ? "x" : "" %></Data></Cell>

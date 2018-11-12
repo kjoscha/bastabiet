@@ -13,7 +13,6 @@ class UpdateTest < Capybara::Rails::TestCase
     fill_in 'share_offer_minimum', with: '10'
     fill_in 'share_offer_maximum', with: '80'
     select '1.5', from: 'share_size'
-    select '12', from: 'share_payment'
     submit
     assert_content 'Erfolgreich aktualisiert'
     @share.reload
@@ -63,7 +62,6 @@ class UpdateTest < Capybara::Rails::TestCase
     all('#share_agreed')[0].set(true)
     all('#share_agreed')[1].set(true)
     all('#share_agreed')[2].set(true)
-    all('#share_agreed')[3].set(true)
     find('.share-update-submit').trigger('click')
   end
 end

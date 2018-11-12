@@ -1,11 +1,10 @@
 Joscha:
   id: 1
   name: Joscha Ka
-  payment: 1
   land_help_days: 3
   no_help: false
   skills: test_skills
-  size: 2 
+  size: 2
   password_digest: askfdkjjdjfisjijsj
   email: joscha@basta.de
   agreed: true
