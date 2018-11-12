@@ -69,10 +69,11 @@
       = mf.text_field :telephone, placeholder: 'Telefon', class: 'form-control'
     .col-md-2
       = mf.check_box :moneymaker
-      Moneymaker
+      Diese Person tätigt die Überweisungen
     .col-md-2
       = button_tag('Mitglied hinzufügen', type: 'submit', class: 'btn btn-success')
-
+    .col-xs-12
+      Es geht uns nicht ums Datensammeln, sonder um die Erreichbarkeit. Gebt also ruhig Spitznamen oder ein Alias an.
 .row
   .col-xs-12
     %hr
@@ -89,7 +90,7 @@
       .col-md-4
         = f.text_field :offer_medium, placeholder: 'Medium', class: 'form-control offer-field yellow-bg', disabled: !@settings.offer_medium_active && @share.offer_medium.present?
       .col-md-4
-        = f.text_field :offer_maximum, placeholder: 'Schmerzgrenze', class: 'form-control offer-field red-bg', disabled: !@settings.offer_maximum_active && @share.offer_maximum.present?
+        = f.text_field :offer_maximum, placeholder: 'Maximal', class: 'form-control offer-field red-bg', disabled: !@settings.offer_maximum_active && @share.offer_maximum.present?
   .row
     .col-sm-6.margin-below
       Anzahl der Ernteanteile
