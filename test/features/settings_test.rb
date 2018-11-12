@@ -29,8 +29,8 @@ class SettingsTest < Capybara::Rails::TestCase
     Setting.first.update!(offer_minimum_active: false)
     log_in
     fill_in 'share_offer_minimum', with: '10'
-    check 'share_agreed'
-    find('.share-update-submit').trigger('click')
+    find('.show-agreement-button').trigger('click')
+    submit
     assert find_field('share_offer_minimum', disabled: true)
   end
 
@@ -40,5 +40,14 @@ class SettingsTest < Capybara::Rails::TestCase
     fill_in 'Email der Hauptkontaktperson', with: 'foo@bar.org'
     fill_in 'Passwort', with: 'secret'
     click_on "Ab geht's"
+  end
+
+  def submit
+    assert_content 'Ich habe die Vereinbarung gelesen und versichere, dass meine Angaben der Wahrheit entsprechen'
+    all('#share_agreed')[0].set(true)
+    all('#share_agreed')[1].set(true)
+    all('#share_agreed')[2].set(true)
+    all('#share_agreed')[3].set(true)
+    find('.share-update-submit').trigger('click')
   end
 end

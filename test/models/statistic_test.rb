@@ -35,7 +35,7 @@ class StatisticTest < ActiveSupport::TestCase
   def create_shares
     @group = groups :Bouffe
     Share.create(group_id: @group.id,
-                  name: "test share", 
+                  name: "test share",
                   payment: 1,
                   land_help_days: 3,
                   no_help: false,
@@ -44,13 +44,14 @@ class StatisticTest < ActiveSupport::TestCase
                   password: "secret",
                   password_confirmation: "secret",
                   email: "foo@bar.org",
+                  telephone: '123456789',
                   agreed: true,
                   offer_minimum: 20,
                   offer_medium: 40,
                   offer_maximum: 80,
                 )
     Share.create( group_id: @group.id,
-                  name: "test share 2", 
+                  name: "test share 2",
                   payment: 1,
                   land_help_days: 3,
                   no_help: false,
@@ -59,13 +60,14 @@ class StatisticTest < ActiveSupport::TestCase
                   password: "secret",
                   password_confirmation: "secret",
                   email: "foo2@bar.org",
+                  telephone: '123456789',
                   agreed: true,
                   offer_minimum: 10,
                   offer_medium: 20,
                   offer_maximum: 30,
                 )
     Share.create( group_id: @group.id,
-                  name: "test share 3", 
+                  name: "test share 3",
                   payment: 1,
                   land_help_days: 3,
                   no_help: false,
@@ -74,6 +76,7 @@ class StatisticTest < ActiveSupport::TestCase
                   password: "secret",
                   password_confirmation: "secret",
                   email: "foo3@bar.org",
+                  telephone: '123456789',
                   agreed: true,
                 )
   end
