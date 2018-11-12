@@ -3,18 +3,18 @@ require "test_helper"
 class UpdateTest < Capybara::Rails::TestCase
   scenario 'update not possible if agreement not accepted', :js do
     log_in
+    find('.show-agreement-button').trigger('click')
     find('.share-update-submit').trigger('click')
     assert_content 'Bitte lies und bestätige die Vereinbarung'
   end
 
   scenario 'updates share if agreement is accepted', :js do
     log_in
-    check 'share_agreed'
     fill_in 'share_offer_minimum', with: '10'
     fill_in 'share_offer_maximum', with: '80'
     select '1.5', from: 'share_size'
     select '12', from: 'share_payment'
-    find('.share-update-submit').trigger('click')
+    submit
     assert_content 'Erfolgreich aktualisiert'
     @share.reload
     assert_equal true, @share.agreed
@@ -42,9 +42,8 @@ class UpdateTest < Capybara::Rails::TestCase
     @internet_ag_checkbox = "share_workgroup_ids_#{workgroups(:InternetAG).id}"
     @finanz_ag_checkbox = "share_workgroup_ids_#{workgroups(:FinanzAG).id}"
     log_in
-    check 'share_agreed'
     check @internet_ag_checkbox
-    find('.share-update-submit').trigger('click')
+    submit
     has_checked_field? @internet_ag_checkbox
     !has_checked_field? @finanz_ag_checkbox
     assert_equal 1, @share.workgroups.count
@@ -56,5 +55,15 @@ class UpdateTest < Capybara::Rails::TestCase
     fill_in 'Email der Hauptkontaktperson', with: 'foo@bar.org'
     fill_in 'Passwort', with: 'secret'
     click_on "Ab geht's"
+  end
+
+  def submit
+    find('.show-agreement-button').trigger('click')
+    assert_content 'Ich habe die Vereinbarung gelesen und versichere, dass meine Angaben der Wahrheit entsprechen'
+    all('#share_agreed')[0].set(true)
+    all('#share_agreed')[1].set(true)
+    all('#share_agreed')[2].set(true)
+    all('#share_agreed')[3].set(true)
+    find('.share-update-submit').trigger('click')
   end
 end

@@ -66,15 +66,17 @@ end
 def add_valid_user(activated)
   @group = groups(:Bouffe)
   @share = Share.create(group_id: @group.id,
-                        name: "test share", 
+                        name: "test share",
                         payment: 1,
                         land_help_days: 3,
                         no_help: false,
                         skills: 'test_skills',
-                        size: 2, 
+                        no_help: false,
+                        size: 2,
                         password: "secret",
                         password_confirmation: "secret",
                         email: "foo@bar.org",
+                        telephone: '12345678',
                         agreed: false,
                         activated: activated,
                         )
