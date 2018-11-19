@@ -36,7 +36,7 @@ class MessageMailer < ApplicationMailer
   end
 
   def bidding_over(share, email)
-    attachments['Vereinbarung.pdf'] = File.read(Rails.root + 'public/basta_vereinbarung_2018.pdf')
+    attachments['Vereinbarung.pdf'] = File.read(Rails.root + 'public/manifestino_2019.pdf')
     @share = share
     mail(to: email, subject: 'Die Bietrunde ist abgeschlossen!')
   end
