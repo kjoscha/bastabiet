@@ -131,6 +131,13 @@
       %h3 Feedback zum Bietverfahren
     .col-xs-12.margin-below
       = f.text_area :feedback, class: 'form-control'
+
+  - if @share.updated_at < Time.parse('2018-11-24')
+    .row.margin-below
+      .col-xs-12
+        = render 'shared/privacy'
+
+  .row
     .col-xs-12
       = render 'agreement_modal', f: f
       %button.btn.btn-success.show-agreement-button{type: 'button'} weiter
