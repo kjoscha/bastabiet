@@ -36,7 +36,7 @@ gem 'unicorn'
 # gem 'capistrano-rails', group: :development
 
 #custom
-gem 'bootstrap-sass', '~> 3.2.0.0'
+gem 'bootstrap-sass', '~> 3.4'
 gem 'haml-rails'
 gem 'haml'
 gem 'd3-rails'
