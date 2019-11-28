@@ -92,6 +92,12 @@
       = f.check_box :super_moneymaker
       Wir tätigen die Überweisungen für die komplette Bezugsgruppe (alle Ernteanteile)
 
+    - if @share.other_smm
+      .col-xs-12{style: 'font-style: italic; color: grey'}
+        Momentan hat
+        = " #{@share.other_smm.name} "
+        angegeben, für die gesamte Bezugsgruppe zu überweisen
+
   .row
     .col-xs-12
       %hr

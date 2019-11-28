@@ -51,10 +51,12 @@ class Share < ActiveRecord::Base
     end
   end
 
-  def one_moneymaker_present?
+  def other_smm
     other_shares = group.shares.where.not(id: id)
-    other_smm = other_shares.find_by(super_moneymaker: true)
+    other_shares.find_by(super_moneymaker: true)
+  end
 
+  def one_moneymaker_present?
     if other_smm.present? && (moneymaker || members.where('moneymaker').any? || super_moneymaker)
       errors[:base] << "Gib gibt bereits einen Ernteanteil (#{other_smm.name}), der das Geld für die Bezugsgruppe überweist"
     end
