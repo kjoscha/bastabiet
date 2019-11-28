@@ -44,10 +44,11 @@ class SharesController < ApplicationController
     @share.form_edit
     if @share.update_attributes(share_params) && fill_offers(@share)
       flash[:success] = 'Erfolgreich aktualisiert'
+      redirect_to :back
     else
       flash[:danger] = @share.errors.full_messages.to_sentence
+      render :show
     end
-    redirect_to :back
   end
 
   def destroy
