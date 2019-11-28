@@ -37,6 +37,7 @@ class Share < ActiveRecord::Base
   validates :size, presence: true
 
   validate :one_moneymaker_present?, if: :form_edit?
+  validate :offers_must_increase, if: :form_edit?
   validate :name_at_least_two_words?
   validate :group_not_full?
   validate :agreed?, on: :update, if: :form_edit?
@@ -44,6 +45,12 @@ class Share < ActiveRecord::Base
   validate :permitted_size?
 
   has_secure_password
+
+  def offers_must_increase
+    if !(offer_minimum && offer_medium && offer_maximum && offer_minimum < offer_medium && offer_medium  < offer_maximum)
+      errors[:base] << 'Es müssen drei ansteigende Gebote abgegeben werden!'
+    end
+  end
 
   def name_at_least_two_words?
     if name.split.size < 2

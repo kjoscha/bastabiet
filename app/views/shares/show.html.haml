@@ -85,12 +85,12 @@
       = f.check_box :moneymaker
       Ich als Hauptkontakt (
       = @share.name
-      ) tätige die Überweisungen
+      ) tätige die Überweisungen an Basta
 
   .row
     .col-xs-12
       = f.check_box :super_moneymaker
-      Wir tätigen die Überweisungen für die komplette Bezugsgruppe (alle Ernteanteile)
+      Wir tätigen die Überweisungen für die komplette Bezugsgruppe (alle Ernteanteile) an Basta
 
     - if @share.other_smm
       .col-xs-12{style: 'font-style: italic; color: grey'}
@@ -109,11 +109,11 @@
   - if admin? || current_share?
     .row.margin-below
       .col-md-4
-        = f.text_field :offer_minimum, placeholder: '1. Gebot', class: 'form-control offer-field', disabled: !@settings.offer_minimum_active && @share.offer_minimum.present?
+        = f.text_field :offer_minimum, placeholder: 'Minimalgebot', class: 'form-control offer-field', disabled: !@settings.offer_minimum_active && @share.offer_minimum.present?
       .col-md-4
-        = f.text_field :offer_medium, placeholder: '2. Gebot', class: 'form-control offer-field', disabled: !@settings.offer_medium_active && @share.offer_medium.present?
+        = f.text_field :offer_medium, placeholder: 'Mittleres Gebot', class: 'form-control offer-field', disabled: !@settings.offer_medium_active && @share.offer_medium.present?
       .col-md-4
-        = f.text_field :offer_maximum, placeholder: '3. Gebot', class: 'form-control offer-field', disabled: !@settings.offer_maximum_active && @share.offer_maximum.present?
+        = f.text_field :offer_maximum, placeholder: 'Maximalgebot', class: 'form-control offer-field', disabled: !@settings.offer_maximum_active && @share.offer_maximum.present?
   .row
     .col-sm-3.margin-below
       Anzahl der Ernteanteile
