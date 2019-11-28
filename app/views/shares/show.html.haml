@@ -58,7 +58,7 @@
       .col-xs-6.col-md-2
         = m.telephone
       .col-xs-6.col-md-2
-        = 'tätigt Überweisungen' if m.moneymaker
+        = 'tätigt Überweisungen für diesen Ernteanteil' if m.moneymaker
       .col-xs-6.col-md-2.margin-below.pull-right
         = link_to 'Löschen', member_path(m.id, share_id: @share.id), method: 'delete', data: { confirm: 'Wirklich Mitglied löschen?' }
 
@@ -74,7 +74,7 @@
       = mf.text_field :telephone, placeholder: 'Telefon', class: 'form-control'
     .col-md-2
       = mf.check_box :moneymaker
-      tätigt die Überweisungen
+      tätigt die Überweisungen für diesen Ernteanteil
     .col-md-2
       = button_tag('Mitglied hinzufügen', type: 'submit', class: 'btn btn-success')
 

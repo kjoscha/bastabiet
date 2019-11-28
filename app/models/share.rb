@@ -64,12 +64,16 @@ class Share < ActiveRecord::Base
   end
 
   def one_moneymaker_present?
-    if other_smm.present? && (moneymaker || members.where('moneymaker').any? || super_moneymaker)
-      errors[:base] << "Gib gibt bereits einen Ernteanteil (#{other_smm.name}), der das Geld für die Bezugsgruppe überweist"
+    if other_smm.present? && super_moneymaker
+      errors[:base] << "Es gibt bereits einen Ernteanteil (#{other_smm.name}), der das Geld an Basta überweist"
     end
 
-    if !(moneymaker || members.where('moneymaker').any? || other_smm)
-      errors[:base] << 'Gib (nur) eine Person an, die das Geld überweist'
+    if !(moneymaker || members.where('moneymaker').any?)
+      errors[:base] << 'Gib eine Person an, die das Geld dieses Ernteanteils überweist'
+    end
+
+    if moneymaker && members.where('moneymaker').any?
+      errors[:base] << 'Gib nur eine Person an, die das Geld dieses Ernteanteils überweist'
     end
   end
 
