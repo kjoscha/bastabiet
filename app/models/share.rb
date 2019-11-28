@@ -36,6 +36,7 @@ class Share < ActiveRecord::Base
     format: { with: /\A((?![a-zA-Z]).){3,20}\z/ }
   validates :size, presence: true
 
+  validate :one_moneymaker_present?, if: :form_edit?
   validate :name_at_least_two_words?
   validate :group_not_full?
   validate :agreed?, on: :update, if: :form_edit?
@@ -47,6 +48,12 @@ class Share < ActiveRecord::Base
   def name_at_least_two_words?
     if name.split.size < 2
       errors[:base] << 'Bitte gib deinen Vor- und Nachnamen an'
+    end
+  end
+
+  def one_moneymaker_present?
+    if (!moneymaker && members.where('moneymaker').count == 0) || (moneymaker && members.where('moneymaker').any?)
+      errors[:base] << 'Gib (nur) eine Person an, die das Geld überweist'
     end
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181112155254) do
+ActiveRecord::Schema.define(version: 20191128132906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,8 @@ ActiveRecord::Schema.define(version: 20181112155254) do
     t.datetime "activation_timestamp"
     t.text     "feedback"
     t.string   "telephone"
+    t.boolean  "moneymaker",               default: false, null: false
+    t.boolean  "super_moneymaker",         default: false, null: false
   end
 
   add_index "shares", ["group_id"], name: "index_shares_on_group_id", using: :btree

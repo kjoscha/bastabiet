@@ -15,6 +15,7 @@ class Member < ActiveRecord::Base
       siblings.each do |s|
         s.update(moneymaker: false)
       end
+      share.update(moneymaker: false)
     end
   end
 

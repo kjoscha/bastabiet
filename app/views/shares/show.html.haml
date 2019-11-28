@@ -1,16 +1,21 @@
 .row
   .col-xs-12
     %h1 Details zu eurem Ernteanteil
-    Angaben können jederzeit geändert werden
+    Angaben können nachträglich jederzeit geändert werden
     %hr
-    %h3 Bitte lesen
+    %h3 Bitte lesen!
     %br
+    %h4
+      Hast du die
+      = link_to 'Vereinbarung für das Jahr 2020', '/manifestino_2020.pdf'
+      gründlich gelesen?
+    %h4
     %h4
       Bist du über die Inhalte des aktuellen
       = link_to 'Finanzplans', 'https://csa-basta.org/system/files/finanzplan_2019_vorschlag.pdf'
       gut informiert?
     %h4
-      Bist du darüber informiert, wie das
+      Weißt du, wie das
       = link_to 'Bietverfahren', 'https://csa-basta.org/basta/content/bietverfahren'
       läuft und worauf du bietest?
     %h4{style: 'font-style: italic; color: grey'}
@@ -24,7 +29,7 @@
 
 .row
   .col-xs-12
-    %h3 Hautpkontakt
+    %h3 Hauptkontakt
 
 = form_for(@share) do |f|
   .row.margin-below
@@ -53,12 +58,14 @@
       .col-xs-6.col-md-2
         = m.telephone
       .col-xs-6.col-md-2
-        = 'Moneymaker' if m.moneymaker
+        = 'tätigt Überweisungen' if m.moneymaker
       .col-xs-6.col-md-2.margin-below.pull-right
         = link_to 'Löschen', member_path(m.id, share_id: @share.id), method: 'delete', data: { confirm: 'Wirklich Mitglied löschen?' }
 
 .row.margin-below
   = form_for([@share, @share.members.build]) do |mf|
+    .col-xs-12{style: 'font-style: italic; color: grey'}
+      Es geht uns nicht ums Datensammeln, sondern um die Erreichbarkeit. Gebt also ruhig Spitznamen oder ein Alias an.
     .col-md-3
       = mf.text_field :name, placeholder: 'Name', class: 'form-control'
     .col-md-3
@@ -67,16 +74,28 @@
       = mf.text_field :telephone, placeholder: 'Telefon', class: 'form-control'
     .col-md-2
       = mf.check_box :moneymaker
-      Diese Person tätigt die Überweisungen
+      tätigt die Überweisungen
     .col-md-2
       = button_tag('Mitglied hinzufügen', type: 'submit', class: 'btn btn-success')
-    .col-xs-12
-      Es geht uns nicht ums Datensammeln, sonder um die Erreichbarkeit. Gebt also ruhig Spitznamen oder ein Alias an.
-.row
-  .col-xs-12
-    %hr
 
 = form_for(@share) do |f|
+
+  .row
+    .col-xs-12
+      = f.check_box :moneymaker
+      Ich als Hauptkontakt (
+      = @share.name
+      ) tätige die Überweisungen
+
+  .row
+    .col-xs-12
+      = f.check_box :super_moneymaker
+      Wir tätigen die Überweisungen für die komplette Bezugsgruppe (alle Ernteanteile)
+
+  .row
+    .col-xs-12
+      %hr
+
   .row
     .col-xs-12
       %h3 Pflichtangaben
@@ -108,7 +127,7 @@
       = f.text_field :skills, placeholder: 'z.B. Grafikdesign-Kenntnisse, ökologisches, ökonomisches oder juristisches Fachwissen, Kettensäge...', class: 'form-control'
     .col-xs-12
       %h4
-        In welchen AG's werdet ihr euch 2019 beteiligen?
+        In welchen AG's werdet ihr euch 2020 beteiligen?
         = link_to ' Hier', 'https://csa-basta.org/basta/arbeitsgruppen'
         kannst du die AGs kontaktieren.
   .row
