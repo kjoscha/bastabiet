@@ -47,7 +47,7 @@ class Share < ActiveRecord::Base
   has_secure_password
 
   def offers_must_increase
-    if !(offer_minimum && offer_medium && offer_maximum && offer_minimum < offer_medium && offer_medium  < offer_maximum)
+    if !(offer_minimum && offer_medium && offer_maximum && offer_minimum <= offer_medium && offer_medium <= offer_maximum)
       errors[:base] << 'Es müssen drei ansteigende Gebote abgegeben werden!'
     end
   end
