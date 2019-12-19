@@ -1,8 +1,8 @@
 !!!
 %html
   %head
-    %meta{:content => "width=device-width, initial-scale=0.7", :name => "viewport"}/
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "width=device-width, initial-scale=0.7", :name => "viewport"}
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
     %title CSA Basta
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
@@ -50,3 +50,6 @@
       = image_tag 'logo_sticker.png', width: 250
     %br
     = mail_to 'info@coderat.cc', 'Fragen, Wünsche, Anregungen?', style: 'color: black;'
+
+    %noscript
+      %img{src: "https://matomo.coderat.cc/matomo.php?idsite=3&amp;rec=1", style:"border:0", alt:""}
