@@ -2,7 +2,7 @@ Lieb* #{@share.name.split(' ').first},
 \
 du übernimmst für die Bezugsgruppe (BG) #{@share.group.name} die Überweisungen an Basta. Ab 2020 liegt der Gesamtbetrag eurer BG bei #{@share.group.total_offer_medium} EUR. Unten erhälst du eine Übersicht, die zeigt, welchen Betrag die einzelnen Ernteanteile mit ihrem gelben Gebot jeweils zahlen. Bitte stelle sicher, dass alle ihre Überweisungen entsprechend anpassen und ändere euren Dauerauftrag an Basta so schnell wie möglich. Mache ggf. eine Nachzahlung für Januar 2020.
 \
-- @share.groups.shares.each do |share|
+- @share.group.shares.each do |share|
   #{share.moneymaker_name} | #{share.offer_medium}
   \
 \
