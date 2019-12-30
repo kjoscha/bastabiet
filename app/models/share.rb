@@ -63,6 +63,10 @@ class Share < ActiveRecord::Base
     other_shares.find_by(super_moneymaker: true)
   end
 
+  def moneymaker_name
+    moneymaker ? name : members.where(moneymaker: true)&.first&.name
+  end
+
   def one_moneymaker_present?
     if other_smm.present? && super_moneymaker
       errors[:base] << "Es gibt bereits einen Ernteanteil (#{other_smm.name}), der das Geld an Basta überweist"

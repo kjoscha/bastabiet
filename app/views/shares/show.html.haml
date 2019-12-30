@@ -74,7 +74,7 @@
       = mf.text_field :telephone, placeholder: 'Telefon', class: 'form-control'
     .col-md-2
       = mf.check_box :moneymaker
-      tätigt die Überweisungen für diesen Ernteanteil
+      tätigt die Überweisungen für diesen Ernteanteil an die Bezugsgruppe
     .col-md-2
       = button_tag('Mitglied hinzufügen', type: 'submit', class: 'btn btn-success')
 
@@ -85,7 +85,7 @@
       = f.check_box :moneymaker
       Ich als Hauptkontakt (
       = @share.name
-      ) tätige die Überweisungen an Basta
+      ) tätige die Überweisungen an die Bezugsgruppe
 
   .row
     .col-xs-12
