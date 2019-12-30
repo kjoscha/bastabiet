@@ -41,6 +41,11 @@ class MessageMailer < ApplicationMailer
     mail(to: email, subject: 'Die Bietrunde ist abgeschlossen!')
   end
 
+  def moneymaker(share, email)
+    @share = share
+    mail(to: email, subject: 'Überweisung an Basta!')
+  end
+
   def admin_notification_change(share, changes)
     unless changes.empty?
       @share = share
