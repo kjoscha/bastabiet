@@ -3,6 +3,7 @@ class MessageMailer < ApplicationMailer
 
   RECEIVERS = %w[
     willkommen@csa-basta.org
+    bieten@csa-basta.org
     basta@lupus.uberspace.de
     basta@posteo.de
   ].freeze

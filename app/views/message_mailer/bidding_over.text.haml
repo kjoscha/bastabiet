@@ -1,18 +1,24 @@
 Lieb* #{@share.name.split(' ').first},
 \
-mit eurem gelben Gebot von monatlich #{number_to_currency(@share.offer_medium, unit: '€')} unterstützt ihr die Landwirtschaft auf Basta für den Zeitraum vom 1. Januar 2020 bis zum  31. Dezember 2020. Ihr bekommt dafür #{@share.size} Ernteanteil(e).
+mit eurem gelben Gebot von monatlich #{number_to_currency(@share.offer_medium, unit: '€')} unterstützt ihr die solidarische Landwirtschaft auf Basta für den Zeitraum vom 1. Januar 2020 bis zum  31. Dezember 2020. Ihr bekommt dafür #{@share.size} Ernteanteil(e).
 \
 Zusätzlich unterstützt ihr das Projekt mit #{@share.land_help_days} Arbeitstagen auf dem Hof und seid in folgenden AGs aktiv: #{@share.workgroups.map(&:name).join(', ')}
 \
-Darüber hinaus seid ihr bereit diese Fähigkeiten oder Tools zu Verfügung zu stellen: #{@share.skills}
+Darüber hinaus seid ihr bereit, diese Fähigkeiten oder Tools zu Verfügung zu stellen: #{@share.skills}
+\
+BITTE PASST EUREN DAUERAUFTRAG SO SCHNELL WIE MÖGLICH AN!!! MACHT GGF. EINE NACHZAHLUNG FÜR JANUAR! Die Zahlung erfolgt im Voraus für 1 Monat an die Überweisungspat*in eurer Bezugsgruppe und wird von da gesammelt an Basta weiter-überwiesen. Die Zahlungsinformationen werden nochmal an die entsprechende Emailadresse geschickt.
+- if @share.moneymaker_name
+  Überweisungspat*in ist #{@share.moneymaker_name}
+- else
+  EURE BEZUGSGRUPPE HAT NOCH KEINE* ÜBERWEISUNGSPAT*IN ANGEGEBEN. BITTE KLÄRT DAS UND SORGT DAFÜR, DASS DER ENTSPRECHENDE ERNTEANTEIL UMGEHEND DAS HÄKCHEN IM BIETTOOL (http://basta.lupus.uberspace.de/) SETZT!
 \
 Mit den gelben Geboten aus dem Bietverfahren fehlen uns voraussichtlich ca. 1094€ zur Deckung des Finanzplans 2020: 167704€ (Stand 23.12.) vs. 168798€.
 \
 Wir haben entschieden, mit dem Minus in die Saison zu starten und werden am Ende des Wirtschaftsjahrs abgleichen, ob die angenommen Zahlen den reellen Zahlen entsprechen. Sollte das Minus nicht gedeckt werden, liegt es in der Verantwortung der Stadtgruppe, dieses zu decken.
 \
-Vielleicht gibt es Leute, die bereit sind, einen höheren Betrag zu zahlen. z.B. gelbes Gebot + 1 oder 2 Euro monatlich bzw. euren roten Betrag...? Wenn ihr das machen wollt, toll. Und orga-buchhaltungs-technisch wäre es gut, wenn ihr im Biettool (http://basta.lupus.uberspace.de/) euer gelbes Gebot anpasst. Bitte passt dementsprechend eure Überweisung auf euer finales gelbes Gebot an.
+Richtig klasse wäre es, wenn es Leute gibt, die bereit sind, ihr Gelbes Gebot nach oben zu korrigieren z.B. gelbes Gebot + 1 oder 2 Euro monatlich bzw. euren roten Betrag...? Wenn ihr das machen wollt, toll! Orga-buchhaltungs-technisch wäre es gut, wenn ihr dann im Biettool (http://basta.lupus.uberspace.de/) euer gelbes Gebot anpasst. Bitte passt dementsprechend auch eure Überweisung auf euer finales gelbes Gebot an und kommuniziert dies an die Biet-AG.
 \
-Falls ihr während des Jahres oder am Ende des Jahres euren Ernteanteil abgeben wollt, kommuniziert das bitte unbedingt an die Willkommens-AG (willkommens-ag@lists.csa-basta.org) mit 2 Monaten Vorlauf.
+Falls ihr während des Jahres (vor Oktober - Wechselstopp) euren Ernteanteil abgeben wollt, kommuniziert das bitte unbedingt an die Willkommens-AG (willkommens-ag@lists.csa-basta.org) mit 2 Monaten Vorlauf.
 \
 Die Zahlung erfolgt im Voraus für 1 Monate und wird gesammelt von eurer Bezugsgruppe überwiesen.
 \
@@ -33,9 +39,10 @@ Hauptkontaktperson:
 Bezugsgruppenname:
 = @share.group.name
 \
-Wenn sich daran etwas ändert, informiert bitte die Willkommens-AG. Falls ihr nur einen halben Anteil bezieht, achtet bitte darauf, dass wir immer auch aktuelle Kontaktdaten für den anderen Ernteanteil haben.
-\
 Ihr solltet die Vereinbarung (siehe Anhang) gelesen haben und die Voraussetzungen der Mindestbeteiligung erfüllen.
+\
+Eine Bitte an alle, die länger gebraucht haben zum Bieten: Kümmert euch unbedingt darum, dass ihr alle wichtigen Infos bekommt und Zugänge auch weitergebt oder euch löschen lasst bei einem Wechsel (Plattform, Biet-Tool).
+Und vielen Dank an alle, die rechtzeitig geboten und die beim Bietverfahren geholfen haben!
 \
 Liebe Grüße & guten Start ins neue Jahr euch allen!
 Eure Biet-AG
