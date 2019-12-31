@@ -2,7 +2,7 @@ namespace :bidding_over_mail do
 
   desc 'Send a mail to all shares'
   task send: :environment do
-    Share.where(super_moneymaker: true).each do |share|
+    Share.all.each do |share|
       p "----- #{share.group.name} -----"
       p share.email
       MessageMailer.bidding_over(share, share.email).deliver_now
