@@ -5,7 +5,7 @@ namespace :moneymaker_mail do
     Share.where(super_moneymaker: true).each do |share|
       p "----- #{share.name} -----"
       p share.email
-      MessageMailer.moneymaker(share, share.email).deliver_now
+      MessageMailer.moneymaker(share, share.share_moneymaker&.email).deliver_now
     end
   end
 
