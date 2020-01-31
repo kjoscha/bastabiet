@@ -5,13 +5,6 @@ class Group < ActiveRecord::Base
   validates_length_of :name, minimum: 3, allow_blank: false
   validates :name, uniqueness: true
 
-  def super_moneymaker_email
-    shares
-      .find_by(super_moneymaker: true)
-      &.share_moneymaker
-      &.email
-  end
-
   def shares_with_offer
     shares.find_all do |share|
       share.offer_minimum

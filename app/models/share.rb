@@ -63,10 +63,14 @@ class Share < ActiveRecord::Base
     other_shares.find_by(super_moneymaker: true)
   end
 
-  def super_moneymaker_name
+  def share_super_moneymaker_name
+    super_moneymaker&.name
+  end
+
+  def share_super_moneymaker
     smm = group.shares.where(super_moneymaker: true)
     return nil unless smm.any?
-    smm.first.share_moneymaker_name
+    smm.first.share_moneymaker
   end
 
   def share_moneymaker_name
