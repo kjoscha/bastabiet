@@ -1,9 +1,16 @@
 class Group < ActiveRecord::Base
   belongs_to :station
-  has_many :shares, dependent: :destroy  
+  has_many :shares, dependent: :destroy
 
   validates_length_of :name, minimum: 3, allow_blank: false
   validates :name, uniqueness: true
+
+  def super_moneymaker_email
+    shares
+      .find_by(super_moneymaker: true)
+      &.share_moneymaker
+      &.email
+  end
 
   def shares_with_offer
     shares.find_all do |share|
