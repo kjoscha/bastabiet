@@ -64,7 +64,7 @@ class Share < ActiveRecord::Base
   end
 
   def share_super_moneymaker_name
-    super_moneymaker&.name
+    share_super_moneymaker&.name
   end
 
   def share_super_moneymaker
