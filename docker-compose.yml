@@ -1,0 +1,21 @@
+version: '2'
+services:
+  bastabiet:
+    build: .
+    stdin_open: true
+    tty: true
+    command: bundle exec rails server -b 0.0.0.0 -p 3000
+    volumes:
+      - .:/bastabiet
+    env_file: .env
+    entrypoint: /bastabiet/entrypoint.sh
+    ports:
+      - '127.0.0.1:3333:3000'
+    depends_on:
+      - bastabiet_postgres
+
+  bastabiet_postgres:
+    image: postgres
+    env_file: .env
+    expose:
+      - "5432"
