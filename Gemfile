@@ -43,6 +43,7 @@ gem 'd3-rails'
 gem 'faker'
 gem 'jquery-datatables-rails', '~> 3.4.0'
 gem 'carrierwave'
+gem 'sassc', '2.0.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
