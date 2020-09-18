@@ -24,10 +24,6 @@ module SessionsHelper
     current_share && (current_share.id == params[:id].to_i || current_share.id == params[:share_id].to_i)
   end
 
-  def logged_in?
-    !current_share.nil?
-  end
-
   def admin_or_current_share
     unless (current_share && current_share?) || admin? || restricted_admin?
       flash[:danger] = 'Nicht erlaubt!'

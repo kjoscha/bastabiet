@@ -25,7 +25,7 @@ class StatisticTest < ActiveSupport::TestCase
   test 'calculates correct total size of shares with offers' do
     create_shares
     # compare with count of registered shares
-    assert_equal 3.5, Share.size_altogether.round(1)
+    assert_equal 4.5, Share.size_altogether.round(1)
 
     assert_equal 1.5, Statistic.new('offer_minimum').total_share_size_with_offers
     assert_equal 1.5, Statistic.new('offer_medium').total_share_size_with_offers

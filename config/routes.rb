@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :shares
   resources :members
   resources :settings
+  resources :uploads
 
   get '/register' => 'shares#new', as: :register
   get    '/login',   to: 'sessions#new'
@@ -28,4 +29,6 @@ Rails.application.routes.draw do
   patch '/reset_password', to: 'password_reset#set_new_password'
 
   post '/shares/send_mail', to: 'shares#send_mail'
+
+  get '/uploads/:id/:basename.:extension', to: 'uploads#download'
 end

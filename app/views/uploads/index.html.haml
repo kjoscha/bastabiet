@@ -1,0 +1,33 @@
+%section#uploads
+  .row
+    .col-xs-12.margin-below
+      %h1 Dateiuploads
+
+  = form_for(@upload) do |f|
+
+
+    .panel.panel-default
+      .panel-heading
+        .panel-title Neue Datei uploaden
+      .panel-body
+        .row.margin-below
+          .col-xs-12.margin-below
+            = f.text_field :name, placeholder: 'Name', class: 'form-control'
+          .col-xs-12.margin-below
+            = f.text_area :description, placeholder: 'Beschreibung', class: 'form-control'
+          .col-xs-12.margin-below#upload-field
+            = f.file_field :file
+          .col-xs-12
+            = f.submit "Upload", class: "btn btn-success"
+
+  - @uploads.each do |upload|
+    .panel.panel-default
+      .panel-heading
+        .panel-title= upload.name
+      .panel-body
+        .row
+          .col-md-10
+            = upload.description
+          .col-md-2
+            = link_to "/uploads/#{upload.id}/#{File.basename(upload.file.url)}" do
+              .btn.btn-info.btn-xs Download

@@ -240,3 +240,14 @@ textarea {
     border-radius: 0 !important;
   }
 }
+
+#uploads {
+  #upload-field {
+    input, textarea {
+      color: white;
+    }
+  }
+  .panel-title {
+    font-size: 3rem;
+  }
+}
