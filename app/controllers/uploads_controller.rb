@@ -18,9 +18,15 @@ class UploadsController < ApplicationController
     send_file upload.file.path, :x_sendfile=>true
   end
 
+  def destroy
+    @upload = Upload.find(params[:id])
+    @upload.destroy
+    redirect_to uploads_path
+  end
+
   private
 
   def upload_params
-    params.require(:upload).permit(:name, :description, :file)
+    params.require(:upload).permit(:name, :description, :public, :file)
   end
 end
