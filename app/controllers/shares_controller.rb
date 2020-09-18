@@ -58,7 +58,7 @@ class SharesController < ApplicationController
   end
 
   def current_shares_home
-    if logged_in?
+    if current_share
       redirect_to share_path(current_share)
     else
       redirect_to login_path

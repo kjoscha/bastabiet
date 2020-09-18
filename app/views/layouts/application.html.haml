@@ -24,6 +24,8 @@
             - if admin?
               %li
                 %a.settings-button Einstellungen
+              %li
+                = link_to 'Dateien', uploads_path
             - if @settings.show_statistics || admin?
               %li
                 %a.statistic-button Statistik

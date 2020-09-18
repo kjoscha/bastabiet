@@ -2,3 +2,8 @@ Bouffe:
   station_id: 1
   id: 1
   name: Bouffe
+
+Loveboat:
+  station_id: 1
+  id: 2
+  name: Loveboat

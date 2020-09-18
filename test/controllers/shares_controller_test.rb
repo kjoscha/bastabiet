@@ -22,7 +22,7 @@ class SharesControllerTest < ActionController::TestCase
         land_help_days: 3,
         no_help: false,
         skills: 'test_skills',
-        size: 2,
+        size: 1,
         password: "secret",
         password_confirmation: "secret",
         email: "foo@bar.org",
@@ -78,6 +78,14 @@ class SharesControllerTest < ActionController::TestCase
     session[:share_id] = @share.id
     assert_difference('Share.count', -1) do
       delete :destroy, id: @share.id
+    end
+  end
+
+  test 'logged in share cannot destroy other shares' do
+    @other_share = shares(:Hanswurst)
+    session[:share_id] = @share.id
+    assert_difference('Share.count', 0) do
+      delete :destroy, id: @other_share.id
     end
   end
 

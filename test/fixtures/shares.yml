@@ -9,3 +9,15 @@ Joscha:
   email: joscha@basta.de
   agreed: true
   group_id: 1
+
+Hanswurst:
+  id: 2
+  name: Hans Wurst
+  land_help_days: 2
+  no_help: false
+  skills: nix
+  size: 1
+  password_digest: askfdkjjdjfisjijsj
+  email: wurst@basta.de
+  agreed: true
+  group_id: 2
