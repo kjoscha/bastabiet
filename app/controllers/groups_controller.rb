@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_filter :authenticate
+  before_filter :authenticate_admin
 
   def create
     @station = Station.find(params[:station_id])

@@ -106,14 +106,13 @@
     .col-xs-12
       %h3 Pflichtangaben
       Gesamtgebote pro Monat für eure Ernteanteile (wenn ihr z.B. 220€ für 2.0 Anteile eingebt, entspricht das 110€ pro Anteil)
-  - if admin? || current_share?
-    .row.margin-below
-      .col-md-4
-        = f.text_field :offer_minimum, placeholder: 'Minimalgebot', class: 'form-control offer-field', disabled: !@settings.offer_minimum_active && @share.offer_minimum.present?
-      .col-md-4
-        = f.text_field :offer_medium, placeholder: 'Mittleres Gebot', class: 'form-control offer-field', disabled: !@settings.offer_medium_active && @share.offer_medium.present?
-      .col-md-4
-        = f.text_field :offer_maximum, placeholder: 'Maximalgebot', class: 'form-control offer-field', disabled: !@settings.offer_maximum_active && @share.offer_maximum.present?
+  .row.margin-below
+    .col-md-4
+      = f.text_field :offer_minimum, placeholder: 'Minimalgebot', class: 'form-control offer-field', disabled: !@settings.offer_minimum_active && @share.offer_minimum.present?
+    .col-md-4
+      = f.text_field :offer_medium, placeholder: 'Mittleres Gebot', class: 'form-control offer-field', disabled: !@settings.offer_medium_active && @share.offer_medium.present?
+    .col-md-4
+      = f.text_field :offer_maximum, placeholder: 'Maximalgebot', class: 'form-control offer-field', disabled: !@settings.offer_maximum_active && @share.offer_maximum.present?
   .row
     .col-sm-3.margin-below
       Anzahl der Ernteanteile

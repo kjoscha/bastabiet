@@ -1,5 +1,5 @@
 class UploadsController < ApplicationController
-  before_filter :authenticate
+  before_filter :authenticate_admin
 
   def index
     @upload = Upload.new

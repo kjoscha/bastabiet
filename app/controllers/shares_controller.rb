@@ -19,7 +19,7 @@ class SharesController < ApplicationController
       @group_selection = @groups.map{ |g| [g.name, g.id] }
       @share = @group.shares.build(share_params)
       if @share.save
-        if admin? && @share.update(activated: true)
+        if current_admin && @share.update(activated: true)
           MessageMailer.admin_created_share(@share).deliver_now
           flash[:success] = "Der Account wurde erfolgreich angelegt. Es wurde eine Email an die angegebene Mailadresse geschickt."
           redirect_to root_url

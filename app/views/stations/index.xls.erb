@@ -15,11 +15,9 @@
         <Cell><Data ss:Type="String">Erstellt</Data></Cell>
         <Cell><Data ss:Type="String">Letzte Änderung</Data></Cell>
         <Cell><Data ss:Type="String">Größe des Ernteanteils</Data></Cell>
-        <% if admin? %>
-          <Cell><Data ss:Type="String">Wohlfühlgebot</Data></Cell>
-          <Cell><Data ss:Type="String">Mittleres Gebot</Data></Cell>
-          <Cell><Data ss:Type="String">Schmerzgrenze</Data></Cell>
-        <% end %>
+        <Cell><Data ss:Type="String">Wohlfühlgebot</Data></Cell>
+        <Cell><Data ss:Type="String">Mittleres Gebot</Data></Cell>
+        <Cell><Data ss:Type="String">Schmerzgrenze</Data></Cell>
         <Cell><Data ss:Type="String">Person Überweisung</Data></Cell>
         <Cell><Data ss:Type="String">Überweisung für Bezugsgruppe</Data></Cell>
         <Cell><Data ss:Type="String">Vereinbarung akzeptiert?</Data></Cell>
@@ -41,11 +39,9 @@
         <Cell><Data ss:Type="String"><%= share.created_at.strftime('%d.%m.%Y %H:%M')%></Data></Cell>
         <Cell><Data ss:Type="String"><%= share.updated_at.strftime('%d.%m.%Y %H:%M')%></Data></Cell>
         <Cell><Data ss:Type="String"><%= share.size %></Data></Cell>
-        <% if admin? %>
-          <Cell><Data ss:Type="String"><%= share.offer_minimum %></Data></Cell>
-          <Cell><Data ss:Type="String"><%= share.offer_medium %></Data></Cell>
-          <Cell><Data ss:Type="String"><%= share.offer_maximum %></Data></Cell>
-        <% end %>
+        <Cell><Data ss:Type="String"><%= share.offer_minimum %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.offer_medium %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= share.offer_maximum %></Data></Cell>
         <Cell><Data ss:Type="String"><%= share.share_moneymaker_name %></Data></Cell>
         <Cell><Data ss:Type="String"><%= share.super_moneymaker ? "x" : "" %></Data></Cell>
         <Cell><Data ss:Type="String"><%= share.agreed ? "x" : "" %></Data></Cell>
