@@ -1,5 +1,5 @@
 class SettingsController < ApplicationController
-  before_filter :authenticate
+  before_filter :authenticate_admin
 
   def update
     @settings = Setting.find(params[:id])

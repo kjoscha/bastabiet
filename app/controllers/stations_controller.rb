@@ -1,5 +1,5 @@
 class StationsController < ApplicationController
-  before_filter :authenticate
+  before_filter :authenticate_admin
 
   def index
     @stations = Station.all

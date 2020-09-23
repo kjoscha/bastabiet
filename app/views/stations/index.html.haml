@@ -20,7 +20,7 @@
             %th.dt-center Registriert
             %th.dt-center Änderung
             %th.dt-center Ernteanteile
-            - if admin?
+            - if current_admin
               %th.dt-center Gebote
             %th.dt-center Mitglieder
             %th.dt-center Arbeitsgruppen
@@ -39,7 +39,7 @@
               %td= share.created_at.strftime('%d.%m.%Y %H:%M')
               %td= share.updated_at.strftime('%d.%m.%Y %H:%M')
               %td= share.size
-              - if admin?
+              - if current_admin
                 %td.offers-cell
                   - %w[minimum medium maximum].each do |offer|
                     - if share.send("offer_#{offer}")

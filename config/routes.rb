@@ -17,9 +17,13 @@ Rails.application.routes.draw do
   resources :uploads
 
   get '/register' => 'shares#new', as: :register
-  get    '/login',   to: 'sessions#new'
-  post   '/login',   to: 'sessions#create'
-  delete '/logout',  to: 'sessions#destroy'
+  get    '/login',   to: 'share_sessions#new'
+  post   '/login',   to: 'share_sessions#create'
+  delete '/logout',  to: 'share_sessions#destroy'
+
+  get    '/admin',   to: 'admin_sessions#new'
+  post   '/admin',   to: 'admin_sessions#create'
+  delete '/admin_logout',  to: 'admin_sessions#destroy'
 
   get '/activate_share/:id/:token', to: 'activations#activate_share', as: :activate_share
 
