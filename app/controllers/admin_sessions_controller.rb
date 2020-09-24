@@ -8,7 +8,6 @@ class AdminSessionsController < ApplicationController
       flash[:danger] = 'Es gibt keinen Admin mit dieser Emailadresse!'
       render :new
     elsif admin.authenticate(params[:admin_session][:password])
-      log_out
       admin_log_out
       admin_log_in admin
       redirect_to stations_path

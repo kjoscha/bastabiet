@@ -11,7 +11,6 @@ class ShareSessionsController < ApplicationController
       flash[:danger] = 'Account noch nicht aktiviert'
       render :new
     elsif share.authenticate(params[:share_session][:password])
-      admin_log_out
       log_out
       log_in share
       redirect_to share

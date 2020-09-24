@@ -1,0 +1,32 @@
+.navbar-header
+  %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
+    %span.sr-only Toggle navigation
+    %span.icon-bar
+    %span.icon-bar
+    %span.icon-bar
+  %a.navbar-brand{:href => root_path} CSA BASTA
+#navbar.navbar-collapse.collapse
+  %ul.nav.navbar-nav.navbar-right
+    %li
+      = link_to 'Admin', stations_path
+
+
+    - if current_admin
+      %li
+        %a.settings-button Einstellungen
+      %li
+        = link_to 'Dateien', uploads_path
+      %li
+        %a.statistic-button Statistik
+
+    - if current_share
+      - if @settings.show_statistics
+        %li
+          %a.statistic-button Statistik
+      %li
+        = link_to current_share.name, share_path(current_share), class: 'logged-in-with'
+      %li
+        = link_to 'Abmelden', logout_path, method: :delete, class: 'logged-in-with'
+    - elsif current_admin
+      %li
+        = link_to 'Abmelden', admin_logout_path, method: :delete, class: 'logged-in-with'
